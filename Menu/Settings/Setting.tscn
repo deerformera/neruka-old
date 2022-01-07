@@ -1,0 +1,218 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/NPR_1.png" type="Texture" id=1]
+[ext_resource path="res://UI/NPR_2.png" type="Texture" id=2]
+[ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Menu/Settings/Setting.gd" type="Script" id=5]
+[ext_resource path="res://UI/X.png" type="Texture" id=6]
+[ext_resource path="res://UI/H_Over.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 160, 16 )
+
+[node name="Setting" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+script = ExtResource( 5 )
+
+[node name="M1" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="M1"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 1180.0
+margin_bottom = 620.0
+texture = ExtResource( 1 )
+patch_margin_left = 16
+patch_margin_top = 20
+patch_margin_right = 16
+patch_margin_bottom = 60
+
+[node name="M2" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="M2"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 1180.0
+margin_bottom = 620.0
+texture = ExtResource( 2 )
+patch_margin_left = 16
+patch_margin_top = 32
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="M" type="MarginContainer" parent="M2/BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="M2/BG/M"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1030.0
+margin_bottom = 470.0
+custom_constants/separation = 20
+
+[node name="Title" type="HBoxContainer" parent="M2/BG/M/VB"]
+margin_right = 215.0
+margin_bottom = 48.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 20
+
+[node name="CloseButton" type="Button" parent="M2/BG/M/VB/Title"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+icon = ExtResource( 6 )
+expand_icon = true
+
+[node name="SettingLabel" type="Label" parent="M2/BG/M/VB/Title"]
+margin_left = 68.0
+margin_top = 2.0
+margin_right = 215.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+text = "SETTING"
+align = 1
+valign = 1
+
+[node name="TabSplit" type="HBoxContainer" parent="M2/BG/M/VB"]
+margin_top = 68.0
+margin_right = 980.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 50
+alignment = 1
+
+[node name="LeftSplit" type="VBoxContainer" parent="M2/BG/M/VB/TabSplit"]
+margin_right = 465.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+
+[node name="VSLabel" type="Label" parent="M2/BG/M/VB/TabSplit/LeftSplit"]
+margin_right = 465.0
+margin_bottom = 28.0
+text = "VSync"
+
+[node name="VSButton" type="Button" parent="M2/BG/M/VB/TabSplit/LeftSplit"]
+margin_top = 48.0
+margin_right = 465.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 32 )
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+
+[node name="ThemeLabel" type="Label" parent="M2/BG/M/VB/TabSplit/LeftSplit"]
+margin_top = 100.0
+margin_right = 465.0
+margin_bottom = 128.0
+text = "Theme"
+
+[node name="ThemeButton" type="Button" parent="M2/BG/M/VB/TabSplit/LeftSplit"]
+margin_top = 148.0
+margin_right = 465.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 32 )
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+
+[node name="RightSplit" type="VBoxContainer" parent="M2/BG/M/VB/TabSplit"]
+margin_left = 515.0
+margin_right = 980.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="MasterLabel" type="Label" parent="M2/BG/M/VB/TabSplit/RightSplit"]
+margin_right = 465.0
+margin_bottom = 28.0
+text = "Master : 0%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterSlider" type="HSlider" parent="M2/BG/M/VB/TabSplit/RightSplit"]
+margin_top = 32.0
+margin_right = 465.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 320, 64 )
+custom_styles/slider = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLabel" type="Label" parent="M2/BG/M/VB/TabSplit/RightSplit"]
+margin_top = 100.0
+margin_right = 465.0
+margin_bottom = 128.0
+text = "Music : 0%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSlider" type="HSlider" parent="M2/BG/M/VB/TabSplit/RightSplit"]
+margin_top = 132.0
+margin_right = 465.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 320, 64 )
+custom_styles/slider = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXLabel" type="Label" parent="M2/BG/M/VB/TabSplit/RightSplit"]
+margin_top = 200.0
+margin_right = 465.0
+margin_bottom = 228.0
+text = "Sound Effect : 0%"
+
+[node name="SFXSlider" type="HSlider" parent="M2/BG/M/VB/TabSplit/RightSplit"]
+margin_top = 232.0
+margin_right = 465.0
+margin_bottom = 296.0
+rect_min_size = Vector2( 320, 64 )
+custom_styles/slider = SubResource( 1 )
+
+[connection signal="pressed" from="M2/BG/M/VB/Title/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="value_changed" from="M2/BG/M/VB/TabSplit/RightSplit/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="M2/BG/M/VB/TabSplit/RightSplit/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="M2/BG/M/VB/TabSplit/RightSplit/SFXSlider" to="." method="_on_SFXSlider_value_changed"]

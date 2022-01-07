@@ -1,0 +1,19 @@
+{
+  "name":"",
+  "scene":"",
+  "position":{
+    "y":0
+    "x":0,
+  },
+  "stats":{
+    "health":100,
+    "coin":0,
+  },
+  "items":[],
+  "equipment":{
+    "armor":0,
+    "boots":0,
+    "claw":0,
+    "hat":0
+  }
+}

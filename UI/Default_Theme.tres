@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=8 format=2]
+
+[ext_resource path="res://UI/Font_Normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Panel.png" type="Texture" id=2]
+[ext_resource path="res://UI/PanelHover.png" type="Texture" id=3]
+[ext_resource path="res://UI/PanelPressed.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[resource]
+default_font = ExtResource( 1 )
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 3 )
+Label/colors/font_color = Color( 0.792157, 0.792157, 0.792157, 1 )

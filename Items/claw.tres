@@ -1,0 +1,43 @@
+{
+  "1":{
+    "name":"Cron",
+    "tier":"advanced",
+    "Damage":"10",
+    "desc":"Basic claw"
+  },
+
+  "2":{
+    "name":"Crost",
+    "tier":"basic",
+    "Damage":"12",
+    "desc":"Freeze"
+  },
+
+  "3":{
+    "name":"Forch",
+    "tier":"basic",
+    "Damage":"12",
+    "desc":"Fire"
+  },
+
+  "4":{
+    "name":"Rusch",
+    "tier":"basic",
+    "Damage":"12",
+    "desc":"Slash"
+  },
+
+  "5":{
+    "name":"Shan",
+    "tier":"basic",
+    "Damage":"12",
+    "desc":"Slash Forward"
+  },
+
+  "6":{
+    "name":"Zor Claw",
+    "tier":"special",
+    "Damage":"25",
+    "desc":"Zor's Claw"
+  }
+}

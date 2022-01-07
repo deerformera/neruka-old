@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/Font_Normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://World/Info.gd" type="Script" id=2]
+[ext_resource path="res://UI/Retron2000.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="VersionInfo" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 1 )
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VersionInfo" type="Label" parent="M"]
+margin_left = 1216.0
+margin_top = 676.0
+margin_right = 1264.0
+margin_bottom = 704.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 2 )
+text = "test"

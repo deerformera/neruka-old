@@ -1,0 +1,173 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://UI/NPR_1.png" type="Texture" id=1]
+[ext_resource path="res://Menu/Exit/Exit.gd" type="Script" id=2]
+[ext_resource path="res://UI/Font_Normal.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/NPR_2.png" type="Texture" id=4]
+[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/PanelYes.png" type="Texture" id=6]
+[ext_resource path="res://UI/PanelNoPressed.png" type="Texture" id=7]
+[ext_resource path="res://UI/PanelNo.png" type="Texture" id=8]
+[ext_resource path="res://UI/PanelYesPressed.png" type="Texture" id=9]
+[ext_resource path="res://UI/Panel.png" type="Texture" id=10]
+[ext_resource path="res://UI/PanelHover.png" type="Texture" id=11]
+[ext_resource path="res://UI/PanelPressed.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[sub_resource type="StreamTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = SubResource( 11 )
+region_rect = Rect2( 0, 0, 640, 64 )
+
+[sub_resource type="StreamTexture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = SubResource( 10 )
+region_rect = Rect2( 0, 0, 640, 64 )
+
+[sub_resource type="StreamTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = SubResource( 9 )
+region_rect = Rect2( 0, 0, 640, 64 )
+
+[sub_resource type="Theme" id=12]
+default_font = ExtResource( 3 )
+Button/styles/hover = SubResource( 8 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+OptionButton/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+OptionButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+OptionButton/constants/arrow_margin = 2
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = null
+OptionButton/icons/arrow = null
+OptionButton/styles/disabled = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = SubResource( 5 )
+OptionButton/styles/normal = SubResource( 6 )
+OptionButton/styles/pressed = SubResource( 7 )
+
+[node name="Exit" type="CanvasLayer"]
+pause_mode = 2
+process_priority = 1
+script = ExtResource( 2 )
+
+[node name="M1" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/margin_right = 200
+custom_constants/margin_top = 200
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 200
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="M1"]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 1080.0
+margin_bottom = 280.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+texture = ExtResource( 1 )
+patch_margin_left = 16
+patch_margin_top = 20
+patch_margin_right = 16
+patch_margin_bottom = 60
+
+[node name="M2" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 12 )
+custom_constants/margin_right = 200
+custom_constants/margin_top = 200
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 200
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="M2"]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 1080.0
+margin_bottom = 520.0
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+patch_margin_left = 16
+patch_margin_top = 32
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="M" type="MarginContainer" parent="M2/BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="M2/BG/M"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 830.0
+margin_bottom = 270.0
+
+[node name="SurityLabel" type="Label" parent="M2/BG/M/VB"]
+margin_right = 780.0
+margin_bottom = 44.0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.784314, 0.784314, 0.784314, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Are You Sure Want To Exit?"
+align = 1
+valign = 1
+
+[node name="HB" type="HBoxContainer" parent="M2/BG/M/VB"]
+margin_left = 68.0
+margin_top = 102.0
+margin_right = 712.0
+margin_bottom = 166.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Yes" type="TextureButton" parent="M2/BG/M/VB/HB"]
+margin_right = 320.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 9 )
+
+[node name="No" type="TextureButton" parent="M2/BG/M/VB/HB"]
+margin_left = 324.0
+margin_right = 644.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+
+[connection signal="pressed" from="M2/BG/M/VB/HB/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="M2/BG/M/VB/HB/No" to="." method="_on_No_pressed"]

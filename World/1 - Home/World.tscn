@@ -1,0 +1,255 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
+[ext_resource path="res://World/1 - Home/Door.gd" type="Script" id=3]
+[ext_resource path="res://World/1 - Home/SignWrited.png" type="Texture" id=4]
+[ext_resource path="res://World/1 - Home/SignUnWrited.png" type="Texture" id=5]
+[ext_resource path="res://World/1 - Home/HouseTile.png" type="Texture" id=6]
+[ext_resource path="res://World/1 - Home/Sign.gd" type="Script" id=7]
+[ext_resource path="res://UI/popup.png" type="Texture" id=8]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/1 - Home/Door.png" type="Texture" id=10]
+[ext_resource path="res://World/1 - Home/World.gd" type="Script" id=11]
+[ext_resource path="res://UI/X32.png" type="Texture" id=12]
+[ext_resource path="res://UI/TitleBG.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 12, 4.5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 320, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+points = PoolVector2Array( 16, 64, 0, 64, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+points = PoolVector2Array( 16, 64, 0, 64, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 48, 64, 48 )
+
+[sub_resource type="ConvexPolygonShape2D" id=20]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 48, 64, 48, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=16]
+0/name = "HouseTile.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 17 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 17 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 1
+1/name = "HouseTile.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 64, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 18 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 18 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 1
+2/name = "HouseTile.png 2"
+2/texture = ExtResource( 6 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 64, 0, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 19 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 19 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "HouseTile.png 3"
+3/texture = ExtResource( 6 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 64, 64, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 20 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 20 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "HouseTile.png 4"
+4/texture = ExtResource( 6 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 128, 0, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = -1
+5/name = "HouseTile.png 5"
+5/texture = ExtResource( 6 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 128, 64, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = -1
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 12, 8.5 )
+
+[node name="World" type="YSort"]
+script = ExtResource( 11 )
+
+[node name="Player" parent="." instance=ExtResource( 9 )]
+
+[node name="Sign" type="StaticBody2D" parent="."]
+pause_mode = 1
+position = Vector2( 96, -160 )
+collision_mask = 7
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+Writed = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Sign"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign"]
+position = Vector2( 0, 8.5 )
+shape = SubResource( 14 )
+
+[node name="Area" type="Area2D" parent="Sign"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign/Area"]
+shape = SubResource( 15 )
+
+[node name="Popup" type="Sprite" parent="Sign"]
+position = Vector2( -20, -20 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Sign"]
+pause_mode = 2
+
+[node name="P" type="Popup" parent="Sign/CanvasLayer"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="CenterContainer" parent="Sign/CanvasLayer/P"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line" type="LineEdit" parent="Sign/CanvasLayer/P/C"]
+margin_left = 320.0
+margin_top = 296.0
+margin_right = 960.0
+margin_bottom = 424.0
+rect_min_size = Vector2( 640, 128 )
+custom_fonts/font = ExtResource( 1 )
+custom_icons/clear = ExtResource( 12 )
+custom_styles/normal = SubResource( 22 )
+align = 1
+clear_button_enabled = true
+placeholder_text = "Your Name"
+placeholder_alpha = 0.5
+
+[node name="HouseTile" type="TileMap" parent="."]
+tile_set = SubResource( 16 )
+cell_tile_origin = 1
+cell_y_sort = true
+show_collision = true
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( -262145, 536870913, 0, -327680, 536870914, 0, -327679, 1, 0, -196612, 536870913, 0, -196611, 2, 0, -196610, 2, 0, -196609, 536870915, 0, -262144, 5, 0, -262143, 3, 0, -262142, 2, 0, -262141, 2, 0, -262140, 1, 0, -131076, 536870913, 0, -131075, 536870916, 0, -131074, 536870916, 0, -131073, 536870916, 0, -196608, 536870916, 0, -196607, 536870916, 0, -196606, 536870916, 0, -196605, 536870916, 0, -196604, 1, 0, -65540, 536870913, 0, -65539, 536870916, 0, -65538, 536870916, 0, -65537, 536870916, 0, -131072, 536870916, 0, -131071, 536870916, 0, -131070, 536870916, 0, -131069, 536870916, 0, -131068, 1, 0, -4, 536870913, 0, -3, 536870916, 0, -2, 536870916, 0, -1, 536870916, 0, -65536, 536870916, 0, -65535, 536870916, 0, -65534, 536870916, 0, -65533, 536870916, 0, -65532, 1, 0, 65532, 536870913, 0, 65533, 536870916, 0, 65534, 536870916, 0, 65535, 536870916, 0, 0, 536870916, 0, 1, 536870916, 0, 2, 536870916, 0, 3, 536870916, 0, 4, 1, 0, 131068, 536870913, 0, 131069, 536870916, 0, 131070, 536870916, 0, 131071, 536870916, 0, 65536, 536870916, 0, 65537, 536870916, 0, 65538, 536870916, 0, 65539, 536870916, 0, 65540, 1, 0, 196604, 536870913, 0, 196605, 536870916, 0, 196606, 536870916, 0, 196607, 536870916, 0, 131072, 536870916, 0, 131073, 536870916, 0, 131074, 536870916, 0, 131075, 536870916, 0, 131076, 1, 0, 262140, 536870913, 0, 262141, 536870916, 0, 262142, 536870916, 0, 262143, 536870916, 0, 196608, 536870916, 0, 196609, 536870916, 0, 196610, 536870916, 0, 196611, 536870916, 0, 196612, 1, 0, 327676, 536870913, 0, 327677, 2, 0, 327678, 2, 0, 327679, 2, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 0, 0 )
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2( 32, -288 )
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Door"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, 40 )
+shape = SubResource( 21 )
+
+[connection signal="body_entered" from="Sign/Area" to="Sign" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Sign/Area" to="Sign" method="_on_Area_body_exited"]
+[connection signal="text_entered" from="Sign/CanvasLayer/P/C/Line" to="Sign" method="_on_Line_text_entered"]
+[connection signal="body_entered" from="Door" to="Door" method="_on_Door_body_entered"]
+[connection signal="body_exited" from="Door" to="Door" method="_on_Door_body_exited"]
