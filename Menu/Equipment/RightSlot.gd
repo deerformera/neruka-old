@@ -37,5 +37,9 @@ func _switch(bol, nama):
 	else:
 		get_parent().get_node("RightPanel")._nuller()
 
-func _equipped(bol):
-	pass
+func _equip(bol, nama):
+	
+	if bol == true:
+		Info.stat["eq"][name]["equipped"] = int(nama)
+	else:
+		Info.stat["eq"][name]["equipped"] = 0

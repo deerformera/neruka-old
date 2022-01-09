@@ -26,7 +26,6 @@ var stat = {
 		[0,0]
 		],
 	"eq":{
-		
 		"armor":{
 			"equipped":0,
 			"inv":[]
