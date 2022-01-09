@@ -58,10 +58,11 @@ func touch_move():
 		vec.y = -10
 
 func _jump():
+	print("isoh")
 	animstate.travel("Jump")
 	jump = true
 	set_collision_mask_bit(0, false)
-	yield(get_tree().create_timer(0.8), "timeout")
+	yield(get_tree().create_timer(0.6), "timeout")
 	set_collision_mask_bit(0, true)
 	jump = false
 

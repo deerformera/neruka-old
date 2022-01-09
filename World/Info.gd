@@ -36,17 +36,17 @@ var stat = {
 		
 		"boots":{
 			"equipped":0,
-			"inv":[]
+			"inv":[3]
 		},
 		
 		"claw":{
 			"equipped":0,
-			"inv":[1, 2, 3]
+			"inv":[]
 		},
 		
 		"hat":{
 			"equipped":0,
-			"inv":[1, 2]
+			"inv":[]
 		}
 	}
 }
@@ -62,7 +62,6 @@ func _ready():
 func _debug():
 	get_tree().root.add_child(dbgbtn.instance())
 	get_tree().root.get_node("DebugButton").connect("toggled", self, "_debugging")
-	print(get_tree().root.get_node("DebugButton"))
 
 func _debugging(bol):
 	print(bol)

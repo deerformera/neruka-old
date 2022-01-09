@@ -3,6 +3,7 @@ extends Control
 signal contract
 var equipped
 
+var jumpray = preload("res://Player/JumpRay.tscn")
 
 func _ready():
 	connect("contract", get_parent().get_node("RightPanel"), "_contract")
@@ -48,5 +49,18 @@ func _equip(bol, nama):
 	
 	if bol == true:
 		Info.stat["eq"][name]["equipped"] = int(nama)
+		_item_stat()
 	else:
 		Info.stat["eq"][name]["equipped"] = 0
+		_item_stat()
+
+func _item_stat():
+	equipped = Info.stat["eq"][name]["equipped"]
+	
+	if name == "boots":
+		if equipped == 3:
+			if get_tree().root.get_node("World/Player/JumpRay") == null:
+				get_tree().root.get_node("World/Player").add_child(jumpray.instance())
+		else:
+			if get_tree().root.get_node("World/Player/JumpRay") != null:
+				get_tree().root.get_node("World/Player/JumpRay").queue_free()
