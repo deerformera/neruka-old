@@ -1,11 +1,14 @@
 extends CanvasLayer
 
+var placename = [[0, "Home."], [6, "Grora"]]
+
 func _ready():
-	if get_tree().root.get_node(name) != null:
-		queue_free()
+	for x in placename:
+		if x[0] == Info.stat["scene"]:
+			$M2/BG/M/HB/TabSplit/SplitRight/PlaceBar.text = x[1]
+	
 	$M2/BG/M/HB/TabSplit/SplitLeft/VB/NameBar.text = Info.stat["name"]
 	$M2/BG/M/HB/TabSplit/SplitLeft/VB/HealthBar.value = Info.stat["health"]
-	$M2/BG/M/HB/TabSplit/SplitRight/PlaceBar.text = str(Info.stat["scene"])
 	$M2/BG/M/HB/TabSplit/SplitRight/MoneyBar.text = str(Info.stat["coin"]) + " R"
 	$M2/BG/M/HB/TabSplit/SplitRight/ExpBar.text = str(Info.stat["exp"])
 	_tweented()

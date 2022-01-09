@@ -7,7 +7,7 @@ var dbgbtn = preload("res://World/DebugButton.tscn")
 var stat = {
 	"name":"",
 	"debug":false,
-	"scene":"",
+	"scene":null,
 	
 	"position":{
 		"y":0,
@@ -61,10 +61,6 @@ func _ready():
 
 func _debug():
 	get_tree().root.add_child(dbgbtn.instance())
-	get_tree().root.get_node("DebugButton").connect("toggled", self, "_debugging")
-
-func _debugging(bol):
-	print(bol)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
