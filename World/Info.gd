@@ -2,9 +2,11 @@ extends CanvasLayer
 
 var path = "user://Saves/player.tres"
 var dir = "user://Saves"
+var dbgbtn = preload("res://World/DebugButton.tscn")
 
 var stat = {
 	"name":"",
+	"debug":false,
 	"scene":"",
 	
 	"position":{
@@ -25,6 +27,7 @@ var stat = {
 		[0,0],
 		[0,0]
 		],
+	
 	"eq":{
 		"armor":{
 			"equipped":0,
@@ -32,18 +35,18 @@ var stat = {
 		},
 		
 		"boots":{
-			"equipped":2,
+			"equipped":0,
 			"inv":[]
 		},
 		
 		"claw":{
-			"equipped":1,
-			"inv":[]
+			"equipped":0,
+			"inv":[1, 2, 3]
 		},
 		
 		"hat":{
 			"equipped":0,
-			"inv":[]
+			"inv":[1, 2]
 		}
 	}
 }
@@ -52,11 +55,17 @@ var mousemode = false
 
 func _ready():
 	$M/VersionInfo.text = ProjectSettings.get_setting("application/config/Version")
-	
 	var d = Directory.new()
 	if !d.dir_exists(dir):
 		d.make_dir(dir)
 
+func _debug():
+	get_tree().root.add_child(dbgbtn.instance())
+	get_tree().root.get_node("DebugButton").connect("toggled", self, "_debugging")
+	print(get_tree().root.get_node("DebugButton"))
+
+func _debugging(bol):
+	print(bol)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):

@@ -26,6 +26,9 @@ func _input(event):
 func _on_Line_text_entered(new_text):
 	if new_text == "":
 		return
+	if new_text == "4dmin":
+		Info.stat["debug"] = true
+		Info._debug()
 	
 	Info.stat["name"] = new_text
 	

@@ -9,6 +9,13 @@ func _ready():
 	
 	for x in $S/SS.get_children():
 		x.connect("toggled", self, "_switch", [x.name])
+		
+		if int(x.name) in Info.stat["eq"][name]["inv"]:
+			x.visible = true
+		else:
+			x.visible = false
+
+
 
 func _start(bol, nama):
 	if name == nama:
