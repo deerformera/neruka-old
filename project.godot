@@ -13,7 +13,7 @@ config_version=4
 config/name="Neoruka"
 run/main_scene="res://World/0 - Start/StartMenu.tscn"
 config/icon="res://icon.png"
-config/Version="Pre-Alpha 1.6"
+config/Version="v1.6.3-alpha"
 
 [autoload]
 
