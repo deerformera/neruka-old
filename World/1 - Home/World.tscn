@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://World/1 - Home/World.gd" type="Script" id=11]
 [ext_resource path="res://UI/X32.png" type="Texture" id=12]
 [ext_resource path="res://UI/TitleBG.png" type="Texture" id=13]
+[ext_resource path="res://World/Chest.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 12, 4.5 )
@@ -247,6 +248,10 @@ texture = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 position = Vector2( 0, 40 )
 shape = SubResource( 21 )
+
+[node name="Chest" parent="." instance=ExtResource( 14 )]
+position = Vector2( 164, -51 )
+collision_mask = 6
 
 [connection signal="body_entered" from="Sign/Area" to="Sign" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Sign/Area" to="Sign" method="_on_Area_body_exited"]

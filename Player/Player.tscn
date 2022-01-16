@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://Player/Cat.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Player/HUD.gd" type="Script" id=10]
 [ext_resource path="res://Player/Health.gd" type="Script" id=11]
 [ext_resource path="res://Joystick/JoystickCenter.png" type="Texture" id=12]
+[ext_resource path="res://UI/Star.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.5, 5 )
@@ -1672,6 +1673,23 @@ extents = Vector2( 64, 64 )
 [sub_resource type="CircleShape2D" id=136]
 radius = 160.0
 
+[sub_resource type="Gradient" id=138]
+offsets = PoolRealArray( 0, 0.217391, 0.47205, 0.720497, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1, 1, 0.890625, 0, 1, 0.180176, 0.99043, 0, 1, 0.0078125, 0, 1, 1 )
+
+[sub_resource type="GradientTexture" id=139]
+gradient = SubResource( 138 )
+
+[sub_resource type="ParticlesMaterial" id=137]
+emission_shape = 1
+emission_sphere_radius = 25.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 1.0
+orbit_velocity_random = 0.0
+scale = 0.1
+color_ramp = SubResource( 139 )
+
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
 collision_layer = 2
@@ -1686,6 +1704,12 @@ vframes = 17
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 11 )
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.3, 0.3 )
+smoothing_enabled = true
+smoothing_speed = 10.0
 
 [node name="AA" type="StaticBody2D" parent="."]
 
@@ -1852,11 +1876,13 @@ texture = ExtResource( 12 )
 
 [node name="Menu" parent="." instance=ExtResource( 3 )]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 0.3, 0.3 )
-smoothing_enabled = true
-smoothing_speed = 10.0
+[node name="Partic" type="Particles2D" parent="."]
+position = Vector2( -8, 0 )
+emitting = false
+amount = 32
+one_shot = true
+process_material = SubResource( 137 )
+texture = ExtResource( 13 )
 
 [connection signal="dead" from="HUD/C/Health" to="." method="_on_Health_dead"]
 [connection signal="moving" from="HUD/C/Joystick" to="." method="_on_Joystick_moving"]

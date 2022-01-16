@@ -58,7 +58,6 @@ func touch_move():
 		vec.y = -10
 
 func _jump():
-	print("isoh")
 	animstate.travel("Jump")
 	jump = true
 	set_collision_mask_bit(0, false)
@@ -94,3 +93,6 @@ func _get_a_thing(id, amount):
 			x[0] = id
 			x[1] += amount
 			return
+
+func _emit_partic():
+	$Partic.emitting = true

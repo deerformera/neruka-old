@@ -36,154 +36,198 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="Control" parent="."]
+[node name="1" type="Button" parent="."]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="1"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 11 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="2" type="Control" parent="."]
+[node name="2" type="Button" parent="."]
 margin_left = 64.0
 margin_right = 128.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="2"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 14 )
 pressed = ExtResource( 6 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="3" type="Control" parent="."]
+[node name="3" type="Button" parent="."]
 margin_left = 128.0
 margin_right = 192.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="3"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 18 )
 pressed = ExtResource( 5 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="4" type="Control" parent="."]
+[node name="4" type="Button" parent="."]
 margin_top = 64.0
 margin_right = 64.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="4"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 12 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="5" type="Control" parent="."]
+[node name="5" type="Button" parent="."]
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="5"]
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 137 )
 
-[node name="6" type="Control" parent="."]
+[node name="6" type="Button" parent="."]
 margin_left = 128.0
 margin_top = 64.0
 margin_right = 192.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="6"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 13 )
 pressed = ExtResource( 1 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="7" type="Control" parent="."]
+[node name="7" type="Button" parent="."]
 margin_top = 128.0
 margin_right = 64.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="7"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 17 )
 pressed = ExtResource( 8 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="8" type="Control" parent="."]
+[node name="8" type="Button" parent="."]
 margin_left = 64.0
 margin_top = 128.0
 margin_right = 128.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="8"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 16 )
 pressed = ExtResource( 4 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
-[node name="9" type="Control" parent="."]
+[node name="9" type="Button" parent="."]
 margin_left = 128.0
 margin_top = 128.0
 margin_right = 192.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 64, 64 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+button_mask = 0
+enabled_focus_mode = 0
+flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="9"]
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 9 )
 pressed = ExtResource( 15 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )

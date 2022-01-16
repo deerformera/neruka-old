@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://World/0 - Start/StartMenu.tscn"
+run/main_scene="res://Player/Player.tscn"
 config/icon="res://icon.png"
 config/Version="v1.6.3-alpha"
 
@@ -33,6 +33,10 @@ window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gdnative]
+
+singletons=[  ]
 
 [importer_defaults]
 
