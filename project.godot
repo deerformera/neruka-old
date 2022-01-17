@@ -11,9 +11,11 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://Player/Player.tscn"
+run/main_scene="res://World/0 - Start/World.tscn"
+boot_splash/image="res://HoeriLogo.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-config/Version="v1.6.3-alpha"
+config/Version="v1.6.5-alpha"
 
 [autoload]
 
