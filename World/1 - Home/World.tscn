@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://World/1 - Home/World.gd" type="Script" id=11]
 [ext_resource path="res://UI/X32.png" type="Texture" id=12]
 [ext_resource path="res://UI/TitleBG.png" type="Texture" id=13]
-[ext_resource path="res://World/Chest.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Global/Chest.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 12, 4.5 )
@@ -154,6 +154,15 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 48, 64, 48, 64, 64, 0, 64 )
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 12, 8.5 )
 
+[sub_resource type="Environment" id=23]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+
 [node name="World" type="YSort"]
 script = ExtResource( 11 )
 
@@ -250,8 +259,11 @@ position = Vector2( 0, 40 )
 shape = SubResource( 21 )
 
 [node name="Chest" parent="." instance=ExtResource( 14 )]
-position = Vector2( 164, -51 )
+position = Vector2( 216, -184 )
 collision_mask = 6
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 23 )
 
 [connection signal="body_entered" from="Sign/Area" to="Sign" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Sign/Area" to="Sign" method="_on_Area_body_exited"]

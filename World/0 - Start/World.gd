@@ -62,13 +62,15 @@ func _on_NewButton_pressed():
 		_tween_tab($M2/BG/P2, $M2/BG/P3)
 		return
 
-	get_tree().change_scene("res://World/1 - Home/World.tscn")
+	Loader.fade(1)
+
 
 func _on_LoadButton_pressed():
-	get_tree().change_scene("res://World/6 - Grora/World.tscn")
+	Loader.fade(6)
 
 func _on_YesButton_pressed():
-	get_tree().change_scene("res://World/1 - Home/World.tscn")
+	Loader.fade(1)
+
 
 func _on_NoButton_pressed():
 	_tween_tab($M2/BG/P3, $M2/BG/P2)

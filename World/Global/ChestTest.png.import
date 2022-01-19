@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cliff.png-10cd232f670445d1c8d743a1a332cfc2.stex"
+path="res://.import/ChestTest.png-8cfaa276df886b267c1bd7a22a365ae3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Map/Cliff.png"
-dest_files=[ "res://.import/Cliff.png-10cd232f670445d1c8d743a1a332cfc2.stex" ]
+source_file="res://World/Global/ChestTest.png"
+dest_files=[ "res://.import/ChestTest.png-8cfaa276df886b267c1bd7a22a365ae3.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@ extends CanvasLayer
 
 var path = "user://Saves/player.tres"
 var dir = "user://Saves"
-var dbgbtn = preload("res://World/DebugButton.tscn")
+var dbgbtn = preload("res://World/Global/DebugButton.tscn")
 
 var stat = {
 	"name":"",
 	"debug":false,
-	"scene":null,
+	"place":"",
 	
 	"position":{
 		"y":0,

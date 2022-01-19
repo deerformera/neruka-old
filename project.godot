@@ -11,15 +11,17 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://World/0 - Start/World.tscn"
-boot_splash/image="res://HoeriLogo.png"
+run/main_scene="res://World/Global/Intro.tscn"
+boot_splash/image="res://World/Global/GodotMonochromeDark.png"
+boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-config/Version="v1.6.5-alpha"
+config/Version="v1.0.2-alpha"
 
 [autoload]
 
 Info="*res://World/Info.tscn"
+Loader="*res://World/Loader.tscn"
 
 [debug]
 

@@ -10,7 +10,6 @@ func _ready():
 func _entered(body):
 	if body.name == "Player":
 		entered = true
-		bdy = body
 
 func _exited(body):
 	if body.name == "Player":
@@ -19,13 +18,12 @@ func _exited(body):
 func _input(event):
 	if Input.is_action_just_pressed("Interact") and entered == true:
 		_refresh(true)
-		bdy._emit_partic()
 
 
 
 func _refresh(bol: bool = false):
 	if bol == true:
-		$CPUParticles2D.emitting = true
+		$Particles2D.emitting = true
 		$Sprite.frame = 1
 		$Area2D.queue_free()
 	else:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GodotTilemapTemplate.png-91fbbc5ba3a4a21b646265169d849a82.stex"
+path="res://.import/Grass.png-58abec9bf68754e44a1b2ec1b4b4ca30.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Map/GodotTilemapTemplate.png"
-dest_files=[ "res://.import/GodotTilemapTemplate.png-91fbbc5ba3a4a21b646265169d849a82.stex" ]
+source_file="res://World/Global/Grass.png"
+dest_files=[ "res://.import/Grass.png-58abec9bf68754e44a1b2ec1b4b4ca30.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=2
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

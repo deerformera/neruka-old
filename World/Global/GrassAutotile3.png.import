@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GrassAutotile3.png-ab50424fb8aae25f0fe27b3e048cb215.stex"
+path="res://.import/GrassAutotile3.png-1490dd0325590d7a6c0b72c5d4512cd2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Map/GrassAutotile3.png"
-dest_files=[ "res://.import/GrassAutotile3.png-ab50424fb8aae25f0fe27b3e048cb215.stex" ]
+source_file="res://World/Global/GrassAutotile3.png"
+dest_files=[ "res://.import/GrassAutotile3.png-1490dd0325590d7a6c0b72c5d4512cd2.stex" ]
 
 [params]
 

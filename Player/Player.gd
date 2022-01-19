@@ -93,6 +93,3 @@ func _get_a_thing(id, amount):
 			x[0] = id
 			x[1] += amount
 			return
-
-func _emit_partic():
-	$Partic.emitting = true

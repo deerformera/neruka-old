@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grass.png-57ad4380b405ca57a40c8c8acb739acc.stex"
+path="res://.import/Chest.png-5fadd315a1a419ed5ba859db3f9ed942.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Map/Grass.png"
-dest_files=[ "res://.import/Grass.png-57ad4380b405ca57a40c8c8acb739acc.stex" ]
+source_file="res://World/Global/Chest.png"
+dest_files=[ "res://.import/Chest.png-5fadd315a1a419ed5ba859db3f9ed942.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=2
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
