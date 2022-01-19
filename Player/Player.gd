@@ -35,6 +35,8 @@ func _physics_process(delta):
 		move_and_slide(vec * speed)
 	
 	moving = false
+	
+
 
 func move():
 	vec = Vector2()
@@ -81,8 +83,7 @@ func _on_Health_dead():
 	collision_layer = 0
 	collision_mask = 0
 
-func _get_a_thing(id, amount):
-
+func _get_item(id, amount):
 	for x in Info.stat["inv"]:
 		if x[0] == id:
 			x[1] += amount
@@ -93,3 +94,8 @@ func _get_a_thing(id, amount):
 			x[0] = id
 			x[1] += amount
 			return
+
+func _get_eq(type, id):
+	if Info.stat["eq"][type]["inv"].has(id):
+		return
+	Info.stat["eq"][type]["inv"].append(id)

@@ -12,7 +12,14 @@ onready var p = get_parent()
 func _ready():
 	connect("toggled", self, "_select")
 	if id != 0:
+		if amount == 0:
+			Info.stat["inv"][int(name)][0] = 0
+			return
+		
 		add_child(i.instance())
+	
+	elif amount != 0:
+		Info.stat["inv"][int(name)][1] = 0
 
 func _select(bol):
 	if bol == true:

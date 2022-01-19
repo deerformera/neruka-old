@@ -50,6 +50,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="1"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 2 )
 pressed = ExtResource( 11 )
 shape = SubResource( 137 )
@@ -72,6 +73,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="2"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 14 )
 pressed = ExtResource( 6 )
 shape = SubResource( 137 )
@@ -94,6 +96,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="3"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 18 )
 pressed = ExtResource( 5 )
 shape = SubResource( 137 )
@@ -116,6 +119,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="4"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 7 )
 pressed = ExtResource( 12 )
 shape = SubResource( 137 )
@@ -139,6 +143,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="5"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 shape = SubResource( 137 )
 
 [node name="6" type="Button" parent="."]
@@ -157,6 +162,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="6"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 13 )
 pressed = ExtResource( 1 )
 shape = SubResource( 137 )
@@ -179,6 +185,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="7"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 17 )
 pressed = ExtResource( 8 )
 shape = SubResource( 137 )
@@ -202,6 +209,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="8"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 16 )
 pressed = ExtResource( 4 )
 shape = SubResource( 137 )
@@ -225,6 +233,7 @@ flat = true
 
 [node name="TSB" type="TouchScreenButton" parent="9"]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 normal = ExtResource( 9 )
 pressed = ExtResource( 15 )
 shape = SubResource( 137 )

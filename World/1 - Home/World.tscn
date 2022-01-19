@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://UI/X32.png" type="Texture" id=12]
 [ext_resource path="res://UI/TitleBG.png" type="Texture" id=13]
 [ext_resource path="res://World/Global/Chest.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/PickableItem.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 12, 4.5 )
@@ -237,7 +238,6 @@ placeholder_alpha = 0.5
 tile_set = SubResource( 16 )
 cell_tile_origin = 1
 cell_y_sort = true
-show_collision = true
 collision_mask = 7
 format = 1
 tile_data = PoolIntArray( -262145, 536870913, 0, -327680, 536870914, 0, -327679, 1, 0, -196612, 536870913, 0, -196611, 2, 0, -196610, 2, 0, -196609, 536870915, 0, -262144, 5, 0, -262143, 3, 0, -262142, 2, 0, -262141, 2, 0, -262140, 1, 0, -131076, 536870913, 0, -131075, 536870916, 0, -131074, 536870916, 0, -131073, 536870916, 0, -196608, 536870916, 0, -196607, 536870916, 0, -196606, 536870916, 0, -196605, 536870916, 0, -196604, 1, 0, -65540, 536870913, 0, -65539, 536870916, 0, -65538, 536870916, 0, -65537, 536870916, 0, -131072, 536870916, 0, -131071, 536870916, 0, -131070, 536870916, 0, -131069, 536870916, 0, -131068, 1, 0, -4, 536870913, 0, -3, 536870916, 0, -2, 536870916, 0, -1, 536870916, 0, -65536, 536870916, 0, -65535, 536870916, 0, -65534, 536870916, 0, -65533, 536870916, 0, -65532, 1, 0, 65532, 536870913, 0, 65533, 536870916, 0, 65534, 536870916, 0, 65535, 536870916, 0, 0, 536870916, 0, 1, 536870916, 0, 2, 536870916, 0, 3, 536870916, 0, 4, 1, 0, 131068, 536870913, 0, 131069, 536870916, 0, 131070, 536870916, 0, 131071, 536870916, 0, 65536, 536870916, 0, 65537, 536870916, 0, 65538, 536870916, 0, 65539, 536870916, 0, 65540, 1, 0, 196604, 536870913, 0, 196605, 536870916, 0, 196606, 536870916, 0, 196607, 536870916, 0, 131072, 536870916, 0, 131073, 536870916, 0, 131074, 536870916, 0, 131075, 536870916, 0, 131076, 1, 0, 262140, 536870913, 0, 262141, 536870916, 0, 262142, 536870916, 0, 262143, 536870916, 0, 196608, 536870916, 0, 196609, 536870916, 0, 196610, 536870916, 0, 196611, 536870916, 0, 196612, 1, 0, 327676, 536870913, 0, 327677, 2, 0, 327678, 2, 0, 327679, 2, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 0, 0 )
@@ -260,10 +260,13 @@ shape = SubResource( 21 )
 
 [node name="Chest" parent="." instance=ExtResource( 14 )]
 position = Vector2( 216, -184 )
-collision_mask = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 23 )
+
+[node name="PickableItem" parent="." instance=ExtResource( 15 )]
+position = Vector2( 224, -72 )
+amount = 2
 
 [connection signal="body_entered" from="Sign/Area" to="Sign" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Sign/Area" to="Sign" method="_on_Area_body_exited"]

@@ -8,8 +8,8 @@ func _physics_process(delta):
 
 	rotation = vec.angle()
 
-	if is_colliding():
-		get_collider()
+#	if is_colliding():
+#		get_collider()
 
 
 func ray_enable():

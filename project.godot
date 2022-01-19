@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://World/Global/Intro.tscn"
+run/main_scene="res://World/1 - Home/World.tscn"
 boot_splash/image="res://World/Global/GodotMonochromeDark.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -132,12 +132,11 @@ pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 
-2d_render/layer_1="World"
-2d_render/layer_2="Exclusive"
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Object"
+2d_physics/layer_5="Item"
 
 [physics]
 

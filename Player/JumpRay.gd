@@ -6,7 +6,6 @@ var vec = Vector2()
 
 func _ready():
 	connect("jump", get_parent(), "_jump")
-	print("added")
 
 func _physics_process(delta):
 	ray_enable()

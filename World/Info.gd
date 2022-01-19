@@ -36,7 +36,7 @@ var stat = {
 		
 		"boots":{
 			"equipped":0,
-			"inv":[3]
+			"inv":[]
 		},
 		
 		"claw":{
