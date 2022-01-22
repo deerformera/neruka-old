@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://World/1 - Home/HouseTile.png" type="Texture" id=6]
 [ext_resource path="res://World/1 - Home/Sign.gd" type="Script" id=7]
 [ext_resource path="res://UI/popup.png" type="Texture" id=8]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Char/Player/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/1 - Home/Door.png" type="Texture" id=10]
 [ext_resource path="res://World/1 - Home/World.gd" type="Script" id=11]
 [ext_resource path="res://UI/X32.png" type="Texture" id=12]
@@ -18,9 +18,6 @@
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 12, 4.5 )
-
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 32, 32 )
 
 [sub_resource type="StyleBoxTexture" id=22]
 texture = ExtResource( 13 )
@@ -172,7 +169,8 @@ script = ExtResource( 11 )
 [node name="Sign" type="StaticBody2D" parent="."]
 pause_mode = 1
 position = Vector2( 96, -160 )
-collision_mask = 7
+collision_layer = 8
+collision_mask = 6
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -187,22 +185,15 @@ texture = ExtResource( 5 )
 position = Vector2( 0, 8.5 )
 shape = SubResource( 14 )
 
-[node name="Area" type="Area2D" parent="Sign"]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign/Area"]
-shape = SubResource( 15 )
-
 [node name="Popup" type="Sprite" parent="Sign"]
-position = Vector2( -20, -20 )
+position = Vector2( -24, -16 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Sign"]
+[node name="Canv" type="CanvasLayer" parent="Sign"]
 pause_mode = 2
 
-[node name="P" type="Popup" parent="Sign/CanvasLayer"]
+[node name="P" type="Popup" parent="Sign/Canv"]
 visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -213,14 +204,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="C" type="CenterContainer" parent="Sign/CanvasLayer/P"]
+[node name="C" type="CenterContainer" parent="Sign/Canv/P"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Line" type="LineEdit" parent="Sign/CanvasLayer/P/C"]
+[node name="Line" type="LineEdit" parent="Sign/Canv/P/C"]
 margin_left = 320.0
 margin_top = 296.0
 margin_right = 960.0
@@ -230,6 +221,7 @@ custom_fonts/font = ExtResource( 1 )
 custom_icons/clear = ExtResource( 12 )
 custom_styles/normal = SubResource( 22 )
 align = 1
+max_length = 10
 clear_button_enabled = true
 placeholder_text = "Your Name"
 placeholder_alpha = 0.5
@@ -238,24 +230,21 @@ placeholder_alpha = 0.5
 tile_set = SubResource( 16 )
 cell_tile_origin = 1
 cell_y_sort = true
+show_collision = true
 collision_mask = 7
 format = 1
 tile_data = PoolIntArray( -262145, 536870913, 0, -327680, 536870914, 0, -327679, 1, 0, -196612, 536870913, 0, -196611, 2, 0, -196610, 2, 0, -196609, 536870915, 0, -262144, 5, 0, -262143, 3, 0, -262142, 2, 0, -262141, 2, 0, -262140, 1, 0, -131076, 536870913, 0, -131075, 536870916, 0, -131074, 536870916, 0, -131073, 536870916, 0, -196608, 536870916, 0, -196607, 536870916, 0, -196606, 536870916, 0, -196605, 536870916, 0, -196604, 1, 0, -65540, 536870913, 0, -65539, 536870916, 0, -65538, 536870916, 0, -65537, 536870916, 0, -131072, 536870916, 0, -131071, 536870916, 0, -131070, 536870916, 0, -131069, 536870916, 0, -131068, 1, 0, -4, 536870913, 0, -3, 536870916, 0, -2, 536870916, 0, -1, 536870916, 0, -65536, 536870916, 0, -65535, 536870916, 0, -65534, 536870916, 0, -65533, 536870916, 0, -65532, 1, 0, 65532, 536870913, 0, 65533, 536870916, 0, 65534, 536870916, 0, 65535, 536870916, 0, 0, 536870916, 0, 1, 536870916, 0, 2, 536870916, 0, 3, 536870916, 0, 4, 1, 0, 131068, 536870913, 0, 131069, 536870916, 0, 131070, 536870916, 0, 131071, 536870916, 0, 65536, 536870916, 0, 65537, 536870916, 0, 65538, 536870916, 0, 65539, 536870916, 0, 65540, 1, 0, 196604, 536870913, 0, 196605, 536870916, 0, 196606, 536870916, 0, 196607, 536870916, 0, 131072, 536870916, 0, 131073, 536870916, 0, 131074, 536870916, 0, 131075, 536870916, 0, 131076, 1, 0, 262140, 536870913, 0, 262141, 536870916, 0, 262142, 536870916, 0, 262143, 536870916, 0, 196608, 536870916, 0, 196609, 536870916, 0, 196610, 536870916, 0, 196611, 536870916, 0, 196612, 1, 0, 327676, 536870913, 0, 327677, 2, 0, 327678, 2, 0, 327679, 2, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 0, 0 )
 
-[node name="Door" type="Area2D" parent="."]
+[node name="Door" type="StaticBody2D" parent="."]
 position = Vector2( 32, -288 )
 collision_layer = 8
 collision_mask = 2
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Door"]
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-position = Vector2( 0, 40 )
 shape = SubResource( 21 )
 
 [node name="Chest" parent="." instance=ExtResource( 14 )]
@@ -268,8 +257,4 @@ environment = SubResource( 23 )
 position = Vector2( 224, -72 )
 amount = 2
 
-[connection signal="body_entered" from="Sign/Area" to="Sign" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Sign/Area" to="Sign" method="_on_Area_body_exited"]
-[connection signal="text_entered" from="Sign/CanvasLayer/P/C/Line" to="Sign" method="_on_Line_text_entered"]
-[connection signal="body_entered" from="Door" to="Door" method="_on_Door_body_entered"]
-[connection signal="body_exited" from="Door" to="Door" method="_on_Door_body_exited"]
+[connection signal="text_entered" from="Sign/Canv/P/C/Line" to="Sign" method="_on_Line_text_entered"]

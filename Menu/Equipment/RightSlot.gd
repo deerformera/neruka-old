@@ -3,7 +3,7 @@ extends Control
 signal contract
 var equipped
 
-var jumpray = preload("res://Player/JumpRay.tscn")
+var jumpray = preload("res://Char/Player/JumpRay.tscn")
 
 func _ready():
 	connect("contract", get_parent().get_node("RightPanel"), "_contract")

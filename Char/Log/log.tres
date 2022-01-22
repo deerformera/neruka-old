@@ -1,0 +1,33 @@
+{
+  "Rot":{
+
+    "000":{
+      "type":"question",
+      "text":"Hey Bud, What is your name?",
+      "answer":{"Meow!":"010", "(...)":"011"}
+    },
+
+    "010":{
+      "type":"question",
+      "text":"Hey [NAME]! Do you want to buy my boots? It's just 6 coins only :3",
+      "answer":{"Meow!":"020", "(...)":"021"}
+    },
+
+    "011":{
+      "type":"question",
+      "text":"Hey.. You Don't want to say it? Okay then. Anyway, do you want buy this boots for 6 coins only?",
+      "answer":{"Meow!":"020", "(...)":"021"}
+    },
+
+    "020":{
+      "type":"log",
+      "text":"Wow Thanks! You want to go? Okay.. Bye!"
+    },
+
+    "021":{
+      "type":"log",
+      "text":"Ohh Okay. Come to me if you change your mind!"
+    }
+
+  }
+}

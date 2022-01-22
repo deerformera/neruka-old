@@ -1,28 +1,21 @@
 extends StaticBody2D
 
-var entered = false
-var body_name
+var opened = false
 
 func _ready():
-	$Area2D.connect("body_entered", self, "_entered")
-	$Area2D.connect("body_exited", self, "_exited")
+	$PopUp.hide()
 
-func _entered(body):
-	entered = true
-	body_name = body
-
-func _exited(body):
-	entered = false
-
-func _input(event):
-	if Input.is_action_just_pressed("Interact") and entered == true:
-		_refresh(true)
-
+func _pop(player):
+	
+	if opened == false:
+		$PopUp.show()
+		
+		if Input.is_action_just_pressed("Interact"):
+			opened = true
+			player._give_eq("boots", 3)
+			$CPUParticles2D.emitting = true
+			$Sprite.frame = 1
 
 
-func _refresh(opened: bool = false):
-	if opened:
-		$Particles2D.emitting = true
-		$Sprite.frame = 1
-		$Area2D.queue_free()
-		body_name._get_eq("boots", 3)
+func _unpop():
+	$PopUp.hide()

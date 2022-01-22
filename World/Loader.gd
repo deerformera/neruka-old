@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 var world = {
-	
 	"0":{
 		"res":"res://World/0 - Start/World.tscn",
 		"name":"Start Menu"

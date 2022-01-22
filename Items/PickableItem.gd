@@ -17,17 +17,17 @@ func _ready():
 	f.close()
 	
 	$Sprite.texture = load(tex[str(id)])
+	$Area2D.connect("body_entered", self, "_entered")
 
-func _picked_by(who):
-	body = who
+func _entered(body_name):
 	picked = true
+	body = body_name
 
 func _physics_process(delta):
-	
 	if picked:
 		vec = body.global_position - global_position
 		if vec.length() <= 10:
-			body.get_item(id, amount)
+			body._give_item(id, amount)
 			queue_free()
 	
 	move_and_slide(vec * 6)

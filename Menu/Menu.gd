@@ -39,6 +39,9 @@ func _physics_process(delta):
 		get_parent().get_node("Camera2D").position = campos[(selected - 1)]
 
 func _pressed():
+	if $"../HUD/C/Joystick".moving == true:
+		return
+	
 	selected = 5
 	selecting = true
 	_hide(true)

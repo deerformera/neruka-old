@@ -2,7 +2,6 @@ extends CanvasLayer
 
 var path = "user://Saves/player.tres"
 var dir = "user://Saves"
-var dbgbtn = preload("res://World/Global/DebugButton.tscn")
 
 var stat = {
 	"name":"",
@@ -29,6 +28,7 @@ var stat = {
 		],
 	
 	"eq":{
+		
 		"armor":{
 			"equipped":0,
 			"inv":[]
@@ -36,7 +36,7 @@ var stat = {
 		
 		"boots":{
 			"equipped":0,
-			"inv":[]
+			"inv":[3]
 		},
 		
 		"claw":{
@@ -48,7 +48,10 @@ var stat = {
 			"equipped":0,
 			"inv":[]
 		}
-	}
+		
+	},
+	
+	"contact":[]
 }
 
 var mousemode = false
@@ -59,8 +62,6 @@ func _ready():
 	if !d.dir_exists(dir):
 		d.make_dir(dir)
 
-func _debug():
-	get_tree().root.add_child(dbgbtn.instance())
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):

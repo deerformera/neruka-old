@@ -8,32 +8,31 @@ var writed = false
 func _ready():
 	$Popup.hide()
 
-func _on_Area_body_entered(body):
+func _pop(player):
 	$Popup.show()
-	entered = true
-
-func _on_Area_body_exited(body):
-	$Popup.hide()
-	entered = false
-
-func _input(event):
-
-	if Input.is_action_just_pressed("Interact") and entered == true:
-		$CanvasLayer/P.show()
+	
+	if Input.is_action_just_pressed("Interact"):
+		$Canv/P.show()
 		get_tree().paused = true
+
+func _unpop():
+	$Popup.hide()
 
 
 func _on_Line_text_entered(new_text):
 	if new_text == "":
 		return
-	if new_text == "4dmin":
+	if new_text == "test":
 		Info.stat["debug"] = true
-		Info._debug()
+		
+		if get_tree().root.get_node("DebugButton") == null:
+			var dbgbtn = load("res://World/Global/DebugButton.tscn")
+			get_tree().root.add_child(dbgbtn.instance())
 	
 	Info.stat["name"] = new_text
 	
 	$Sprite.texture = Writed
 	writed = true
 	
-	$CanvasLayer/P.hide()
+	$Canv/P.hide()
 	get_tree().paused = false
