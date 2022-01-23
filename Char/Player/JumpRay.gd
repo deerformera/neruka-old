@@ -3,7 +3,7 @@ extends RayCast2D
 signal jump
 
 var vec = Vector2()
-var allvec = [Vector2(-10,0), Vector2(10,0), Vector2(0,10), Vector2(0,-10)]
+var allvec = [[Vector2(-10,0), 20], [Vector2(10,0), 20], [Vector2(0,10), 40], [Vector2(0,-10), 10]]
 
 func _ready():
 	connect("jump", get_parent(), "_jump")
@@ -19,21 +19,13 @@ func _physics_process(delta):
 				emit_signal("jump")
 
 func ray_enable():
-
 	vec = $"..".vec
-
-	if vec == Vector2(-10, 0):
-		enabled = true
-		cast_to.x = 20
-	elif vec == Vector2(10, 0):
-		enabled = true
-		cast_to.x = 20
-	elif vec == Vector2(0, 10):
-		enabled = true
-		cast_to.x = 40
-	elif vec == Vector2(0, -10):
-		enabled = true
-		cast_to.x = 10
-	else:
-		enabled = false
+	
+	for x in allvec:
+		if x[0] == vec:
+			cast_to.x = x[1]
+			enabled = true
+			return
+		else:
+			enabled = false
 

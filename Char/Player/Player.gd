@@ -96,10 +96,16 @@ func _give_item(id, amount):
 func _give_eq(type, id):
 	if Info.stat["eq"][type]["inv"].has(id):
 		return
+	
 	Info.stat["eq"][type]["inv"].append(id)
 
-func _take_item():
-	pass
+func _take_item(id, amount):
+	for x in Info.stat["inv"]:
+		if x[0] == id:
+			print(Info.stat["inv"])
+			x[1] -= amount
+			print(Info.stat["inv"])
+			return
 
-func _take_eq():
+func _take_eq(id, amount):
 	pass

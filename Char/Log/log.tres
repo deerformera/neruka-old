@@ -2,32 +2,53 @@
   "Rot":{
 
     "000":{
-      "type":"question",
-      "text":"Hey Bud, What is your name?",
-      "answer":{"Meow!":"010", "(...)":"011"}
+      "type":"text",
+      "text":"Hey Bud!",
+      "next":"010"
     },
 
     "010":{
       "type":"question",
-      "text":"Hey [NAME]! Do you want to buy my boots? It's just 6 coins only :3",
-      "answer":{"Meow!":"020", "(...)":"021"}
-    },
-
-    "011":{
-      "type":"question",
-      "text":"Hey.. You Don't want to say it? Okay then. Anyway, do you want buy this boots for 6 coins only?",
-      "answer":{"Meow!":"020", "(...)":"021"}
+      "text":"What is your name?",
+      "answer":{"Meow!":"020", "( ... )":"021"}
     },
 
     "020":{
-      "type":"log",
-      "text":"Wow Thanks! You want to go? Okay.. Bye!"
+      "type":"text",
+      "text":"Hey {NAME}! Nice to meet you!",
+      "next":"030"
     },
 
     "021":{
-      "type":"log",
-      "text":"Ohh Okay. Come to me if you change your mind!"
-    }
+      "type":"text",
+      "text":"You Don't want to say it? Okay then.",
+      "next":"030"
+    },
 
+    "030":{
+      "type":"question",
+      "text":"Anyway, do you want to buy this boots for 6 coins only?",
+      "answer":{"Meow!":"040", "( ... )":"041"}
+    },
+
+    "040":{
+      "type":"trade",
+      "text":"",
+      "given":{"type":"eq", "value":["boots",1]},
+      "taken":{"type":"item", "value":[3,6]},
+      "next":"050"
+    },
+
+    "041":{
+      "type":"text",
+      "text":"Ohh Okay. Come to me if you change your mind!",
+      "next":"null"
+    },
+
+    "050":{
+      "type":"text",
+      "text":"Wow Thanks! You want to go? Okay.. Bye!",
+      "next":"null"
+    }
   }
 }
