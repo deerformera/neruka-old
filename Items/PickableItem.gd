@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if picked:
 		vec = body.global_position - global_position
 		if vec.length() <= 10:
-			body._give_item(id, amount)
+			Info._give_item(id, amount)
 			queue_free()
 	
 	move_and_slide(vec * 6)

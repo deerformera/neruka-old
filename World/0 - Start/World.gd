@@ -40,11 +40,18 @@ func _tweented():
 func _tween_tab(Pb, Pa):
 	t.interpolate_property($M2, "anchor_bottom", 1, 0.5, 0.4, Tween.TRANS_BACK, Tween.EASE_OUT)
 	t.start()
-	Pb.visible = false
+	Pb.hide()
+	$M2/BG/P2/VB/VBoxContainer/NewButton.disabled = true
+	$M2/BG/P2/VB/VBoxContainer/LoadButton.disabled = true
+	$M2/BG/P2/VB/HB/CloseButton.disabled = true
 	yield(t, "tween_completed")
 	t.interpolate_property($M2, "anchor_bottom", 0.5, 1, 0.25, Tween.TRANS_BACK, Tween.EASE_OUT)
 	t.start()
-	Pa.visible = true
+	Pa.show()
+	yield(t, "tween_all_completed")
+	$M2/BG/P2/VB/HB/CloseButton.disabled = false
+	$M2/BG/P2/VB/VBoxContainer/NewButton.disabled = false
+	$M2/BG/P2/VB/VBoxContainer/LoadButton.disabled = false
 
 func _on_CloseButton_pressed():
 	_tween_tab($M2/BG/P2, $M2/BG/P1)
