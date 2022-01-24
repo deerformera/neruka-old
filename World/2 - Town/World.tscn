@@ -50,6 +50,7 @@ tile_data = PoolIntArray( -65539, 0, 8, -65538, 0, 10, -65537, 0, 10, -131072, 0
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Rat" parent="." instance=ExtResource( 3 )]
+pause_mode = 2
 position = Vector2( 74, -16 )
 z_index = -1
 

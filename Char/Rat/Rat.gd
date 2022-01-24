@@ -9,7 +9,7 @@ func _pop(player):
 			$CPUParticles2D.emitting = true
 			$PopUp.hide()
 			gived = true
-			player._give_item(3, 10)
+			Info._give_item(3, 10)
 
 func _unpop():
 	$PopUp.hide()

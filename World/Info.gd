@@ -62,6 +62,23 @@ func _ready():
 	if !d.dir_exists(dir):
 		d.make_dir(dir)
 
+func _give_item(id, amount):
+	for x in stat["inv"]:
+		if x[0] == id:
+			x[1] += amount
+			return
+			
+	for x in stat["inv"]:
+		if x[0] == 0:
+			x[0] = id
+			x[1] += amount
+			return
+
+func _give_eq(type, id):
+	if Info.stat["eq"][type]["inv"].has(id):
+		return
+	Info.stat["eq"][type]["inv"].append(id)
+
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):

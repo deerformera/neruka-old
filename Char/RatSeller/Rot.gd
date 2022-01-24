@@ -17,7 +17,7 @@ func _pop(Player):
 	
 	if Input.is_action_just_pressed("Interact") and !talking:
 		get_tree().root.add_child(Log.instance())
-		get_tree().root.get_node("Log")._identification(self, player)
+		get_tree().root.get_node("Log")._identification(self)
 		talking = true
 		player.jump = true
 		player.vec = Vector2()

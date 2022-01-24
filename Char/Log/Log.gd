@@ -6,7 +6,6 @@ onready var Name = $M2/BG/M/VB/Title/Name
 onready var richtextlabel = $M2/BG/M/VB/Desc/RichTextLabel
 
 var speaker
-var player
 var conv = "000"
 var Log = "res://Char/Log/log.tres"
 var text = {}
@@ -46,9 +45,8 @@ func _next_conv():
 	
 	_refresh()
 
-func _identification(Speaker, Player):
+func _identification(Speaker):
 	speaker = Speaker
-	player = Player
 	
 	Name.text = speaker.name
 	
@@ -78,33 +76,28 @@ func _refresh():
 		$M2/BG/M/VB/Desc/Button.hide()
 		$M2/BG/M/VB/Title/NextButton.hide()
 		
-		var type = ["taken", "given"]
+		var taken = text[speaker.name][conv]["taken"]
+		var given = text[speaker.name][conv]["given"]
 		
-		for typ in type:
-			if text[speaker.name][conv][typ]["type"] == "eq":
-				var eq_type = text[speaker.name][conv][typ]["value"][0]
-				var eq_id = text[speaker.name][conv][typ]["value"][1]
-				
-				if typ == "given":
-					player._give_eq(eq_type, eq_id)
-				else:
-					# Add Command for Sync
-					player._take_eq(eq_type, eq_id)
-			
-			elif text[speaker.name][conv][typ]["type"] == "item":
-				var item_id = text[speaker.name][conv][typ]["value"][0]
-				var item_amount = text[speaker.name][conv][typ]["value"][1]
-				
-				if typ == "given":
-					player._give_item(item_id, item_amount)
-				else:
-					for x in Info.stat["inv"]:
-						if x[0] == item_id and x[1] - item_amount >= 0:
-							player._take_item(item_id, item_amount)
-							return
-						else:
-							print("no Money!!")
+		var ijab_qobul = false
+		
+		if taken["type"] == "item":
+			for x in Info.stat["inv"]:
+				if x[0] == taken["value"][0] and x[1] - taken["value"][1] >= 0:
+					x[1] -= taken["value"][1]
+					ijab_qobul = true
 					
+		elif taken["type"] == "eq":
+			if Info.stat["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
+				ijab_qobul = true
+		
+		
+		if given["type"] == "item" and ijab_qobul == true:
+			Info._give_item(taken["value"][0], taken["value"][1])
+			
+		elif given["type"] == "eq" and ijab_qobul == true:
+			Info._give_eq(given["value"][0], given["value"][1])
+
 
 func _tweented():
 	$M1.visible = true

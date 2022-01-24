@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/NPR_1.png" type="Texture" id=2]
@@ -12,6 +12,12 @@ action = "Tab"
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "Tab"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="Log" type="CanvasLayer"]
 pause_mode = 2
@@ -141,9 +147,9 @@ __meta__ = {
 
 [node name="Button" type="VBoxContainer" parent="M2/BG/M/VB/Desc"]
 visible = false
-margin_top = 4.0
+margin_top = 38.0
 margin_right = 780.0
-margin_bottom = 88.0
+margin_bottom = 122.0
 
 [node name="B1" type="Button" parent="M2/BG/M/VB/Desc/Button"]
 margin_right = 780.0
@@ -154,6 +160,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
+shortcut = SubResource( 4 )
 text = "B1"
 flat = true
 align = 0

@@ -80,32 +80,3 @@ func _on_Health_dead():
 	t.start()
 	collision_layer = 0
 	collision_mask = 0
-
-func _give_item(id, amount):
-	for x in Info.stat["inv"]:
-		if x[0] == id:
-			x[1] += amount
-			return
-	
-	for x in Info.stat["inv"]:
-		if x[0] == 0:
-			x[0] = id
-			x[1] += amount
-			return
-
-func _give_eq(type, id):
-	if Info.stat["eq"][type]["inv"].has(id):
-		return
-	
-	Info.stat["eq"][type]["inv"].append(id)
-
-func _take_item(id, amount):
-	for x in Info.stat["inv"]:
-		if x[0] == id:
-			print(Info.stat["inv"])
-			x[1] -= amount
-			print(Info.stat["inv"])
-			return
-
-func _take_eq(id, amount):
-	pass
