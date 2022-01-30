@@ -11,13 +11,13 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://World/0 - Start/World.tscn"
+run/main_scene="res://World/2 - Town/World.tscn"
 boot_splash/image="res://World/Global/GodotMonochromeDark.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-config/Version="v1.4.3-alpha"
+config/Version="v1.4.4-alpha"
 
 [autoload]
 

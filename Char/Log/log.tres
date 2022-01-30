@@ -28,7 +28,7 @@
     "030":{
       "type":"question",
       "text":"Anyway, do you want to buy this boots for 6 coins only?",
-      "answer":{"Meow!":"040", "( ... )":"041"}
+      "answer":{"Meow!":"040", "( ... )":"051"}
     },
 
     "040":{
@@ -36,19 +36,75 @@
       "text":"",
       "given":{"type":"eq", "value":["boots",1]},
       "taken":{"type":"item", "value":[3,6]},
-      "next":"050"
+      "next":["050", "051"]
     },
 
     "041":{
-      "type":"text",
+      "type":"last",
       "text":"Ohh Okay. Come to me if you change your mind!",
-      "next":"null"
+      "next":"101"
     },
 
     "050":{
-      "type":"text",
+      "type":"last",
       "text":"Wow Thanks! You want to go? Okay.. Bye!",
-      "next":"null"
+      "next":"100"
+    },
+
+    "051":{
+      "type":"text",
+      "text":"You Don't have enough money bro..",
+      "next":"060"
+    },
+
+    "060":{
+      "type":"last",
+      "text":"Say to me if you already have the money",
+      "next":"101"
+    },
+
+    "100":{
+      "type":"text",
+      "text":"yo! You want to buy shoes again?",
+      "next":"110"
+    },
+
+    "101":{
+      "type":"question",
+      "text":"Do you want to buy it?",
+      "answer":{"Meow":"111", "( ... )":"041"}
+    },
+
+    "110":{
+      "type":"last",
+      "text":"Sorry mate, I only has one and you buy it",
+      "next":"200"
+    },
+
+    "111":{
+      "type":"trade",
+      "text":"",
+      "given":{"type":"eq", "value":["boots",1]},
+      "taken":{"type":"item", "value":[3,6]},
+      "next":["120", "121"]
+    },
+
+    "120":{
+      "type":"last",
+      "text":"thanks",
+      "next":"200"
+    },
+
+    "121":{
+      "type":"last",
+      "text":"You still got no money...",
+      "next":"101"
+    },
+
+    "200":{
+      "type":"last",
+      "text":"Morning cat!",
+      "next":"200"
     }
   }
 }

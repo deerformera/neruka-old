@@ -4,7 +4,7 @@ onready var B1 = $M2/BG/M/VB/Desc/Button/B1
 onready var B2 = $M2/BG/M/VB/Desc/Button/B2
 onready var Name = $M2/BG/M/VB/Title/Name
 onready var richtextlabel = $M2/BG/M/VB/Desc/RichTextLabel
-
+var ended = false
 var speaker
 var conv = "000"
 var Log = "res://Char/Log/log.tres"
@@ -20,6 +20,7 @@ func _ready():
 	B2.connect("pressed", self, "_B2_pressed")
 	$M2/BG/M/VB/Title/NextButton.connect("pressed", self, "_next_conv")
 	$M2/BG/M/VB/Title/CloseButton.connect("pressed", self, "_Close")
+
 
 func _B1_pressed():
 	var firstkey = text[speaker.name][conv]["answer"].keys()[0]
@@ -38,10 +39,17 @@ func _Close():
 func _next_conv():
 	if text[speaker.name][conv]["type"] == "text":
 		conv = text[speaker.name][conv]["next"]
-		if conv == "null":
-			speaker._conversation_ended()
-			queue_free()
-			return
+	
+	if text[speaker.name][conv]["type"] == "last" and ended:
+		if Info.stat["contact"].empty():
+			Info.stat["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
+		else:
+			for x in Info.stat["contact"]:
+				if x[0] == speaker.name:
+					x[1] = text[speaker.name][conv]["next"]
+		
+		speaker._conversation_ended()
+		queue_free()
 	
 	_refresh()
 
@@ -50,10 +58,10 @@ func _identification(Speaker):
 	
 	Name.text = speaker.name
 	
-	if Info.stat["contact"].size() != 0:
+	if not Info.stat["contact"].empty():
 		for x in Info.stat["contact"]:
 			if x[0] == speaker.name:
-				conv[0] = str(x[1])
+				conv = x[1]
 	
 	_tweented()
 	_refresh()
@@ -78,6 +86,7 @@ func _refresh():
 		
 		var taken = text[speaker.name][conv]["taken"]
 		var given = text[speaker.name][conv]["given"]
+		var next = text[speaker.name][conv]["next"]
 		
 		var ijab_qobul = false
 		
@@ -86,18 +95,33 @@ func _refresh():
 				if x[0] == taken["value"][0] and x[1] - taken["value"][1] >= 0:
 					x[1] -= taken["value"][1]
 					ijab_qobul = true
-					
+					conv = next[0]
+					_refresh()
+			
+			if !ijab_qobul:
+				conv = next[1]
+				_refresh()
+		
 		elif taken["type"] == "eq":
 			if Info.stat["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
 				ijab_qobul = true
-		
+				conv = next[0]
+				_refresh()
+			else:
+				conv = next[1]
+				_refresh()
 		
 		if given["type"] == "item" and ijab_qobul == true:
 			Info._give_item(taken["value"][0], taken["value"][1])
 			
 		elif given["type"] == "eq" and ijab_qobul == true:
 			Info._give_eq(given["value"][0], given["value"][1])
-
+	
+	if text[speaker.name][conv]["type"] == "last":
+		$M2/BG/M/VB/Desc/Button.hide()
+		$M2/BG/M/VB/Title/NextButton.show()
+		yield(get_tree().create_timer(0.1), "timeout")
+		ended = true
 
 func _tweented():
 	$M1.visible = true
@@ -115,4 +139,3 @@ func _tweented():
 	$M2.visible = true
 	t.interpolate_property($M2, "anchor_bottom", null, 1, 0.25, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	t.start()
-
