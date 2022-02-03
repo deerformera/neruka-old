@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Global/DebugButton.gd" type="Script" id=1]
+[ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
+[ext_resource path="res://UI/PanelNormal.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Panel.tres" type="StyleBox" id=4]
+[ext_resource path="res://UI/PanelPressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://UI/Font_Normal.tres" type="DynamicFont" id=6]
 
 [node name="DebugButton" type="CanvasLayer"]
 pause_mode = 2
@@ -10,15 +15,19 @@ script = ExtResource( 1 )
 [node name="btn" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -64.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 64, 32 )
+margin_left = -96.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 96, 48 )
 focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 3 )
 toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
@@ -37,6 +46,7 @@ margin_right = -50.0
 margin_bottom = -50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,6 +54,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="Popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,60 +73,64 @@ __meta__ = {
 
 [node name="Name" type="Label" parent="Popup/Panel/VB"]
 margin_right = 1080.0
-margin_bottom = 14.0
+margin_bottom = 24.0
 text = "Name :"
 valign = 1
 
 [node name="NameText" type="LineEdit" parent="Popup/Panel/VB"]
-margin_top = 34.0
+margin_top = 44.0
 margin_right = 1080.0
-margin_bottom = 66.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 0, 32 )
+custom_styles/normal = ExtResource( 3 )
 
 [node name="Health" type="Label" parent="Popup/Panel/VB"]
-margin_top = 86.0
+margin_top = 96.0
 margin_right = 1080.0
-margin_bottom = 100.0
+margin_bottom = 120.0
 text = "Health :"
 
 [node name="HealthText" type="SpinBox" parent="Popup/Panel/VB"]
-margin_top = 120.0
+margin_top = 140.0
 margin_right = 1080.0
-margin_bottom = 152.0
+margin_bottom = 174.0
 rect_min_size = Vector2( 0, 32 )
 
 [node name="Inventory" type="Label" parent="Popup/Panel/VB"]
-margin_top = 172.0
+margin_top = 194.0
 margin_right = 1080.0
-margin_bottom = 186.0
+margin_bottom = 218.0
 text = "Inventory :"
 
 [node name="InventoryText" type="LineEdit" parent="Popup/Panel/VB"]
-margin_top = 206.0
+margin_top = 238.0
 margin_right = 1080.0
-margin_bottom = 238.0
+margin_bottom = 270.0
 rect_min_size = Vector2( 0, 32 )
+custom_styles/normal = ExtResource( 3 )
 
 [node name="EqClaw" type="Label" parent="Popup/Panel/VB"]
-margin_top = 258.0
+margin_top = 290.0
 margin_right = 1080.0
-margin_bottom = 272.0
+margin_bottom = 314.0
 text = "Equipment - Claw"
 
 [node name="EqClawText" type="LineEdit" parent="Popup/Panel/VB"]
-margin_top = 292.0
+margin_top = 334.0
 margin_right = 1080.0
-margin_bottom = 324.0
+margin_bottom = 366.0
 rect_min_size = Vector2( 0, 32 )
+custom_styles/normal = ExtResource( 3 )
 
 [node name="EqBoots" type="Label" parent="Popup/Panel/VB"]
-margin_top = 344.0
+margin_top = 386.0
 margin_right = 1080.0
-margin_bottom = 358.0
+margin_bottom = 410.0
 text = "Equipment - Boots"
 
 [node name="EqBootsText" type="LineEdit" parent="Popup/Panel/VB"]
-margin_top = 378.0
+margin_top = 430.0
 margin_right = 1080.0
-margin_bottom = 410.0
+margin_bottom = 462.0
 rect_min_size = Vector2( 0, 32 )
+custom_styles/normal = ExtResource( 3 )

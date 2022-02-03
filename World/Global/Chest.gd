@@ -13,7 +13,7 @@ func _pop(player):
 		if Input.is_action_just_pressed("Interact"):
 			opened = true
 			Info._give_eq("boots", 3)
-			$CPUParticles2D.emitting = true
+			$Particles2D.emitting = true
 			$Sprite.frame = 1
 
 

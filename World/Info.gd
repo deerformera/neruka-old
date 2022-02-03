@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-var path = "user://Saves/player.tres"
-var dir = "user://Saves"
-
 var stat = {
 	"name":"",
 	"debug":false,
@@ -36,7 +33,7 @@ var stat = {
 		
 		"boots":{
 			"equipped":0,
-			"inv":[3]
+			"inv":[]
 		},
 		
 		"claw":{
@@ -51,16 +48,20 @@ var stat = {
 		
 	},
 	
-	"contact":[]
+	"contact":[],
+	
+	"shopstock":{
+		"RotShop":[
+			["item",1,1,3], ["item",2,5,3], ["item",3,5,1], ["item",4,5,10], ["item",5,5, 100]
+		]
+	}
+	
 }
 
 var mousemode = false
 
 func _ready():
-	$M/VersionInfo.text = ProjectSettings.get_setting("application/config/Version")
-	var d = Directory.new()
-	if !d.dir_exists(dir):
-		d.make_dir(dir)
+	$Version.text = ProjectSettings.get_setting("application/verlist/Version")
 
 func _give_item(id, amount):
 	for x in stat["inv"]:
@@ -93,13 +94,17 @@ func _input(event):
 		OS.window_fullscreen = !OS.window_fullscreen
 
 func _save():
+	var dir = Directory.new()
+	if not dir.dir_exists("user://saves"):
+		dir.make_dir("user://saves")
+	
 	var file = File.new()
-	file.open(path, File.WRITE)
+	file.open("user://saves/player.tres", File.WRITE)
 	file.store_var(stat)
 	file.close()
 
 func _load():
 	var file = File.new()
-	file.open(path, File.READ)
+	file.open("user://saves/player.tres", File.READ)
 	stat = file.get_var()
 	file.close()

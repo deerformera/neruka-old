@@ -1,10 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Menu/Inventory/Slot.gd" type="Script" id=1]
-[ext_resource path="res://UI/Slot.png" type="Texture" id=2]
-[ext_resource path="res://UI/Pressed.png" type="Texture" id=3]
 
-[node name="1" type="TextureButton"]
+[node name="1" type="Button"]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
@@ -12,10 +10,6 @@ focus_mode = 0
 toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 2 )
-expand = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

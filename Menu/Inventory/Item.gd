@@ -1,6 +1,6 @@
-extends TextureRect
+extends Control
 
-var ItemTexture = "res://Items/ItemTexture.tres"
+var ItemTexture = "res://Items/Item.tres"
 var tex = {}
 
 func _ready():
@@ -14,5 +14,5 @@ func _ready():
 func _refresh():
 	var id = get_parent().id
 	var amount = get_parent().amount
-	texture = load(tex[str(id)])
+	$M/Rect.texture = load(tex[str(id)]["tex"])
 	$Label.text = str(amount)

@@ -6,6 +6,7 @@ func _physics_process(delta):
 	if get_tree().paused == true:
 		$C.modulate.a = 0
 		$C.visible = false
+		get_parent().animstate.travel("Idle")
 	else:
 		$C.visible = true
 		var t = Tween.new()

@@ -1,0 +1,31 @@
+{
+  "1":{
+    "name":"Goldy",
+    "desc":"This is rare golden boots",
+    "tex":"res://Items/Texture/B-Gold.png"
+  },
+
+  "2":{
+    "name":"Common Boots",
+    "desc":"Just a common boots...",
+    "tex":"res://Items/Texture/B-Normal.png"
+  },
+
+  "3":{
+    "name":"Rost",
+    "desc":"Coins",
+    "tex":"res://Items/Texture/Rost.png"
+  },
+
+  "4":{
+    "name":"Rost-Silver",
+    "desc":"Coins that has same value with 10 Bronze Rost",
+    "tex":"res://Items/Texture/Rost_Silver.png"
+  },
+
+  "5":{
+    "name":"Rost-Gold",
+    "desc":"Coins that has same value with 10 Silver Rost",
+    "tex":"res://Items/Texture/Rost_Gold.png"
+  }
+}

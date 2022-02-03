@@ -1,7 +1,7 @@
 extends Area2D
 
-signal spike
+func _ready():
+	connect("body_entered", self, "_damaged")
 
-func _on_Area_body_entered(body):
-	connect("spike", body, "_spiked")
-	emit_signal("spike")
+func _damaged(body):
+	Info.stat["health"] -= 20

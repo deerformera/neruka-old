@@ -27,13 +27,13 @@ func _load():
 	f.close()
 
 func _set_data():
-	$M2/BG/M/VB/TabSplit/RightSplit/MasterSlider.value = setting["master"]
-	$M2/BG/M/VB/TabSplit/RightSplit/MusicSlider.value = setting["music"]
-	$M2/BG/M/VB/TabSplit/RightSplit/SFXSlider.value = setting["sfx"]
-	$M2/BG/M/VB/TabSplit/RightSplit/MasterLabel.text = "Master Volume : " + str($M2/BG/M/VB/TabSplit/RightSplit/MasterSlider.value) + "%"
-	$M2/BG/M/VB/TabSplit/RightSplit/MusicLabel.text = "Music Volume : " + str($M2/BG/M/VB/TabSplit/RightSplit/MusicSlider.value) + "%"
-	$M2/BG/M/VB/TabSplit/RightSplit/SFXLabel.text = "SFX Volume : " + str($M2/BG/M/VB/TabSplit/RightSplit/SFXSlider.value) + "%"
-
+	$M2/BG/M/VB/TabSplit/Left/Master.text = "Master Volume : " + str(setting["master"]) + "%"
+	$M2/BG/M/VB/TabSplit/Left/Music.text = "Music Volume : " + str(setting["music"]) + "%"
+	$M2/BG/M/VB/TabSplit/Left/SFX.text = "Sound Effect Volume : " + str(setting["sfx"]) + "%"
+	
+	$M2/BG/M/VB/TabSplit/Left/MasterSlider.value = setting["master"]
+	$M2/BG/M/VB/TabSplit/Left/MusicSlider.value = setting["music"]
+	$M2/BG/M/VB/TabSplit/Left/SFXSlider.value = setting["sfx"]
 
 func _tweented():
 	$M2.visible = false
@@ -99,15 +99,15 @@ func _on_VSyncButton_toggled(button_pressed):
 
 func _on_MasterSlider_value_changed(value):
 	setting["master"] = value
-	$M2/BG/M/VB/TabSplit/RightSplit/MasterLabel.text = "Master Volume : " + str(value) + "%"
+	$M2/BG/M/VB/TabSplit/Left/Master.text = "Master Volume : " + str(value) + "%"
 
 func _on_SFXSlider_value_changed(value):
 	setting["sfx"] = value
-	$M2/BG/M/VB/TabSplit/RightSplit/SFXLabel.text = "SFX Volume : " + str(value) + "%"
+	$M2/BG/M/VB/TabSplit/Left/SFX.text = "SFX Volume : " + str(value) + "%"
 
 func _on_MusicSlider_value_changed(value):
 	setting["music"] = value
-	$M2/BG/M/VB/TabSplit/RightSplit/MusicLabel.text = "Music Volume : " + str(value) + "%"
+	$M2/BG/M/VB/TabSplit/Left/Music.text = "Music Volume : " + str(value) + "%"
 
 
 func _on_CloseButton_pressed():

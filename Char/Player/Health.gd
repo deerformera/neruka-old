@@ -2,15 +2,26 @@ extends MarginContainer
 
 signal dead
 
+var changed = false
+
 func _ready():
 	$HealthBar.value = Info.stat["health"]
-	$HealthBorder.value = Info.stat["health"]
+
 
 func _physics_process(delta):
-	$HealthBar.value = Info.stat["health"]
-	if $HealthBorder.value > $HealthBar.value:
-		$HealthBorder.value -= 1
-	elif $HealthBorder.value < $HealthBar.value:
-		$HealthBorder.value += 1
-	if Info.stat["health"] <= 0:
-		emit_signal("dead")
+	if $HealthBar.value > Info.stat["health"]:
+		changed = true
+	
+	if changed:
+		var t = Tween.new()
+		add_child(t)
+		t.interpolate_property($HealthBar, "value", null, Info.stat["health"], 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+		t.start()
+		
+		var sprite = $"../../../Sprite"
+		
+		if $HealthBar.value <= 1:
+			connect("dead", $"../../..", "_dead")
+			emit_signal("dead")
+			t.interpolate_property(sprite, "modulate:a", null, 0.5, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+			t.start()

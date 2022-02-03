@@ -1,8 +1,7 @@
-extends TextureButton
+extends Button
 
 signal switch
 
-var m = preload("res://UI/Outline.tres")
 var i = preload("res://Menu/Inventory/Item.tscn")
 
 onready var id = Info.stat["inv"][int(name)][0]

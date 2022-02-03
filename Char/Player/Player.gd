@@ -69,14 +69,6 @@ func _jump():
 	speed = 10
 	jump = false
 
-func _spiked():
-	Info.stat["health"] -= 10
-
-
-func _on_Health_dead():
-	var t = Tween.new()
-	add_child(t)
-	t.interpolate_property(self, "modulate:a", null, 0.5, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
-	t.start()
-	collision_layer = 0
-	collision_mask = 0
+func _dead():
+	print("dead")
+	set_collision_mask_bit(0, false)

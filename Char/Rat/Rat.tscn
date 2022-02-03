@@ -42,8 +42,15 @@ tracks/0/keys = {
 [sub_resource type="CanvasItemMaterial" id=6]
 blend_mode = 1
 
-[sub_resource type="Gradient" id=5]
-colors = PoolColorArray( 1, 0.729492, 0, 1, 1, 1, 1, 1 )
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 80.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.647059, 0.647059, 0.647059, 1 )
 
 [node name="Rat" type="StaticBody2D"]
 collision_layer = 4
@@ -72,15 +79,12 @@ scale = Vector2( 0.5, 0.5 )
 z_as_relative = false
 texture = ExtResource( 3 )
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 6 )
 emitting = false
-amount = 32
+amount = 64
 lifetime = 3.0
 one_shot = true
 speed_scale = 1.2
 explosiveness = 0.9
-spread = 180.0
-initial_velocity = 80.0
-initial_velocity_random = 0.5
-color_ramp = SubResource( 5 )
+process_material = SubResource( 5 )

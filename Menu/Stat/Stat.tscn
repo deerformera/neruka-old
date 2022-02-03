@@ -1,33 +1,31 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/NPR_1.png" type="Texture" id=1]
 [ext_resource path="res://UI/NPR_2.png" type="Texture" id=2]
 [ext_resource path="res://UI/X.png" type="Texture" id=3]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=4]
 [ext_resource path="res://Menu/Stat/Stat.gd" type="Script" id=5]
-[ext_resource path="res://UI/Retron2000.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=9]
-[ext_resource path="res://UI/TitleBG.png" type="Texture" id=10]
-[ext_resource path="res://UI/H_Over.png" type="Texture" id=11]
-[ext_resource path="res://UI/H_Progress.png" type="Texture" id=12]
+[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/CatUI.png" type="Texture" id=14]
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 320, 64 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.239216, 0.239216, 0.239216, 1 )
+border_width_bottom = 4
+border_color = Color( 0.192157, 0.192157, 0.192157, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
 
-[sub_resource type="DynamicFont" id=8]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 6 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 12 )
-region_rect = Rect2( 0, 0, 160, 16 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 160, 16 )
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+border_width_bottom = 3
+border_color = Color( 0.2, 0.2, 0.2, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Stat" type="CanvasLayer"]
 pause_mode = 2
@@ -76,37 +74,34 @@ margin_right = 1180.0
 margin_bottom = 620.0
 texture = ExtResource( 2 )
 patch_margin_left = 16
-patch_margin_top = 36
+patch_margin_top = 32
 patch_margin_right = 16
 patch_margin_bottom = 16
 
 [node name="M" type="MarginContainer" parent="M2/BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_constants/margin_right = 50
-custom_constants/margin_top = 50
-custom_constants/margin_left = 50
-custom_constants/margin_bottom = 50
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HB" type="VBoxContainer" parent="M2/BG/M"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 1030.0
-margin_bottom = 470.0
-custom_constants/separation = 20
+[node name="VB" type="VBoxContainer" parent="M2/BG/M"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1040.0
+margin_bottom = 480.0
+custom_constants/separation = 0
 
-[node name="Title" type="HBoxContainer" parent="M2/BG/M/HB"]
-margin_right = 980.0
+[node name="Title" type="HBoxContainer" parent="M2/BG/M/VB"]
+margin_right = 1000.0
 margin_bottom = 48.0
-size_flags_vertical = 0
-custom_constants/separation = 20
+custom_constants/separation = 10
 
-[node name="CloseButton" type="Button" parent="M2/BG/M/HB/Title"]
+[node name="CloseButton" type="Button" parent="M2/BG/M/VB/Title"]
 margin_right = 48.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
@@ -116,133 +111,134 @@ enabled_focus_mode = 0
 icon = ExtResource( 3 )
 expand_icon = true
 
-[node name="Label" type="Label" parent="M2/BG/M/HB/Title"]
-margin_left = 68.0
-margin_top = 2.0
-margin_right = 152.0
-margin_bottom = 46.0
-size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 9 )
+[node name="StatLabel" type="Label" parent="M2/BG/M/VB/Title"]
+margin_left = 58.0
+margin_top = 7.0
+margin_right = 122.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
 text = "STAT"
-align = 1
-valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TabSplit" type="HBoxContainer" parent="M2/BG/M/HB"]
-margin_top = 68.0
-margin_right = 980.0
-margin_bottom = 420.0
-size_flags_vertical = 3
-custom_constants/separation = 50
-alignment = 1
-
-[node name="SplitLeft" type="HBoxContainer" parent="M2/BG/M/HB/TabSplit"]
-margin_right = 465.0
-margin_bottom = 352.0
+[node name="HB" type="HBoxContainer" parent="M2/BG/M/VB"]
+margin_top = 48.0
+margin_right = 1000.0
+margin_bottom = 440.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="M2/BG/M/HB/TabSplit/SplitLeft"]
+[node name="Cat" type="TextureRect" parent="M2/BG/M/VB/HB"]
+margin_top = 132.0
 margin_right = 128.0
-margin_bottom = 352.0
+margin_bottom = 260.0
 rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
 texture = ExtResource( 14 )
 stretch_mode = 6
 
-[node name="VB" type="VBoxContainer" parent="M2/BG/M/HB/TabSplit/SplitLeft"]
-margin_left = 132.0
-margin_top = 86.0
-margin_right = 465.0
-margin_bottom = 266.0
+[node name="LVB" type="VBoxContainer" parent="M2/BG/M/VB/HB"]
+margin_left = 160.0
+margin_top = 88.0
+margin_right = 564.0
+margin_bottom = 304.0
 size_flags_horizontal = 3
-size_flags_vertical = 4
-custom_constants/separation = 20
+size_flags_vertical = 6
+custom_constants/separation = 8
 
-[node name="NameLabel" type="Label" parent="M2/BG/M/HB/TabSplit/SplitLeft/VB"]
-margin_right = 333.0
-margin_bottom = 28.0
+[node name="Name" type="Label" parent="M2/BG/M/VB/HB/LVB"]
+margin_right = 404.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
 text = "Name"
+valign = 1
 
-[node name="NameBar" type="Label" parent="M2/BG/M/HB/TabSplit/SplitLeft/VB"]
-margin_top = 48.0
-margin_right = 333.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 0, 32 )
-custom_styles/normal = SubResource( 5 )
+[node name="Namebar" type="Label" parent="M2/BG/M/VB/HB/LVB"]
+margin_top = 56.0
+margin_right = 404.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
 align = 1
 valign = 1
 
-[node name="HealthLabel" type="Label" parent="M2/BG/M/HB/TabSplit/SplitLeft/VB"]
-margin_top = 100.0
-margin_right = 333.0
-margin_bottom = 128.0
+[node name="Health" type="Label" parent="M2/BG/M/VB/HB/LVB"]
+margin_top = 112.0
+margin_right = 404.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 48 )
 text = "Health"
+valign = 1
 
-[node name="HealthBar" type="ProgressBar" parent="M2/BG/M/HB/TabSplit/SplitLeft/VB"]
-margin_top = 148.0
-margin_right = 333.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 0, 32 )
-custom_fonts/font = SubResource( 8 )
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 7 )
+[node name="Healthbar" type="ProgressBar" parent="M2/BG/M/VB/HB/LVB"]
+margin_top = 168.0
+margin_right = 404.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/bg = SubResource( 2 )
 
-[node name="SplitRight" type="VBoxContainer" parent="M2/BG/M/HB/TabSplit"]
-margin_left = 515.0
-margin_right = 980.0
-margin_bottom = 352.0
+[node name="RVB" type="VBoxContainer" parent="M2/BG/M/VB/HB"]
+margin_left = 596.0
+margin_top = 32.0
+margin_right = 1000.0
+margin_bottom = 360.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 20
+size_flags_vertical = 6
+custom_constants/separation = 8
 
-[node name="ExpLabel" type="Label" parent="M2/BG/M/HB/TabSplit/SplitRight"]
-margin_right = 465.0
-margin_bottom = 28.0
-text = "Exp."
+[node name="Level" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+margin_right = 404.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+text = "Level"
 valign = 1
 
-[node name="ExpBar" type="Label" parent="M2/BG/M/HB/TabSplit/SplitRight"]
-margin_top = 48.0
-margin_right = 465.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 0, 32 )
-custom_styles/normal = SubResource( 5 )
+[node name="Levelbar" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+margin_top = 56.0
+margin_right = 404.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "null"
 align = 1
 valign = 1
 
-[node name="PlaceLabel" type="Label" parent="M2/BG/M/HB/TabSplit/SplitRight"]
-margin_top = 100.0
-margin_right = 465.0
-margin_bottom = 128.0
-rect_pivot_offset = Vector2( -138, 80 )
-text = "Place"
+[node name="World" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+margin_top = 112.0
+margin_right = 404.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 48 )
+text = "World"
 valign = 1
 
-[node name="PlaceBar" type="Label" parent="M2/BG/M/HB/TabSplit/SplitRight"]
-margin_top = 148.0
-margin_right = 465.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 0, 32 )
-rect_pivot_offset = Vector2( -138, 32 )
-custom_styles/normal = SubResource( 5 )
+[node name="Worldbar" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+margin_top = 168.0
+margin_right = 404.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
 align = 1
 valign = 1
 
-[node name="MoneyLabel" type="Label" parent="M2/BG/M/HB/TabSplit/SplitRight"]
-margin_top = 200.0
-margin_right = 465.0
-margin_bottom = 228.0
-rect_pivot_offset = Vector2( -138, 80 )
-text = "Money"
+[node name="Coins" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+margin_top = 224.0
+margin_right = 404.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 0, 48 )
+text = "Coins"
 valign = 1
 
-[node name="MoneyBar" type="Label" parent="M2/BG/M/HB/TabSplit/SplitRight"]
-margin_top = 248.0
-margin_right = 465.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 32 )
-rect_pivot_offset = Vector2( -138, 32 )
-custom_styles/normal = SubResource( 5 )
+[node name="Coinsbar" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+margin_top = 280.0
+margin_right = 404.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "null"
 align = 1
 valign = 1
 
-[connection signal="pressed" from="M2/BG/M/HB/Title/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="M2/BG/M/VB/Title/CloseButton" to="." method="_on_CloseButton_pressed"]

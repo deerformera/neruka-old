@@ -94,8 +94,8 @@ expand_icon = true
 
 [node name="InvLabel" type="Label" parent="M2/BG/M/VB/Title"]
 margin_left = 68.0
-margin_right = 257.0
-margin_bottom = 44.0
+margin_right = 232.0
+margin_bottom = 39.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 5 )

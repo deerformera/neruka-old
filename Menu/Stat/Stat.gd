@@ -1,11 +1,10 @@
 extends CanvasLayer
 
 func _ready():
-	$M2/BG/M/HB/TabSplit/SplitLeft/VB/NameBar.text = Info.stat["name"]
-	$M2/BG/M/HB/TabSplit/SplitLeft/VB/HealthBar.value = Info.stat["health"]
-	$M2/BG/M/HB/TabSplit/SplitRight/PlaceBar.text = Info.stat["place"]
-	$M2/BG/M/HB/TabSplit/SplitRight/MoneyBar.text = str(Info.stat["coin"]) + " R"
-	$M2/BG/M/HB/TabSplit/SplitRight/ExpBar.text = str(Info.stat["exp"])
+	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.stat["name"]
+	$M2/BG/M/VB/HB/LVB/Healthbar.value = Info.stat["health"]
+	$M2/BG/M/VB/HB/RVB/Worldbar.text = Info.stat["place"]
+	
 	_tweented()
 
 func _tweented():
@@ -14,7 +13,7 @@ func _tweented():
 	$M1.anchor_left = 0.25
 	$M1.anchor_right = 0.75
 	$M2.anchor_bottom = 0.5
-	$M2/BG/M/HB/Title/Label.percent_visible = 0
+	$M2/BG/M/VB/Title/StatLabel.percent_visible = 0
 	
 	var t = Tween.new()
 	add_child(t)
@@ -24,7 +23,7 @@ func _tweented():
 	yield(t, "tween_completed")
 	$M2.visible = true
 	t.interpolate_property($M2, "anchor_bottom", null, 1, 0.25, Tween.TRANS_EXPO, Tween.EASE_OUT)
-	t.interpolate_property($M2/BG/M/HB/Title/Label, "percent_visible", 0, 1, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	t.interpolate_property($M2/BG/M/VB/Title/StatLabel, "percent_visible", 0, 1, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	t.start()
 
 

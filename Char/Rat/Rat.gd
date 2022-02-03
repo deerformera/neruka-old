@@ -6,7 +6,7 @@ func _pop(player):
 	if gived == false:
 		$PopUp.show()
 		if Input.is_action_just_pressed("Interact"):
-			$CPUParticles2D.emitting = true
+			$Particles2D.emitting = true
 			$PopUp.hide()
 			gived = true
 			Info._give_item(3, 10)

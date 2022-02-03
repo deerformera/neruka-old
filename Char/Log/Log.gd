@@ -73,8 +73,8 @@ func _refresh():
 		$M2/BG/M/VB/Desc/Button.show()
 		$M2/BG/M/VB/Title/NextButton.hide()
 		
-		B1.text = " > " + text[speaker.name][conv]["answer"].keys()[0]
-		B2.text = " > " + text[speaker.name][conv]["answer"].keys()[1]
+		B1.text = "        >  " + text[speaker.name][conv]["answer"].keys()[0]
+		B2.text = "        >  " + text[speaker.name][conv]["answer"].keys()[1]
 		
 	elif text[speaker.name][conv]["type"] == "text":
 		$M2/BG/M/VB/Desc/Button.hide()
@@ -88,33 +88,33 @@ func _refresh():
 		var given = text[speaker.name][conv]["given"]
 		var next = text[speaker.name][conv]["next"]
 		
-		var ijab_qobul = false
+		var tradeable = false
 		
 		if taken["type"] == "item":
 			for x in Info.stat["inv"]:
 				if x[0] == taken["value"][0] and x[1] - taken["value"][1] >= 0:
 					x[1] -= taken["value"][1]
-					ijab_qobul = true
+					tradeable = true
 					conv = next[0]
 					_refresh()
 			
-			if !ijab_qobul:
+			if !tradeable:
 				conv = next[1]
 				_refresh()
 		
 		elif taken["type"] == "eq":
 			if Info.stat["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
-				ijab_qobul = true
+				tradeable = true
 				conv = next[0]
 				_refresh()
 			else:
 				conv = next[1]
 				_refresh()
 		
-		if given["type"] == "item" and ijab_qobul == true:
+		if given["type"] == "item" and tradeable:
 			Info._give_item(taken["value"][0], taken["value"][1])
 			
-		elif given["type"] == "eq" and ijab_qobul == true:
+		elif given["type"] == "eq" and tradeable:
 			Info._give_eq(given["value"][0], given["value"][1])
 	
 	if text[speaker.name][conv]["type"] == "last":

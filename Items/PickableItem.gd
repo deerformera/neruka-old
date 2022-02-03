@@ -30,4 +30,4 @@ func _physics_process(delta):
 			Info._give_item(id, amount)
 			queue_free()
 	
-	move_and_slide(vec * 6)
+	move_and_slide(vec * 7)

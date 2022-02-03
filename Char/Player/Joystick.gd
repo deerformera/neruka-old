@@ -16,7 +16,7 @@ func _input(event):
 			pos = (event.position - center).clamped(120)
 			$JSC.position = pos + center
 			pos = pos.normalized()
-	
+			
 	if event is InputEventScreenTouch:
 		if not $JSRect/JSTSB.is_pressed():
 			moving = false
