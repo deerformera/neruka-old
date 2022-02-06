@@ -17,11 +17,11 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-verlist/Version="v1.5.0-alpha"
+verlist/Version="v1.5.5-alpha"
 "verlist/todo list"={
 "Crafting": false,
 "Give Item": true,
-"Shop": false,
+"Shop": true,
 "Small Shop": true,
 "Take Item": true
 }
