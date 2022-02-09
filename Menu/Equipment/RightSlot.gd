@@ -11,7 +11,7 @@ func _ready():
 	for x in $S/SS.get_children():
 		x.connect("toggled", self, "_switch", [x.name])
 		
-		if int(x.name) in Info.stat["eq"][name]["inv"]:
+		if int(x.name) in Info.stat["player"]["eq"][name]["inv"]:
 			x.visible = true
 		else:
 			x.visible = false
@@ -22,7 +22,7 @@ func _start(bol, nama):
 	if name == nama:
 		if bol == true:
 			
-			equipped = Info.stat["eq"][name]["equipped"]
+			equipped = Info.stat["player"]["eq"][name]["equipped"]
 			for x in $S/SS.get_children():
 				if equipped != 0 and x.name == str(equipped):
 					x.pressed = true
@@ -35,7 +35,7 @@ func _start(bol, nama):
 				x.pressed = false
 
 func _switch(bol, nama):
-	equipped = Info.stat["eq"][name]["equipped"]
+	equipped = Info.stat["player"]["eq"][name]["equipped"]
 	if bol == true:
 		for x in $S/SS.get_children():
 			if x.pressed and x.name != nama:
@@ -48,14 +48,14 @@ func _switch(bol, nama):
 func _equip(bol, nama):
 	
 	if bol == true:
-		Info.stat["eq"][name]["equipped"] = int(nama)
+		Info.stat["player"]["eq"][name]["equipped"] = int(nama)
 		_item_stat()
 	else:
-		Info.stat["eq"][name]["equipped"] = 0
+		Info.stat["player"]["eq"][name]["equipped"] = 0
 		_item_stat()
 
 func _item_stat():
-	equipped = Info.stat["eq"][name]["equipped"]
+	equipped = Info.stat["player"]["eq"][name]["equipped"]
 	
 	if name == "boots":
 		if equipped == 3:

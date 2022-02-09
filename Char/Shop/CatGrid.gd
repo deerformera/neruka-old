@@ -98,8 +98,8 @@ func _purchased():
 	
 	var tradeable = false
 	
-	for x in Info.stat["inv"]:
-		if x[0] == 3 and x[1] - total >= 0:
+	for x in Info.stat["player"]["inv"]:
+		if x[0] == 5 and x[1] - total >= 0:
 			x[1] -= total
 			Info.stat["shopstock"][shopkeeper][current_item[0]][2] -= amount
 			_refresh()

@@ -23,13 +23,13 @@ func _on_Line_text_entered(new_text):
 	if new_text == "":
 		return
 	if new_text == "test":
-		Info.stat["debug"] = true
+		Info.stat["player"]["debug"] = true
 		
 		if get_tree().root.get_node("DebugButton") == null:
 			var dbgbtn = load("res://World/Global/DebugButton.tscn")
 			get_tree().root.add_child(dbgbtn.instance())
 	
-	Info.stat["name"] = new_text
+	Info.stat["player"]["name"] = new_text
 	
 	$Sprite.texture = Writed
 	writed = true

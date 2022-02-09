@@ -1,9 +1,23 @@
 extends CanvasLayer
 
+onready var Tex = "res://Items/equipment.tres"
+var tex = {}
+
 func _ready():
-	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.stat["name"]
-	$M2/BG/M/VB/HB/LVB/Healthbar.value = Info.stat["health"]
-	$M2/BG/M/VB/HB/RVB/Worldbar.text = Info.stat["place"]
+	var f = File.new()
+	f.open(Tex, File.READ)
+	tex = parse_json(f.get_as_text())
+	
+	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.stat["player"]["name"]
+	$M2/BG/M/VB/HB/LVB/Healthbar.value = Info.stat["player"]["health"]
+	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Info.stat["player"]["place"]
+	
+	if Info.stat["player"]["eq"]["claw"]["equipped"] != 0:
+		$M2/BG/M/VB/HB/S/RVB/ClawEqbar.text = tex["claw"][str(Info.stat["eq"]["claw"]["equipped"])]["name"]
+	
+	if Info.stat["player"]["eq"]["boots"]["equipped"] != 0:
+		$M2/BG/M/VB/HB/S/RVB/BootsEqbar.text = tex["boots"][str(Info.stat["eq"]["boots"]["equipped"])]["name"]
+	
 	
 	_tweented()
 

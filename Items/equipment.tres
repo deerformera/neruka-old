@@ -1,0 +1,75 @@
+{
+  "boots":{
+    "1":{
+      "name":"Basic Boots",
+      "tier":"basic",
+      "speed":"12",
+      "desc":"Just some speed..."
+    },
+    
+    "2":{
+      "name":"dursh",
+      "tier":"basic",
+      "speed":"12",
+      "desc":"make you dash when you're attacking"
+    },
+
+    "3":{
+      "name":"Purst",
+      "tier":"basic",
+      "speed":"12",
+      "desc":"Bunny Hopper"
+    },
+    
+    "4":{
+      "name":"Zor Boots",
+      "tier":"advanced",
+      "speed":"15",
+      "desc":"Zor's Boots"
+    }
+  },
+
+  "claw":{
+    "1":{
+      "name":"Cron",
+      "tier":"advanced",
+      "damage":"10",
+      "desc":"Basic claw"
+    },
+  
+    "2":{
+      "name":"Crost",
+      "tier":"basic",
+      "damage":"12",
+      "desc":"Freeze"
+    },
+  
+    "3":{
+      "name":"Forch",
+      "tier":"basic",
+      "damage":"12",
+      "desc":"Fire"
+    },
+  
+    "4":{
+      "name":"Rusch",
+      "tier":"basic",
+      "damage":"12",
+      "desc":"Slash"
+    },
+  
+    "5":{
+      "name":"Shan",
+      "tier":"basic",
+      "damage":"12",
+      "desc":"Slash Forward"
+    },
+  
+    "6":{
+      "name":"Zor Claw",
+      "tier":"special",
+      "damage":"25",
+      "desc":"Zor's Claw"
+    }
+  }
+}

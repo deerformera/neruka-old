@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Char/WorkbenchStation/WorkbenchStation.gd" type="Script" id=2]
+[ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/NPR_2.png" type="Texture" id=4]
+[ext_resource path="res://UI/X.png" type="Texture" id=5]
+[ext_resource path="res://UI/NPR_1.png" type="Texture" id=6]
+
+[node name="WorkbenchStation" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="M1" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="M1"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 1180.0
+margin_bottom = 620.0
+texture = ExtResource( 6 )
+patch_margin_left = 16
+patch_margin_top = 20
+patch_margin_right = 16
+patch_margin_bottom = 60
+
+[node name="M2" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="M2"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 1180.0
+margin_bottom = 620.0
+texture = ExtResource( 4 )
+patch_margin_left = 16
+patch_margin_top = 36
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="M" type="MarginContainer" parent="M2/BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="M2/BG/M"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1030.0
+margin_bottom = 470.0
+custom_constants/separation = 20
+
+[node name="Title" type="HBoxContainer" parent="M2/BG/M/VB"]
+margin_right = 980.0
+margin_bottom = 48.0
+custom_constants/separation = 16
+
+[node name="CloseButton" type="Button" parent="M2/BG/M/VB/Title"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+focus_mode = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+expand_icon = true
+
+[node name="TitleLabel" type="Label" parent="M2/BG/M/VB/Title"]
+margin_left = 64.0
+margin_right = 980.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "STUDY"
+valign = 1
+
+[connection signal="pressed" from="M2/BG/M/VB/Title/CloseButton" to="." method="_on_CloseButton_pressed"]

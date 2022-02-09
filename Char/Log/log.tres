@@ -35,7 +35,7 @@
       "type":"trade",
       "text":"",
       "given":{"type":"eq", "value":["boots",1]},
-      "taken":{"type":"item", "value":[3,6]},
+      "taken":{"type":"item", "value":[5,6]},
       "next":["050", "051"]
     },
 
@@ -85,7 +85,7 @@
       "type":"trade",
       "text":"",
       "given":{"type":"eq", "value":["boots",1]},
-      "taken":{"type":"item", "value":[3,6]},
+      "taken":{"type":"item", "value":[5,6]},
       "next":["120", "121"]
     },
 
@@ -100,11 +100,43 @@
       "text":"You still got no money...",
       "next":"101"
     },
-
+    
     "200":{
+      "type":"text",
+      "text":"Hey, Do you know that 1 Gold Rost equals to 12 Silver Rost?",
+      "next":"210"
+    },
+
+    "210":{
+      "type":"text",
+      "text":"And go same with Silver Rost and Bronze Rost",
+      "next":"220"
+    },
+
+    "220":{
+      "type":"knowledge",
+      "text":"",
+      "given":"6",
+      "next":"230"
+    },
+
+    "230":{
+      "type":"knowledge",
+      "text":"",
+      "given":"7",
+      "next":"240"
+    },
+
+    "240":{
+      "type":"last",
+      "text":"",
+      "next":"300"
+    },
+
+    "300":{
       "type":"last",
       "text":"Morning cat!",
-      "next":"200"
+      "next":"300"
     }
   }
 }

@@ -1,31 +1,49 @@
 {
   "1":{
-    "name":"Goldy",
-    "desc":"This is rare golden boots",
-    "tex":"res://Items/Texture/B-Gold.png"
+    "name":"Stone",
+    "desc":"A Stone",
+    "tex":"res://Items/Texture/Stone.png"
   },
 
   "2":{
-    "name":"Common Boots",
-    "desc":"Just a common boots...",
-    "tex":"res://Items/Texture/B-Normal.png"
+    "name":"Wooden Branch",
+    "desc":"Wooden Branch from Wooden Log",
+    "tex":"res://Items/Texture/Wood Branch.png"
   },
 
   "3":{
+    "name":"Leather",
+    "desc":"Leather",
+    "tex":"res://Items/X.png"
+  },
+
+  "4":{
+    "name":"Stone Axe",
+    "desc":"Tool that help you to chopping tree",
+    "tex":"res://Items/Texture/Stone Axe.png",
+    "material":[[2,2],[1,1]],
+    "category":"0"
+  },
+
+  "5":{
     "name":"Rost",
     "desc":"Coins",
     "tex":"res://Items/Texture/Rost.png"
   },
 
-  "4":{
+  "6":{
     "name":"Rost-Silver",
     "desc":"Coins that has same value with 10 Bronze Rost",
-    "tex":"res://Items/Texture/Rost_Silver.png"
+    "tex":"res://Items/Texture/Rost_Silver.png",
+    "material":[[5,12]],
+    "category":"1"
   },
 
-  "5":{
+  "7":{
     "name":"Rost-Gold",
     "desc":"Coins that has same value with 10 Silver Rost",
-    "tex":"res://Items/Texture/Rost_Gold.png"
+    "tex":"res://Items/Texture/Rost_Gold.png",
+    "material":[[6,12]],
+    "category":"1"
   }
 }

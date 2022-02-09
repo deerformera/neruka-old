@@ -6,4 +6,4 @@ func _ready():
 	get_node("Player/Camera2D").limit_left = -208
 	get_node("Player/Camera2D").limit_right = 272
 	get_node("Player/Camera2D").limit_top = -320
-	get_node("Player/Camera2D").limit_bottom = 320
+	get_node("Player/Camera2D").limit_bottom = 256

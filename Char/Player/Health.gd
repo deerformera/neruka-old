@@ -5,11 +5,11 @@ signal dead
 var changed = false
 
 func _ready():
-	$HealthBar.value = Info.stat["health"]
+	$HealthBar.value = Info.stat["player"]["health"]
 
 
 func _physics_process(delta):
-	if $HealthBar.value > Info.stat["health"]:
+	if $HealthBar.value > Info.stat["player"]["health"]:
 		changed = true
 	
 	if changed:

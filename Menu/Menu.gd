@@ -21,7 +21,7 @@ var menu = [
 	"",
 	"res://Menu/Inventory/Inventory.tscn",
 	"",
-	"",
+	"res://Menu/Craft/Craft.tscn",
 	""
 ]
 
@@ -70,7 +70,7 @@ func _hide(a):
 func _instance():
 	yield(get_tree().create_timer(0.02), "timeout")
 	
-	if selected in [5, 7, 8, 9]:
+	if selected in [5, 7, 9]:
 		return
 	
 	var l = load(menu[selected - 1])

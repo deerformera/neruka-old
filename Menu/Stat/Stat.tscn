@@ -113,9 +113,9 @@ expand_icon = true
 
 [node name="StatLabel" type="Label" parent="M2/BG/M/VB/Title"]
 margin_left = 58.0
-margin_top = 7.0
-margin_right = 122.0
-margin_bottom = 40.0
+margin_top = 4.0
+margin_right = 132.0
+margin_bottom = 43.0
 custom_fonts/font = ExtResource( 6 )
 text = "STAT"
 __meta__ = {
@@ -128,7 +128,7 @@ margin_right = 1000.0
 margin_bottom = 440.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 32
+custom_constants/separation = 25
 
 [node name="Cat" type="TextureRect" parent="M2/BG/M/VB/HB"]
 margin_top = 132.0
@@ -141,7 +141,7 @@ texture = ExtResource( 14 )
 stretch_mode = 6
 
 [node name="LVB" type="VBoxContainer" parent="M2/BG/M/VB/HB"]
-margin_left = 160.0
+margin_left = 153.0
 margin_top = 88.0
 margin_right = 564.0
 margin_bottom = 304.0
@@ -150,7 +150,7 @@ size_flags_vertical = 6
 custom_constants/separation = 8
 
 [node name="Name" type="Label" parent="M2/BG/M/VB/HB/LVB"]
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 0, 48 )
 text = "Name"
@@ -158,7 +158,7 @@ valign = 1
 
 [node name="Namebar" type="Label" parent="M2/BG/M/VB/HB/LVB"]
 margin_top = 56.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 0, 48 )
 custom_styles/normal = SubResource( 1 )
@@ -167,7 +167,7 @@ valign = 1
 
 [node name="Health" type="Label" parent="M2/BG/M/VB/HB/LVB"]
 margin_top = 112.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 0, 48 )
 text = "Health"
@@ -175,30 +175,35 @@ valign = 1
 
 [node name="Healthbar" type="ProgressBar" parent="M2/BG/M/VB/HB/LVB"]
 margin_top = 168.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 48 )
 custom_styles/bg = SubResource( 2 )
 
-[node name="RVB" type="VBoxContainer" parent="M2/BG/M/VB/HB"]
-margin_left = 596.0
-margin_top = 32.0
+[node name="S" type="ScrollContainer" parent="M2/BG/M/VB/HB"]
+margin_left = 589.0
 margin_right = 1000.0
-margin_bottom = 360.0
+margin_bottom = 392.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RVB" type="VBoxContainer" parent="M2/BG/M/VB/HB/S"]
+margin_right = 411.0
+margin_bottom = 776.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_constants/separation = 8
 
-[node name="Level" type="Label" parent="M2/BG/M/VB/HB/RVB"]
-margin_right = 404.0
+[node name="Level" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_right = 411.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 0, 48 )
 text = "Level"
 valign = 1
 
-[node name="Levelbar" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+[node name="Levelbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
 margin_top = 56.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 0, 48 )
 custom_styles/normal = SubResource( 1 )
@@ -206,38 +211,110 @@ text = "null"
 align = 1
 valign = 1
 
-[node name="World" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+[node name="World" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
 margin_top = 112.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 0, 48 )
 text = "World"
 valign = 1
 
-[node name="Worldbar" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+[node name="Worldbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
 margin_top = 168.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 48 )
 custom_styles/normal = SubResource( 1 )
 align = 1
 valign = 1
 
-[node name="Coins" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+[node name="Coins" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
 margin_top = 224.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 272.0
 rect_min_size = Vector2( 0, 48 )
 text = "Coins"
 valign = 1
 
-[node name="Coinsbar" type="Label" parent="M2/BG/M/VB/HB/RVB"]
+[node name="Coinsbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
 margin_top = 280.0
-margin_right = 404.0
+margin_right = 411.0
 margin_bottom = 328.0
 rect_min_size = Vector2( 0, 48 )
 custom_styles/normal = SubResource( 1 )
 text = "null"
+align = 1
+valign = 1
+
+[node name="ArmEq" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 336.0
+margin_right = 411.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 0, 48 )
+text = "Armor Equipped"
+valign = 1
+
+[node name="ArmEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 392.0
+margin_right = 411.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "Unequipped"
+align = 1
+valign = 1
+
+[node name="BootsEq" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 448.0
+margin_right = 411.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 0, 48 )
+text = "Boots Equipped"
+valign = 1
+
+[node name="BootsEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 504.0
+margin_right = 411.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "Unequipped"
+align = 1
+valign = 1
+
+[node name="ClawEq" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 560.0
+margin_right = 411.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 0, 48 )
+text = "Claw Equipped"
+valign = 1
+
+[node name="ClawEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 616.0
+margin_right = 411.0
+margin_bottom = 664.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "Unequipped"
+align = 1
+valign = 1
+
+[node name="HatEq" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 672.0
+margin_right = 411.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 48 )
+text = "Hat Equipped"
+valign = 1
+
+[node name="HatEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+margin_top = 728.0
+margin_right = 411.0
+margin_bottom = 776.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "Unequipped"
 align = 1
 valign = 1
 

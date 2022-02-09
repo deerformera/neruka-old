@@ -8,12 +8,22 @@ var world = {
 	
 	"1":{
 		"res":"res://World/1 - Home/World.tscn",
-		"name":"Home."
+		"name":"Home"
 	},
 	
 	"2":{
-		"res":"res://World/2 - Town/World.tscn",
-		"name":"Home Town"
+		"res":"res://World/2 - Sola Town/World.tscn",
+		"name":"Sola Town"
+	},
+	
+	"3":{
+		"res":"res://World/3 - Sola Beach/World.tscn",
+		"name":"Sola Beach"
+	},
+	
+	"4":{
+		"res":"res://World/4 - Side Forest/World.tscn",
+		"name":"Side Forest"
 	},
 	
 	"6":{

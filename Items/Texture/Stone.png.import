@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chest.png-5fadd315a1a419ed5ba859db3f9ed942.stex"
+path="res://.import/Stone.png-7b850912f628233b82b349f2c490d69c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Global/Chest.png"
-dest_files=[ "res://.import/Chest.png-5fadd315a1a419ed5ba859db3f9ed942.stex" ]
+source_file="res://Items/Texture/Stone.png"
+dest_files=[ "res://.import/Stone.png-7b850912f628233b82b349f2c490d69c.stex" ]
 
 [params]
 

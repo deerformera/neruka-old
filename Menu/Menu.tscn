@@ -54,6 +54,7 @@ z_index = 10
 normal = ExtResource( 2 )
 pressed = ExtResource( 11 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -76,6 +77,7 @@ z_index = 10
 normal = ExtResource( 14 )
 pressed = ExtResource( 6 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -98,6 +100,7 @@ z_index = 10
 normal = ExtResource( 18 )
 pressed = ExtResource( 5 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -120,6 +123,7 @@ z_index = 10
 normal = ExtResource( 7 )
 pressed = ExtResource( 12 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -141,6 +145,7 @@ flat = true
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
 shape = SubResource( 137 )
+shape_visible = false
 
 [node name="6" type="Button" parent="."]
 margin_left = 128.0
@@ -162,6 +167,7 @@ z_index = 10
 normal = ExtResource( 13 )
 pressed = ExtResource( 1 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -184,6 +190,7 @@ z_index = 10
 normal = ExtResource( 17 )
 pressed = ExtResource( 8 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -207,6 +214,7 @@ z_index = 10
 normal = ExtResource( 16 )
 pressed = ExtResource( 4 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )
 
@@ -230,5 +238,6 @@ z_index = 10
 normal = ExtResource( 9 )
 pressed = ExtResource( 15 )
 shape = SubResource( 137 )
+shape_visible = false
 passby_press = true
 script = ExtResource( 3 )

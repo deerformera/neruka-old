@@ -24,8 +24,9 @@ func _contract(bol, nama):
 				var f = File.new()
 				f.open(x[1], File.READ)
 				dat = parse_json(f.get_as_text())
+				print(dat)
 				
-				var equipped = Info.stat["eq"][nama]["equipped"]
+				var equipped = Info.stat["player"]["eq"][nama]["equipped"]
 				
 				if equipped != 0:
 					$Name.text = "Name : " + dat[str(equipped)]["name"]
@@ -44,7 +45,7 @@ func _contract(bol, nama):
 
 func _toggled(bol, nama):
 	
-	var equipped = Info.stat["eq"][nama]["equipped"]
+	var equipped = Info.stat["player"]["eq"][nama]["equipped"]
 	var current_node = get_parent().get_node(nama)
 	
 	if bol == true:
@@ -62,7 +63,7 @@ func _toggled(bol, nama):
 					emit_signal("equip", bol, x.name)
 
 func _switched(btn, nama):
-	var equipped = Info.stat["eq"][nama]["equipped"]
+	var equipped = Info.stat["player"]["eq"][nama]["equipped"]
 	
 	if dat == null:
 		return

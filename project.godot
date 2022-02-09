@@ -17,13 +17,8 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-verlist/Version="v1.5.5-alpha"
+verlist/Version="v2.0.0-alpha"
 "verlist/todo list"={
-"Crafting": false,
-"Give Item": true,
-"Shop": true,
-"Small Shop": true,
-"Take Item": true
 }
 
 [autoload]
@@ -123,14 +118,9 @@ Tab={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-siji={
+Attack={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":49,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-loro={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":50,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -143,8 +133,9 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
-2d_physics/layer_4="Object"
-2d_physics/layer_5="Item"
+2d_physics/layer_4="Interactable Object"
+2d_physics/layer_5="Destroyable Object"
+2d_physics/layer_6="Item"
 2d_physics/layer_8="JumpCliff"
 
 [rendering]

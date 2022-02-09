@@ -40,11 +40,11 @@ func _next_conv():
 	if text[speaker.name][conv]["type"] == "text":
 		conv = text[speaker.name][conv]["next"]
 	
-	if text[speaker.name][conv]["type"] == "last" and ended:
-		if Info.stat["contact"].empty():
-			Info.stat["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
+	elif text[speaker.name][conv]["type"] == "last" and ended:
+		if Info.stat["player"]["contact"].empty():
+			Info.stat["player"]["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
 		else:
-			for x in Info.stat["contact"]:
+			for x in Info.stat["player"]["contact"]:
 				if x[0] == speaker.name:
 					x[1] = text[speaker.name][conv]["next"]
 		
@@ -58,8 +58,8 @@ func _identification(Speaker):
 	
 	Name.text = speaker.name
 	
-	if not Info.stat["contact"].empty():
-		for x in Info.stat["contact"]:
+	if not Info.stat["player"]["contact"].empty():
+		for x in Info.stat["player"]["contact"]:
 			if x[0] == speaker.name:
 				conv = x[1]
 	
@@ -67,7 +67,7 @@ func _identification(Speaker):
 	_refresh()
 
 func _refresh():
-	richtextlabel.text = text[speaker.name][conv]["text"].format({"NAME":Info.stat["name"]})
+	richtextlabel.text = text[speaker.name][conv]["text"].format({"NAME":Info.stat["player"]["name"]})
 	
 	if text[speaker.name][conv]["type"] == "question":
 		$M2/BG/M/VB/Desc/Button.show()
@@ -91,7 +91,7 @@ func _refresh():
 		var tradeable = false
 		
 		if taken["type"] == "item":
-			for x in Info.stat["inv"]:
+			for x in Info.stat["player"]["inv"]:
 				if x[0] == taken["value"][0] and x[1] - taken["value"][1] >= 0:
 					x[1] -= taken["value"][1]
 					tradeable = true
@@ -103,7 +103,7 @@ func _refresh():
 				_refresh()
 		
 		elif taken["type"] == "eq":
-			if Info.stat["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
+			if Info.stat["player"]["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
 				tradeable = true
 				conv = next[0]
 				_refresh()
@@ -117,11 +117,38 @@ func _refresh():
 		elif given["type"] == "eq" and tradeable:
 			Info._give_eq(given["value"][0], given["value"][1])
 	
-	if text[speaker.name][conv]["type"] == "last":
+	elif text[speaker.name][conv]["type"] == "last":
 		$M2/BG/M/VB/Desc/Button.hide()
 		$M2/BG/M/VB/Title/NextButton.show()
-		yield(get_tree().create_timer(0.1), "timeout")
-		ended = true
+		
+		if text[speaker.name][conv]["text"] == "":
+			if Info.stat["player"]["contact"].empty():
+				Info.stat["player"]["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
+			else:
+				for x in Info.stat["player"]["contact"]:
+					if x[0] == speaker.name:
+						x[1] = text[speaker.name][conv]["next"]
+			
+			speaker._conversation_ended()
+			queue_free()
+		else:
+			yield(get_tree().create_timer(0.1), "timeout")
+			ended = true
+	
+	elif text[speaker.name][conv]["type"] == "knowledge":
+		$M2/BG/M/VB/Desc/Button.hide()
+		$M2/BG/M/VB/Title/NextButton.hide()
+		
+		if text[speaker.name][conv].has("taken"):
+			print("bayar :((")
+		else:
+			speaker.player._partic()
+			Info.stat["player"]["knowledge"].append(int(text[speaker.name][conv]["given"]))
+			
+		
+		conv = text[speaker.name][conv]["next"]
+		_refresh()
+
 
 func _tweented():
 	$M1.visible = true
