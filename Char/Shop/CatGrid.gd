@@ -1,7 +1,7 @@
 extends Control
 
 var Catalog = preload("res://Char/Shop/Catalog.tscn")
-var Itin = "res://Items/Item.tres"
+var Itin = "res://Items/item.tres"
 var itin = {}
 var current_item = []
 var shopkeeper

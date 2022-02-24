@@ -4,7 +4,7 @@ onready var slot = preload("res://Menu/Inventory/Slot.tscn")
 onready var item = preload("res://Menu/Inventory/Item.tscn")
 onready var tw = $"../../../../../Tween"
 
-var tex_path = "res://Items/Item.tres"
+var tex_path = "res://Items/item.tres"
 var tex = {}
 var selected = []
 

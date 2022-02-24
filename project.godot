@@ -11,14 +11,21 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://World/Global/Intro.tscn"
+run/main_scene="res://World/4 - Side Forest/World.tscn"
 boot_splash/image="res://World/Global/GodotMonochromeDark.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-verlist/Version="v2.0.0-alpha"
+verlist/Version="v2.1.0-alpha"
 "verlist/todo list"={
+"Armor": false,
+"Boots": false,
+"Claw": true,
+"Enemy": false,
+"Hat": false,
+"Health System": false,
+"UI/UX Improvement": false
 }
 
 [autoload]
@@ -39,7 +46,7 @@ window/size/height=720
 window/size/resizable=false
 window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [gdnative]
 

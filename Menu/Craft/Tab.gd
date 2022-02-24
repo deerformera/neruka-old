@@ -4,7 +4,7 @@ onready var t = $Tween
 onready var matslot = preload("res://Menu/Craft/MaterialSlot.tscn")
 onready var slot = preload("res://Menu/Craft/Slot.tscn")
 
-var tex_path = "res://Items/Item.tres"
+var tex_path = "res://Items/item.tres"
 var tex
 var craftable = false
 var craftable_arr = []
@@ -110,7 +110,7 @@ func _refresh():
 			if y[0] == mat[0] and y[1] >= mat[1]:
 				craftable_arr.append(y[0])
 				break
-	
+				
 	if craftable_arr.size() == tex[temp_x]["material"].size():
 		craftable = true
 	

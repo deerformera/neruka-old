@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var partic = preload("res://Char/Player/Learn.tscn")
 onready var animtree = $AnimTree
 onready var animstate = $AnimTree.get("parameters/playback")
 onready var AA = get_node("AA")
@@ -10,7 +11,7 @@ var vec = Vector2()
 var pos = Vector2()
 
 func _ready():
-	speed = 10
+	speed = $EqManager.speed
 
 func _physics_process(delta):
 	pos = $HUD/C/Joystick.pos
@@ -27,7 +28,7 @@ func _physics_process(delta):
 		animtree.set("parameters/Idle/blend_position", vec)
 		animtree.set("parameters/Jump/blend_position", vec)
 		animtree.set("parameters/Attack/blend_position", vec)
-		animtree.set("parameters/IdleToMove/blend_position", vec)
+		animtree.set("parameters/MoveToIdle/blend_position", vec)
 		animtree.set("parameters/Walk/blend_position", vec)
 		animtree.set("parameters/Hurt/blend_position", vec)
 		animstate.travel("Walk")
@@ -60,15 +61,25 @@ func _jump():
 	jump = true
 	set_collision_mask_bit(0, false)
 	set_collision_mask_bit(7, false)
+	
+	var zom = $Camera2D.zoom
+	var t = Tween.new()
+	add_child(t)
+	t.interpolate_property($Camera2D, "zoom", null, zom * 1.1, 0.4, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+	t.start()
 	yield(get_tree().create_timer(0.7), "timeout")
+	t.interpolate_property($Camera2D, "zoom", null, zom, 0.2, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	t.start()
 	set_collision_mask_bit(0, true)
 	set_collision_mask_bit(7, true)
 	speed = 10
 	jump = false
 
 func _dead():
-	print("dead")
 	set_collision_mask_bit(0, false)
 
 func _partic():
-	$Particles2D.emitting = true
+	var particle = partic.instance()
+	particle.global_position = global_position
+	particle.emitting = true
+	get_tree().root.add_child(particle)

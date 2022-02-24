@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-
 func _ready():
 	_tweented()
 
@@ -26,5 +25,6 @@ func _tweented():
 
 func _on_CloseButton_pressed():
 	get_tree().paused = false
+	Info._item_refresh()
 	queue_free()
 

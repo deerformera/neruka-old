@@ -3,7 +3,7 @@
 [ext_resource path="res://Items/X.png" type="Texture" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.309804, 0.309804, 0.309804, 1 )
+bg_color = Color( 0.380392, 0.4, 0.415686, 1 )
 border_color = Color( 0.207843, 0.207843, 0.207843, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 8

@@ -33,13 +33,13 @@ var stat = {
 			},
 			
 			"boots":{
-				"equipped":0,
-				"inv":[]
+				"equipped":2,
+				"inv":[2,3]
 			},
 			
 			"claw":{
 				"equipped":0,
-				"inv":[]
+				"inv":[1, 2, 3, 4]
 			},
 			
 			"hat":{
@@ -111,5 +111,8 @@ func _save():
 func _load():
 	var file = File.new()
 	file.open("user://saves/player.tres", File.READ)
-	stat = file.get_var()
+	stat = to_json(file.get_var())
 	file.close()
+
+func _item_refresh():
+	get_tree().root.get_node("World/Player/EqManager")._refresh()

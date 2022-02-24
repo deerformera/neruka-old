@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Menu/Craft/Craft.gd" type="Script" id=1]
 [ext_resource path="res://UI/NPR_1.png" type="Texture" id=2]
-[ext_resource path="res://UI/PanelDisabled.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=3]
 [ext_resource path="res://UI/NPR_2.png" type="Texture" id=4]
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UI/X.png" type="Texture" id=6]
@@ -11,51 +11,6 @@
 [ext_resource path="res://Menu/Craft/Tab.gd" type="Script" id=9]
 [ext_resource path="res://UI/YesPanel.tres" type="StyleBox" id=10]
 [ext_resource path="res://UI/NoPanel.tres" type="StyleBox" id=11]
-[ext_resource path="res://UI/Font_Normal.tres" type="DynamicFont" id=13]
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.277344, 0.277344, 0.277344, 1 )
-border_color = Color( 0.207843, 0.207843, 0.207843, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.277344, 0.277344, 0.277344, 1 )
-border_color = Color( 0.207843, 0.207843, 0.207843, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
-border_color = Color( 0.133333, 0.133333, 0.133333, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxTexture" id=5]
-
-[sub_resource type="StyleBoxTexture" id=6]
-
-[sub_resource type="Theme" id=7]
-default_font = ExtResource( 13 )
-Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/styles/disabled = ExtResource( 3 )
-Button/styles/focus = null
-Button/styles/hover = SubResource( 9 )
-Button/styles/normal = SubResource( 10 )
-Button/styles/pressed = SubResource( 8 )
-HScrollBar/styles/scroll = SubResource( 5 )
-VScrollBar/styles/scroll = SubResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0, 0.12549, 0.12549, 1 )
@@ -136,7 +91,7 @@ patch_margin_bottom = 60
 [node name="M2" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 7 )
+theme = ExtResource( 3 )
 custom_constants/margin_right = 100
 custom_constants/margin_top = 100
 custom_constants/margin_left = 100
@@ -211,8 +166,8 @@ alignment = 2
 script = ExtResource( 9 )
 
 [node name="List" type="HBoxContainer" parent="M2/BG/M/VB/Tab"]
-margin_left = 520.0
-margin_right = 520.0
+margin_left = 474.0
+margin_right = 474.0
 margin_bottom = 368.0
 size_flags_horizontal = 10
 size_flags_vertical = 3
@@ -239,9 +194,8 @@ expand_icon = true
 
 [node name="1" type="Button" parent="M2/BG/M/VB/Tab/List/Primer"]
 visible = false
-margin_top = 80.0
 margin_right = 64.0
-margin_bottom = 144.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 focus_mode = 0
 size_flags_horizontal = 6
@@ -254,9 +208,8 @@ expand_icon = true
 
 [node name="2" type="Button" parent="M2/BG/M/VB/Tab/List/Primer"]
 visible = false
-margin_top = 160.0
 margin_right = 64.0
-margin_bottom = 224.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 focus_mode = 0
 size_flags_horizontal = 6
@@ -290,15 +243,14 @@ size_flags_vertical = 0
 custom_constants/separation = 16
 
 [node name="Panel" type="VBoxContainer" parent="M2/BG/M/VB/Tab"]
-margin_left = 552.0
+margin_left = 506.0
 margin_right = 980.0
 margin_bottom = 368.0
-rect_min_size = Vector2( 428, 0 )
-size_flags_horizontal = 8
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="M2/BG/M/VB/Tab/Panel"]
-margin_right = 428.0
+margin_right = 474.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 0, 48 )
 size_flags_vertical = 0
@@ -308,7 +260,7 @@ valign = 1
 
 [node name="ReqItem" type="PanelContainer" parent="M2/BG/M/VB/Tab/Panel"]
 margin_top = 52.0
-margin_right = 428.0
+margin_right = 474.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -317,12 +269,12 @@ custom_styles/panel = ExtResource( 7 )
 [node name="SlotGrid" type="HBoxContainer" parent="M2/BG/M/VB/Tab/Panel/ReqItem"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 424.0
+margin_right = 470.0
 margin_bottom = 260.0
 
 [node name="CraftButton" type="Button" parent="M2/BG/M/VB/Tab/Panel"]
 margin_top = 320.0
-margin_right = 428.0
+margin_right = 474.0
 margin_bottom = 368.0
 rect_min_size = Vector2( 0, 48 )
 focus_mode = 0

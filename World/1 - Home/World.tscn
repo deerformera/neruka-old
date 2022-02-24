@@ -231,13 +231,13 @@ tile_data = PoolIntArray( -262145, 536870913, 0, -327680, 536870914, 0, -327679,
 [node name="Door" parent="." instance=ExtResource( 3 )]
 
 [node name="Chest" parent="." instance=ExtResource( 14 )]
-position = Vector2( 216, -184 )
+position = Vector2( 216, -163 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 23 )
 
 [node name="PickableItem" parent="." instance=ExtResource( 15 )]
-position = Vector2( 190, -134 )
+position = Vector2( 187, -106 )
 id = 6
 amount = 1
 

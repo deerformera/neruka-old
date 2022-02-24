@@ -1,10 +1,10 @@
 {
   "boots":{
     "1":{
-      "name":"Basic Boots",
+      "name":"Leather Boots",
       "tier":"basic",
       "speed":"12",
-      "desc":"Just some speed..."
+      "desc":"Made by leather"
     },
     
     "2":{
@@ -15,7 +15,7 @@
     },
 
     "3":{
-      "name":"Purst",
+      "name":"Mesh",
       "tier":"basic",
       "speed":"12",
       "desc":"Bunny Hopper"
@@ -23,7 +23,7 @@
     
     "4":{
       "name":"Zor Boots",
-      "tier":"advanced",
+      "tier":"special",
       "speed":"15",
       "desc":"Zor's Boots"
     }
@@ -31,45 +31,40 @@
 
   "claw":{
     "1":{
-      "name":"Cron",
-      "tier":"advanced",
-      "damage":"10",
-      "desc":"Basic claw"
-    },
-  
-    "2":{
       "name":"Crost",
       "tier":"basic",
       "damage":"12",
       "desc":"Freeze"
     },
   
-    "3":{
-      "name":"Forch",
+    "2":{
+      "name":"Fersa",
       "tier":"basic",
       "damage":"12",
       "desc":"Fire"
     },
   
-    "4":{
-      "name":"Rusch",
+    "3":{
+      "name":"Rusla",
       "tier":"basic",
       "damage":"12",
       "desc":"Slash"
     },
   
-    "5":{
-      "name":"Shan",
+    "4":{
+      "name":"Sirus",
       "tier":"basic",
       "damage":"12",
       "desc":"Slash Forward"
     },
   
-    "6":{
+    "5":{
       "name":"Zor Claw",
       "tier":"special",
       "damage":"25",
       "desc":"Zor's Claw"
     }
-  }
+  },
+  "hat":{},
+  "armor":{}
 }

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Items/Node/C4 - Slash.gd" type="Script" id=1]
+[ext_resource path="res://Items/Node/C4 - Slash.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 6, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 10 ), SubResource( 9 ), SubResource( 8 ) ],
+"loop": true,
+"name": "backward",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "forward",
+"speed": 20.0
+} ]
+
+[node name="C5Slash" type="Position2D"]
+position = Vector2( 0, -6 )
+script = ExtResource( 1 )
+
+[node name="Area" type="Area2D" parent="."]
+position = Vector2( 20, 0 )
+collision_layer = 0
+collision_mask = 20
+
+[node name="Coll" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 6 )
+
+[node name="AnimSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 20, 0 )
+z_index = 1
+frames = SubResource( 7 )
+animation = "forward"

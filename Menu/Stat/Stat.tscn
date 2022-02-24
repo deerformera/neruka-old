@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/NPR_1.png" type="Texture" id=1]
 [ext_resource path="res://UI/NPR_2.png" type="Texture" id=2]
@@ -8,24 +8,19 @@
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/CatUI.png" type="Texture" id=14]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.239216, 0.239216, 0.239216, 1 )
-border_width_bottom = 4
-border_color = Color( 0.192157, 0.192157, 0.192157, 1 )
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.321569, 0.341176, 0.356863, 1 )
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
-border_width_bottom = 3
-border_color = Color( 0.2, 0.2, 0.2, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+anti_aliasing = false
 
 [node name="Stat" type="CanvasLayer"]
 pause_mode = 2
@@ -157,11 +152,12 @@ text = "Name"
 valign = 1
 
 [node name="Namebar" type="Label" parent="M2/BG/M/VB/HB/LVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 56.0
 margin_right = 411.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 align = 1
 valign = 1
 
@@ -174,11 +170,12 @@ text = "Health"
 valign = 1
 
 [node name="Healthbar" type="ProgressBar" parent="M2/BG/M/VB/HB/LVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 168.0
 margin_right = 411.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/bg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 
 [node name="S" type="ScrollContainer" parent="M2/BG/M/VB/HB"]
 margin_left = 589.0
@@ -202,11 +199,12 @@ text = "Level"
 valign = 1
 
 [node name="Levelbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 56.0
 margin_right = 411.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 text = "null"
 align = 1
 valign = 1
@@ -220,11 +218,12 @@ text = "World"
 valign = 1
 
 [node name="Worldbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 168.0
 margin_right = 411.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 align = 1
 valign = 1
 
@@ -237,11 +236,12 @@ text = "Coins"
 valign = 1
 
 [node name="Coinsbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 280.0
 margin_right = 411.0
 margin_bottom = 328.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 text = "null"
 align = 1
 valign = 1
@@ -255,11 +255,12 @@ text = "Armor Equipped"
 valign = 1
 
 [node name="ArmEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 392.0
 margin_right = 411.0
 margin_bottom = 440.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 text = "Unequipped"
 align = 1
 valign = 1
@@ -273,11 +274,12 @@ text = "Boots Equipped"
 valign = 1
 
 [node name="BootsEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 504.0
 margin_right = 411.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 text = "Unequipped"
 align = 1
 valign = 1
@@ -291,11 +293,12 @@ text = "Claw Equipped"
 valign = 1
 
 [node name="ClawEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 616.0
 margin_right = 411.0
 margin_bottom = 664.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 text = "Unequipped"
 align = 1
 valign = 1
@@ -309,11 +312,12 @@ text = "Hat Equipped"
 valign = 1
 
 [node name="HatEqbar" type="Label" parent="M2/BG/M/VB/HB/S/RVB"]
+modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 728.0
 margin_right = 411.0
 margin_bottom = 776.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 3 )
 text = "Unequipped"
 align = 1
 valign = 1

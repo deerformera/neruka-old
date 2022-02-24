@@ -4,4 +4,4 @@ func _ready():
 	connect("body_entered", self, "_damaged")
 
 func _damaged(body):
-	Info.stat["health"] -= 20
+	Info.stat["player"]["health"] -= 20

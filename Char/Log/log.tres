@@ -34,7 +34,7 @@
     "040":{
       "type":"trade",
       "text":"",
-      "given":{"type":"eq", "value":["boots",1]},
+      "given":{"type":"eq", "value":["boots",2]},
       "taken":{"type":"item", "value":[5,6]},
       "next":["050", "051"]
     },
@@ -84,7 +84,7 @@
     "111":{
       "type":"trade",
       "text":"",
-      "given":{"type":"eq", "value":["boots",1]},
+      "given":{"type":"eq", "value":["boots",2]},
       "taken":{"type":"item", "value":[5,6]},
       "next":["120", "121"]
     },

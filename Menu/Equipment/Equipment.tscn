@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://UI/NPR_1.png" type="Texture" id=1]
 [ext_resource path="res://UI/NPR_2.png" type="Texture" id=2]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=3]
 [ext_resource path="res://Menu/Equipment/Corner.png" type="Texture" id=4]
-[ext_resource path="res://Menu/Equipment/EquippedGrid.gd" type="Script" id=5]
+[ext_resource path="res://Menu/Equipment/EqSet.gd" type="Script" id=5]
 [ext_resource path="res://UI/X.png" type="Texture" id=6]
 [ext_resource path="res://UI/Border.png" type="Texture" id=7]
 [ext_resource path="res://UI/CatUI.png" type="Texture" id=8]
@@ -12,13 +12,30 @@
 [ext_resource path="res://Items/Texture/BootsBorder.png" type="Texture" id=10]
 [ext_resource path="res://UI/NoPanel.tres" type="StyleBox" id=11]
 [ext_resource path="res://UI/YesPanel.tres" type="StyleBox" id=12]
-[ext_resource path="res://Menu/Equipment/RightSlot.gd" type="Script" id=13]
+[ext_resource path="res://Menu/Equipment/Bar Texture/Bar90.png" type="Texture" id=13]
+[ext_resource path="res://Menu/Equipment/Bar Texture/Bar.png" type="Texture" id=14]
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=15]
-[ext_resource path="res://Items/X.png" type="Texture" id=16]
-[ext_resource path="res://UI/X32.png" type="Texture" id=17]
+[ext_resource path="res://Menu/Equipment/Bar Texture/Bar180.png" type="Texture" id=16]
+[ext_resource path="res://Items/Texture/B-Gold.png" type="Texture" id=17]
 [ext_resource path="res://Items/Texture/ClawBorder.png" type="Texture" id=18]
-[ext_resource path="res://UI/Panel.tres" type="StyleBox" id=19]
-[ext_resource path="res://Menu/Equipment/RightPanel.gd" type="Script" id=21]
+[ext_resource path="res://Menu/Equipment/Bar Texture/Bar90Pressed.png" type="Texture" id=20]
+[ext_resource path="res://Menu/Equipment/Bar Texture/BarPressed.png" type="Texture" id=21]
+[ext_resource path="res://Menu/Equipment/Bar Texture/Bar180Pressed.png" type="Texture" id=22]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 8.0
+content_margin_right = 4.0
+content_margin_top = 8.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.321569, 0.341176, 0.356863, 1 )
+border_width_bottom = 4
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+anti_aliasing = false
 
 [node name="Equipment" type="CanvasLayer"]
 pause_mode = 2
@@ -117,32 +134,28 @@ margin_right = 984.0
 margin_bottom = 424.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 25
-custom_constants/margin_top = 25
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 25
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 5 )
 
-[node name="Grid" type="GridContainer" parent="M2/BG/M/VB/M"]
+[node name="Center" type="GridContainer" parent="M2/BG/M/VB/M"]
 margin_left = 344.0
 margin_top = 38.0
 margin_right = 640.0
 margin_bottom = 334.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 3
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="C1" type="TextureRect" parent="M2/BG/M/VB/M/Grid"]
+[node name="R0" type="TextureRect" parent="M2/BG/M/VB/M/Center"]
 margin_right = 96.0
 margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 4 )
 stretch_mode = 4
 
-[node name="B1" type="TextureButton" parent="M2/BG/M/VB/M/Grid"]
+[node name="hButton" type="TextureButton" parent="M2/BG/M/VB/M/Center"]
 margin_left = 100.0
 margin_right = 196.0
 margin_bottom = 96.0
@@ -152,18 +165,19 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
 expand = true
 
-[node name="C2" type="TextureRect" parent="M2/BG/M/VB/M/Grid"]
+[node name="R1" type="TextureRect" parent="M2/BG/M/VB/M/Center"]
 margin_left = 200.0
 margin_right = 296.0
 margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 4 )
 stretch_mode = 4
 flip_h = true
 
-[node name="B2" type="TextureButton" parent="M2/BG/M/VB/M/Grid"]
+[node name="aButton" type="TextureButton" parent="M2/BG/M/VB/M/Center"]
 margin_top = 100.0
 margin_right = 96.0
 margin_bottom = 196.0
@@ -173,19 +187,19 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
 expand = true
 
-[node name="Cat" type="TextureRect" parent="M2/BG/M/VB/M/Grid"]
+[node name="cat" type="TextureRect" parent="M2/BG/M/VB/M/Center"]
 margin_left = 100.0
 margin_top = 100.0
 margin_right = 196.0
 margin_bottom = 196.0
-rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 8 )
 expand = true
-stretch_mode = 6
 
-[node name="B3" type="TextureButton" parent="M2/BG/M/VB/M/Grid"]
+[node name="cButton" type="TextureButton" parent="M2/BG/M/VB/M/Center"]
 margin_left = 200.0
 margin_top = 100.0
 margin_right = 296.0
@@ -196,18 +210,19 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 18 )
 expand = true
 
-[node name="C4" type="TextureRect" parent="M2/BG/M/VB/M/Grid"]
+[node name="R3" type="TextureRect" parent="M2/BG/M/VB/M/Center"]
 margin_top = 200.0
 margin_right = 96.0
 margin_bottom = 296.0
-rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 4 )
 stretch_mode = 4
 flip_v = true
 
-[node name="B4" type="TextureButton" parent="M2/BG/M/VB/M/Grid"]
+[node name="bButton" type="TextureButton" parent="M2/BG/M/VB/M/Center"]
 margin_left = 100.0
 margin_top = 200.0
 margin_right = 196.0
@@ -218,83 +233,308 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
 expand = true
 
-[node name="C3" type="TextureRect" parent="M2/BG/M/VB/M/Grid"]
+[node name="R4" type="TextureRect" parent="M2/BG/M/VB/M/Center"]
 margin_left = 200.0
 margin_top = 200.0
 margin_right = 296.0
 margin_bottom = 296.0
-rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 4 )
 stretch_mode = 4
 flip_h = true
 flip_v = true
 
-[node name="armor" type="HBoxContainer" parent="M2/BG/M/VB/M"]
-margin_left = 444.0
-margin_top = 25.0
-margin_right = 540.0
-margin_bottom = 347.0
-size_flags_horizontal = 4
+[node name="RPanel" type="VBoxContainer" parent="M2/BG/M/VB/M"]
+visible = false
+margin_left = 708.0
+margin_top = 20.0
+margin_right = 964.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 8
 size_flags_vertical = 3
 
-[node name="S" type="ScrollContainer" parent="M2/BG/M/VB/M/armor"]
-margin_right = 96.0
-margin_bottom = 322.0
-rect_min_size = Vector2( 96, 0 )
+[node name="nameLabel" type="RichTextLabel" parent="M2/BG/M/VB/M/RPanel"]
+margin_right = 256.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "name : "
 
-[node name="VB" type="VBoxContainer" parent="M2/BG/M/VB/M/armor/S"]
-margin_top = 161.0
-margin_bottom = 161.0
+[node name="descLabel" type="RichTextLabel" parent="M2/BG/M/VB/M/RPanel"]
+margin_top = 52.0
+margin_right = 256.0
+margin_bottom = 264.0
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 1 )
+text = "description : "
+
+[node name="EqButton" type="Button" parent="M2/BG/M/VB/M/RPanel"]
+margin_top = 268.0
+margin_right = 256.0
+margin_bottom = 332.0
+rect_min_size = Vector2( 0, 64 )
+focus_mode = 0
+custom_colors/font_color = Color( 1, 0.694118, 0.839216, 1 )
+custom_colors/font_color_hover = Color( 1, 0.694118, 0.839216, 1 )
+custom_colors/font_color_pressed = Color( 0.603922, 0.933333, 1, 1 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Equip"
+
+[node name="LPanel" type="VBoxContainer" parent="M2/BG/M/VB/M"]
+visible = false
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 276.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 256, 0 )
 size_flags_horizontal = 0
-size_flags_vertical = 6
+size_flags_vertical = 3
 
-[node name="hat" type="HBoxContainer" parent="M2/BG/M/VB/M"]
-margin_left = 332.0
-margin_top = 25.0
-margin_right = 652.0
-margin_bottom = 121.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
+[node name="nameLabel" type="RichTextLabel" parent="M2/BG/M/VB/M/LPanel"]
+margin_right = 256.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+custom_styles/normal = SubResource( 1 )
+text = "name : "
 
-[node name="S" type="ScrollContainer" parent="M2/BG/M/VB/M/hat"]
-margin_right = 320.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 320, 96 )
+[node name="descLabel" type="RichTextLabel" parent="M2/BG/M/VB/M/LPanel"]
+margin_top = 52.0
+margin_right = 256.0
+margin_bottom = 264.0
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 1 )
+text = "description : "
 
-[node name="VB" type="HBoxContainer" parent="M2/BG/M/VB/M/hat/S"]
-margin_left = 160.0
-margin_right = 160.0
-size_flags_horizontal = 6
-size_flags_vertical = 0
+[node name="EqButton" type="Button" parent="M2/BG/M/VB/M/LPanel"]
+margin_top = 268.0
+margin_right = 256.0
+margin_bottom = 332.0
+rect_min_size = Vector2( 0, 64 )
+focus_mode = 0
+custom_colors/font_color = Color( 1, 0.694118, 0.839216, 1 )
+custom_colors/font_color_hover = Color( 1, 0.694118, 0.839216, 1 )
+custom_colors/font_color_pressed = Color( 0.603922, 0.933333, 1, 1 )
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Equip"
 
-[node name="claw" type="HBoxContainer" parent="M2/BG/M/VB/M"]
+[node name="claw" type="ScrollContainer" parent="M2/BG/M/VB/M"]
+visible = false
 margin_left = 444.0
-margin_top = 25.0
+margin_top = 20.0
 margin_right = 540.0
-margin_bottom = 347.0
+margin_bottom = 352.0
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 3
-custom_constants/separation = 20
-script = ExtResource( 13 )
-
-[node name="S" type="ScrollContainer" parent="M2/BG/M/VB/M/claw"]
-margin_right = 96.0
-margin_bottom = 322.0
-rect_min_size = Vector2( 96, 0 )
-size_flags_horizontal = 5
-size_flags_vertical = 5
 scroll_horizontal_enabled = false
 
-[node name="SS" type="VBoxContainer" parent="M2/BG/M/VB/M/claw/S"]
+[node name="Box" type="VBoxContainer" parent="M2/BG/M/VB/M/claw"]
 margin_right = 96.0
-margin_bottom = 596.0
-size_flags_horizontal = 0
+margin_bottom = 576.0
+size_flags_horizontal = 4
 size_flags_vertical = 6
+custom_constants/separation = 0
 
-[node name="1" type="TextureButton" parent="M2/BG/M/VB/M/claw/S/SS"]
+[node name="1" type="TextureButton" parent="M2/BG/M/VB/M/claw/Box"]
+margin_top = 96.0
 margin_right = 96.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="2" type="TextureButton" parent="M2/BG/M/VB/M/claw/Box"]
+margin_top = 192.0
+margin_right = 96.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="3" type="TextureButton" parent="M2/BG/M/VB/M/claw/Box"]
+margin_top = 288.0
+margin_right = 96.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="4" type="TextureButton" parent="M2/BG/M/VB/M/claw/Box"]
+margin_top = 384.0
+margin_right = 96.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="5" type="TextureButton" parent="M2/BG/M/VB/M/claw/Box"]
+margin_top = 480.0
+margin_right = 96.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+
+[node name="armor" type="ScrollContainer" parent="M2/BG/M/VB/M"]
+visible = false
+margin_left = 444.0
+margin_top = 20.0
+margin_right = 540.0
+margin_bottom = 352.0
+mouse_filter = 1
+size_flags_horizontal = 4
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="Box" type="VBoxContainer" parent="M2/BG/M/VB/M/armor"]
+margin_right = 96.0
+margin_bottom = 576.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_constants/separation = 0
+
+[node name="1" type="TextureButton" parent="M2/BG/M/VB/M/armor/Box"]
+margin_top = 96.0
+margin_right = 96.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+flip_h = true
+
+[node name="2" type="TextureButton" parent="M2/BG/M/VB/M/armor/Box"]
+margin_top = 192.0
+margin_right = 96.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+flip_h = true
+
+[node name="3" type="TextureButton" parent="M2/BG/M/VB/M/armor/Box"]
+margin_top = 288.0
+margin_right = 96.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+flip_h = true
+
+[node name="4" type="TextureButton" parent="M2/BG/M/VB/M/armor/Box"]
+margin_top = 384.0
+margin_right = 96.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+flip_h = true
+
+[node name="5" type="TextureButton" parent="M2/BG/M/VB/M/armor/Box"]
+margin_top = 480.0
+margin_right = 96.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 20 )
+expand = true
+flip_h = true
+
+[node name="boots" type="ScrollContainer" parent="M2/BG/M/VB/M"]
+visible = false
+margin_left = 300.0
+margin_top = 256.0
+margin_right = 684.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 384, 96 )
+mouse_filter = 1
+size_flags_horizontal = 4
+size_flags_vertical = 8
+scroll_vertical_enabled = false
+
+[node name="Box" type="HBoxContainer" parent="M2/BG/M/VB/M/boots"]
+margin_right = 480.0
+margin_bottom = 96.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="1" type="TextureButton" parent="M2/BG/M/VB/M/boots/Box"]
+margin_left = 96.0
+margin_right = 192.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 focus_mode = 0
@@ -302,106 +542,104 @@ mouse_filter = 1
 toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 14 )
 expand = true
 
-[node name="2" type="TextureButton" parent="M2/BG/M/VB/M/claw/S/SS"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 196.0
-rect_min_size = Vector2( 96, 96 )
-focus_mode = 0
-mouse_filter = 1
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-expand = true
-
-[node name="3" type="TextureButton" parent="M2/BG/M/VB/M/claw/S/SS"]
-margin_top = 200.0
-margin_right = 96.0
-margin_bottom = 296.0
-rect_min_size = Vector2( 96, 96 )
-focus_mode = 0
-mouse_filter = 1
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-expand = true
-
-[node name="4" type="TextureButton" parent="M2/BG/M/VB/M/claw/S/SS"]
-margin_top = 300.0
-margin_right = 96.0
-margin_bottom = 396.0
-rect_min_size = Vector2( 96, 96 )
-focus_mode = 0
-mouse_filter = 1
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-expand = true
-
-[node name="5" type="TextureButton" parent="M2/BG/M/VB/M/claw/S/SS"]
-margin_top = 400.0
-margin_right = 96.0
-margin_bottom = 496.0
-rect_min_size = Vector2( 96, 96 )
-focus_mode = 0
-mouse_filter = 1
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-expand = true
-
-[node name="6" type="TextureButton" parent="M2/BG/M/VB/M/claw/S/SS"]
-margin_top = 500.0
-margin_right = 96.0
-margin_bottom = 596.0
-rect_min_size = Vector2( 96, 96 )
-focus_mode = 0
-mouse_filter = 1
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-expand = true
-
-[node name="boots" type="HBoxContainer" parent="M2/BG/M/VB/M"]
-margin_left = 332.0
-margin_top = 251.0
-margin_right = 652.0
-margin_bottom = 347.0
-size_flags_horizontal = 4
-size_flags_vertical = 8
-script = ExtResource( 13 )
-
-[node name="S" type="ScrollContainer" parent="M2/BG/M/VB/M/boots"]
-margin_right = 320.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 320, 96 )
-size_flags_horizontal = 4
-size_flags_vertical = 8
+[node name="MIcon" type="MarginContainer" parent="M2/BG/M/VB/M/boots/Box/1"]
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SS" type="HBoxContainer" parent="M2/BG/M/VB/M/boots/S"]
-margin_right = 396.0
+[node name="Icon" type="TextureRect" parent="M2/BG/M/VB/M/boots/Box/1/MIcon"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 80.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="TextureButton" parent="M2/BG/M/VB/M/boots/Box"]
+margin_left = 192.0
+margin_right = 288.0
 margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 14 )
+expand = true
+
+[node name="3" type="TextureButton" parent="M2/BG/M/VB/M/boots/Box"]
+margin_left = 288.0
+margin_right = 384.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 14 )
+expand = true
+
+[node name="4" type="TextureButton" parent="M2/BG/M/VB/M/boots/Box"]
+margin_left = 384.0
+margin_right = 480.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 14 )
+expand = true
+
+[node name="hat" type="ScrollContainer" parent="M2/BG/M/VB/M"]
+visible = false
+margin_left = 300.0
+margin_top = 20.0
+margin_right = 684.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 384, 96 )
+mouse_filter = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+scroll_vertical_enabled = false
+
+[node name="Box" type="HBoxContainer" parent="M2/BG/M/VB/M/hat"]
+margin_right = 480.0
+margin_bottom = 96.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+custom_constants/separation = 0
 alignment = 1
 
-[node name="1" type="TextureButton" parent="M2/BG/M/VB/M/boots/S/SS"]
-margin_right = 96.0
+[node name="1" type="TextureButton" parent="M2/BG/M/VB/M/hat/Box"]
+margin_left = 96.0
+margin_right = 192.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 focus_mode = 0
@@ -410,12 +648,13 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 16 )
 expand = true
 
-[node name="2" type="TextureButton" parent="M2/BG/M/VB/M/boots/S/SS"]
-margin_left = 100.0
-margin_right = 196.0
+[node name="2" type="TextureButton" parent="M2/BG/M/VB/M/hat/Box"]
+margin_left = 192.0
+margin_right = 288.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 focus_mode = 0
@@ -424,12 +663,13 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 16 )
 expand = true
 
-[node name="3" type="TextureButton" parent="M2/BG/M/VB/M/boots/S/SS"]
-margin_left = 200.0
-margin_right = 296.0
+[node name="3" type="TextureButton" parent="M2/BG/M/VB/M/hat/Box"]
+margin_left = 288.0
+margin_right = 384.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 focus_mode = 0
@@ -438,12 +678,13 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 16 )
 expand = true
 
-[node name="4" type="TextureButton" parent="M2/BG/M/VB/M/boots/S/SS"]
-margin_left = 300.0
-margin_right = 396.0
+[node name="4" type="TextureButton" parent="M2/BG/M/VB/M/hat/Box"]
+margin_left = 384.0
+margin_right = 480.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 focus_mode = 0
@@ -452,118 +693,10 @@ toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 16 )
 expand = true
 
-[node name="RightPanel" type="VBoxContainer" parent="M2/BG/M/VB/M"]
-margin_left = 719.0
-margin_top = 25.0
-margin_right = 959.0
-margin_bottom = 347.0
-rect_min_size = Vector2( 240, 0 )
-size_flags_horizontal = 8
-size_flags_vertical = 3
-custom_constants/separation = 10
-script = ExtResource( 21 )
-
-[node name="Name" type="RichTextLabel" parent="M2/BG/M/VB/M/RightPanel"]
-margin_right = 240.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Value" type="RichTextLabel" parent="M2/BG/M/VB/M/RightPanel"]
-margin_top = 58.0
-margin_right = 240.0
-margin_bottom = 106.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Tier" type="RichTextLabel" parent="M2/BG/M/VB/M/RightPanel"]
-margin_top = 116.0
-margin_right = 240.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Desc" type="RichTextLabel" parent="M2/BG/M/VB/M/RightPanel"]
-margin_top = 174.0
-margin_right = 240.0
-margin_bottom = 264.0
-size_flags_vertical = 3
-custom_styles/normal = ExtResource( 19 )
-
-[node name="Equip" type="Button" parent="M2/BG/M/VB/M/RightPanel"]
-margin_top = 274.0
-margin_right = 240.0
-margin_bottom = 322.0
-rect_min_size = Vector2( 0, 48 )
-focus_mode = 0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/normal = ExtResource( 11 )
-disabled = true
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-text = "Equip"
-
-[node name="LeftPanel" type="VBoxContainer" parent="M2/BG/M/VB/M"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 265.0
-margin_bottom = 347.0
-rect_min_size = Vector2( 240, 0 )
-size_flags_horizontal = 0
-size_flags_vertical = 3
-custom_constants/separation = 10
-
-[node name="Name" type="RichTextLabel" parent="M2/BG/M/VB/M/LeftPanel"]
-margin_right = 240.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Damage" type="RichTextLabel" parent="M2/BG/M/VB/M/LeftPanel"]
-margin_top = 58.0
-margin_right = 240.0
-margin_bottom = 106.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Tier" type="RichTextLabel" parent="M2/BG/M/VB/M/LeftPanel"]
-margin_top = 116.0
-margin_right = 240.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Desc" type="RichTextLabel" parent="M2/BG/M/VB/M/LeftPanel"]
-margin_top = 174.0
-margin_right = 240.0
-margin_bottom = 264.0
-size_flags_vertical = 3
-custom_styles/normal = ExtResource( 19 )
-fit_content_height = true
-
-[node name="Equip" type="Button" parent="M2/BG/M/VB/M/LeftPanel"]
-margin_top = 274.0
-margin_right = 240.0
-margin_bottom = 322.0
-rect_min_size = Vector2( 0, 48 )
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = ExtResource( 12 )
-custom_styles/normal = ExtResource( 11 )
-disabled = true
-toggle_mode = true
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-text = "Equip"
+[node name="Tween" type="Tween" parent="M2/BG/M/VB/M"]
 
 [connection signal="pressed" from="M2/BG/M/VB/Title/CloseButton" to="." method="_on_CloseButton_pressed"]

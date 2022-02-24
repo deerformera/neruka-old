@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-var ItemTexture = "res://Items/Item.tres"
+var ItemTexture = "res://Items/item.tres"
 var tex = {}
-
+var speed = 7
 var vec = Vector2()
 var body = null
 var picked = false
@@ -30,5 +30,7 @@ func _physics_process(delta):
 		if vec.length() <= 10:
 			Info._give_item(id, amount)
 			queue_free()
-	
-	move_and_slide(vec * 7)
+		
+		speed += 0.2
+		
+	move_and_slide(vec * speed)

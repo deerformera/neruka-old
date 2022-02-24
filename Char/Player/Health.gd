@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if changed:
 		var t = Tween.new()
 		add_child(t)
-		t.interpolate_property($HealthBar, "value", null, Info.stat["health"], 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+		t.interpolate_property($HealthBar, "value", null, Info.stat["player"]["health"], 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
 		t.start()
 		
 		var sprite = $"../../../Sprite"

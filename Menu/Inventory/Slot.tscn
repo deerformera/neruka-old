@@ -1,10 +1,24 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/PanelPressed.tres" type="StyleBox" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.321569, 0.341176, 0.356863, 1 )
+border_color = Color( 0.266667, 0.282353, 0.298039, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Slot" type="Button"]
+self_modulate = Color( 1, 1, 1, 0.686275 )
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 focus_mode = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = SubResource( 1 )
 toggle_mode = true
 shortcut_in_tooltip = false
 enabled_focus_mode = 0

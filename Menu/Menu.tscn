@@ -1,23 +1,23 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected6.png" type="Texture" id=1]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected1.png" type="Texture" id=2]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected1.png" type="Texture" id=1]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected6.png" type="Texture" id=2]
 [ext_resource path="res://Menu/TSB.gd" type="Script" id=3]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected8.png" type="Texture" id=4]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected3.png" type="Texture" id=5]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected2.png" type="Texture" id=6]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected4.png" type="Texture" id=7]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected7.png" type="Texture" id=8]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected9.png" type="Texture" id=9]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected9.png" type="Texture" id=4]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected3.png" type="Texture" id=5]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected4.png" type="Texture" id=6]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected2.png" type="Texture" id=7]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected3.png" type="Texture" id=8]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected8.png" type="Texture" id=9]
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=10]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected1.png" type="Texture" id=11]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected4.png" type="Texture" id=12]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected6.png" type="Texture" id=13]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected2.png" type="Texture" id=14]
-[ext_resource path="res://Menu/Menu (B)/Menu_Selected9.png" type="Texture" id=15]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected8.png" type="Texture" id=16]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected7.png" type="Texture" id=17]
-[ext_resource path="res://Menu/Menu (B)/Menu_UnSelected3.png" type="Texture" id=18]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected6.png" type="Texture" id=11]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected1.png" type="Texture" id=12]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected4.png" type="Texture" id=13]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected7.png" type="Texture" id=14]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected7.png" type="Texture" id=15]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected2.png" type="Texture" id=16]
+[ext_resource path="res://Menu/Menu (DB)/Menu_UnSelected8.png" type="Texture" id=17]
+[ext_resource path="res://Menu/Menu (DB)/Menu_Selected9.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=137]
 extents = Vector2( 64, 64 )
@@ -51,8 +51,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="1"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 2 )
-pressed = ExtResource( 11 )
+normal = ExtResource( 12 )
+pressed = ExtResource( 1 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true
@@ -74,8 +74,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="2"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 14 )
-pressed = ExtResource( 6 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 16 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true
@@ -97,7 +97,7 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="3"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 18 )
+normal = ExtResource( 8 )
 pressed = ExtResource( 5 )
 shape = SubResource( 137 )
 shape_visible = false
@@ -120,8 +120,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="4"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 7 )
-pressed = ExtResource( 12 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 6 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true
@@ -164,8 +164,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="6"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 13 )
-pressed = ExtResource( 1 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 2 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true
@@ -187,8 +187,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="7"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 17 )
-pressed = ExtResource( 8 )
+normal = ExtResource( 15 )
+pressed = ExtResource( 14 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true
@@ -211,8 +211,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="8"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 16 )
-pressed = ExtResource( 4 )
+normal = ExtResource( 17 )
+pressed = ExtResource( 9 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true
@@ -235,8 +235,8 @@ flat = true
 [node name="TSB" type="TouchScreenButton" parent="9"]
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
-normal = ExtResource( 9 )
-pressed = ExtResource( 15 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 18 )
 shape = SubResource( 137 )
 shape_visible = false
 passby_press = true

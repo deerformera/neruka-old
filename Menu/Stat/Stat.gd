@@ -13,10 +13,10 @@ func _ready():
 	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Info.stat["player"]["place"]
 	
 	if Info.stat["player"]["eq"]["claw"]["equipped"] != 0:
-		$M2/BG/M/VB/HB/S/RVB/ClawEqbar.text = tex["claw"][str(Info.stat["eq"]["claw"]["equipped"])]["name"]
+		$M2/BG/M/VB/HB/S/RVB/ClawEqbar.text = tex["claw"][str(Info.stat["player"]["eq"]["claw"]["equipped"])]["name"]
 	
 	if Info.stat["player"]["eq"]["boots"]["equipped"] != 0:
-		$M2/BG/M/VB/HB/S/RVB/BootsEqbar.text = tex["boots"][str(Info.stat["eq"]["boots"]["equipped"])]["name"]
+		$M2/BG/M/VB/HB/S/RVB/BootsEqbar.text = tex["boots"][str(Info.stat["player"]["eq"]["boots"]["equipped"])]["name"]
 	
 	
 	_tweented()
