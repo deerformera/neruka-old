@@ -11,20 +11,20 @@ config_version=4
 [application]
 
 config/name="Neoruka"
-run/main_scene="res://World/4 - Side Forest/World.tscn"
+run/main_scene="res://World/0 - Start/World.tscn"
 boot_splash/image="res://World/Global/GodotMonochromeDark.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
-verlist/Version="v2.1.0-alpha"
+verlist/Version="v2.2.0-alpha"
 "verlist/todo list"={
 "Armor": false,
 "Boots": false,
 "Claw": true,
 "Enemy": false,
 "Hat": false,
-"Health System": false,
+"Health System": true,
 "UI/UX Improvement": false
 }
 

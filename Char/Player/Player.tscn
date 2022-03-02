@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Char/Player/Cat.png" type="Texture" id=1]
 [ext_resource path="res://Char/Player/Player.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Char/Player/Ray.gd" type="Script" id=4]
 [ext_resource path="res://Char/Player/Joystick.gd" type="Script" id=5]
 [ext_resource path="res://Joystick/Joystick.png" type="Texture" id=6]
-[ext_resource path="res://UI/Retron2000.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://UI/Hearth-full.png" type="Texture" id=7]
 [ext_resource path="res://Char/Player/HUD.gd" type="Script" id=10]
 [ext_resource path="res://Char/Player/Health.gd" type="Script" id=11]
 [ext_resource path="res://Joystick/JoystickCenter.png" type="Texture" id=12]
@@ -1613,36 +1613,8 @@ anti_aliasing = false
 [sub_resource type="RectangleShape2D" id=124]
 extents = Vector2( 96, 64 )
 
-[sub_resource type="DynamicFont" id=141]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 7 )
-
-[sub_resource type="StyleBoxFlat" id=139]
-bg_color = Color( 0.00784314, 0.580392, 0, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id=140]
-bg_color = Color( 0.2, 0.2, 0.2, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 1
+[sub_resource type="StreamTexture" id=183]
+load_path = "res://.import/Shielded-heart.png-3c067664f76f7b554078a1a1391d852b.stex"
 
 [sub_resource type="CircleShape2D" id=136]
 radius = 160.0
@@ -1653,7 +1625,7 @@ extents = Vector2( 20, 16 )
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
 collision_layer = 2
-collision_mask = 14
+collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -1662,7 +1634,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 5
 vframes = 17
-frame = 21
+frame = 5
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -1712,7 +1684,7 @@ anim_player = NodePath("../AnimPlayer")
 active = true
 parameters/playback = SubResource( 105 )
 parameters/Attack/blend_position = Vector2( 0, 0 )
-parameters/Hurt/blend_position = Vector2( 0, 0 )
+parameters/Hurt/blend_position = Vector2( -0.121359, -0.508621 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Jump/blend_position = Vector2( 0, 0 )
 parameters/MoveToIdle/blend_position = Vector2( 0, 0 )
@@ -1771,30 +1743,172 @@ custom_styles/panel = SubResource( 157 )
 shape = SubResource( 124 )
 action = "Attack"
 
-[node name="Health" type="MarginContainer" parent="HUD/C"]
+[node name="Health" type="VBoxContainer" parent="HUD/C"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthBar" type="ProgressBar" parent="HUD/C/Health"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 330.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 320, 24 )
+[node name="HealthBar" type="HBoxContainer" parent="HUD/C/Health"]
+margin_right = 320.0
+margin_bottom = 32.0
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 141 )
-custom_styles/fg = SubResource( 139 )
-custom_styles/bg = SubResource( 140 )
+size_flags_vertical = 0
+
+[node name="0" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="1" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="2" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="3" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="4" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 144.0
+margin_right = 176.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="5" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 180.0
+margin_right = 212.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="6" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 216.0
+margin_right = 248.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="7" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 252.0
+margin_right = 284.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="8" type="TextureRect" parent="HUD/C/Health/HealthBar"]
+margin_left = 288.0
+margin_right = 320.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 7 )
+stretch_mode = 6
+
+[node name="ShieldBar" type="HBoxContainer" parent="HUD/C/Health"]
+margin_top = 36.0
+margin_right = 320.0
+margin_bottom = 68.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="0" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="1" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="2" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="3" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="4" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 144.0
+margin_right = 176.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="5" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 180.0
+margin_right = 212.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="6" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 216.0
+margin_right = 248.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="7" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 252.0
+margin_right = 284.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
+
+[node name="8" type="TextureRect" parent="HUD/C/Health/ShieldBar"]
+margin_left = 288.0
+margin_right = 320.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = SubResource( 183 )
+stretch_mode = 6
 
 [node name="Joystick" type="MarginContainer" parent="HUD/C"]
 modulate = Color( 1, 1, 1, 0.607843 )

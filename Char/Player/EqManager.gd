@@ -2,8 +2,13 @@ extends Node2D
 
 var tex: Dictionary = {}
 
-var speed = 10
-var damage = 10
+var speed
+var damage
+var armor
+
+var armor_scene = {
+	"1":"res://Items/Node/A1.tscn"
+}
 
 var claw_scene = {
 	"0":"res://Items/Node/C0.tscn",
@@ -14,6 +19,7 @@ var claw_scene = {
 }
 
 var boots_scene = {
+	"1":"res://Items/Node/B1.tscn",
 	"2":"res://Items/Node/B2.tscn",
 	"3":"res://Items/Node/B3.tscn"
 }
@@ -24,17 +30,31 @@ func _ready():
 	tex = parse_json(f.get_as_text())
 	f.close()
 	_refresh()
-	for x in tex["claw"]:
-		print([tex["claw"][x]["desc"], tex["claw"][x]["name"]])
+
 
 func _refresh():
+	_refresh_armor()
 	_refresh_boots()
 	_refresh_claw()
+
+func _refresh_armor():
+	var equipped = Info.stat["player"]["eq"]["armor"]["equipped"]
+	if equipped == 0:
+		armor = 0
+	else:
+		armor = int(tex["armor"][str(equipped)]["armor"])
+	
+	if get_node("Armor") != null:
+		get_node("Armor").queue_free()
+		remove_child(get_node("Claw"))
+	
+	find_parent("Player").get_node("HUD/C/Health").max_armor = armor
+	find_parent("Player").get_node("HUD/C/Health")._refresh()
 
 func _refresh_claw():
 	var equipped = Info.stat["player"]["eq"]["claw"]["equipped"]
 	if equipped == 0:
-		damage = 10
+		damage = 2
 	else:
 		damage = int(tex["claw"][str(equipped)]["damage"])
 	

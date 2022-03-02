@@ -2,28 +2,24 @@
   "boots":{
     "1":{
       "name":"Leather Boots",
-      "tier":"basic",
-      "speed":"12",
+      "speed":"10",
       "desc":"Made by leather"
     },
     
     "2":{
       "name":"dursh",
-      "tier":"basic",
       "speed":"12",
       "desc":"make you dash when you're attacking"
     },
 
     "3":{
-      "name":"Mesh",
-      "tier":"basic",
+      "name":"Meshy",
       "speed":"12",
       "desc":"Bunny Hopper"
     },
     
     "4":{
       "name":"Zor Boots",
-      "tier":"special",
       "speed":"15",
       "desc":"Zor's Boots"
     }
@@ -32,39 +28,52 @@
   "claw":{
     "1":{
       "name":"Crost",
-      "tier":"basic",
-      "damage":"12",
+      "damage":"2",
       "desc":"Freeze"
     },
   
     "2":{
       "name":"Fersa",
-      "tier":"basic",
-      "damage":"12",
+      "damage":"2",
       "desc":"Fire"
     },
   
     "3":{
       "name":"Rusla",
-      "tier":"basic",
-      "damage":"12",
+      "damage":"4",
       "desc":"Slash"
     },
   
     "4":{
       "name":"Sirus",
-      "tier":"basic",
-      "damage":"12",
+      "damage":"3",
       "desc":"Slash Forward"
     },
   
     "5":{
       "name":"Zor Claw",
-      "tier":"special",
-      "damage":"25",
+      "damage":"6",
       "desc":"Zor's Claw"
     }
   },
   "hat":{},
-  "armor":{}
+  "armor":{
+    "1":{
+      "name":"Iron Armor",
+      "armor":"4",
+      "desc":"Just some armor"
+    },
+
+    "2":{
+      "name":"Hurl",
+      "armor":"8",
+      "desc":"Self healing armor"
+    },
+
+    "3":{
+      "name":"Bling",
+      "armor":"8",
+      "desc":"Invisible for a while and teleporting"
+    }
+  }
 }

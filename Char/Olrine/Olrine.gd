@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var health = 40
+export (int) var health = 10
 onready var animstate = $AnimTree.get("parameters/playback")
 var already_dead = false
 

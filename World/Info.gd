@@ -12,7 +12,7 @@ var stat = {
 		},
 		
 		"exp":0,
-		"health":100,
+		"health":18,
 		"coin":0,
 		"inv":[
 			[0,0],
@@ -28,8 +28,8 @@ var stat = {
 		"eq":{
 			
 			"armor":{
-				"equipped":0,
-				"inv":[]
+				"equipped":1,
+				"inv":[1, 2]
 			},
 			
 			"boots":{
@@ -59,7 +59,9 @@ var stat = {
 	}
 }
 
+var armor = 0
 var mousemode = false
+
 
 func _ready():
 	$Version.text = ProjectSettings.get_setting("application/verlist/Version")

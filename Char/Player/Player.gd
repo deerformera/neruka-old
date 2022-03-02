@@ -3,15 +3,13 @@ extends KinematicBody2D
 onready var partic = preload("res://Char/Player/Learn.tscn")
 onready var animtree = $AnimTree
 onready var animstate = $AnimTree.get("parameters/playback")
-onready var AA = get_node("AA")
 var openmenu
 var jump = false
+var hurt = false
 var speed
 var vec = Vector2()
 var pos = Vector2()
 
-func _ready():
-	speed = $EqManager.speed
 
 func _physics_process(delta):
 	pos = $HUD/C/Joystick.pos
@@ -30,20 +28,20 @@ func _physics_process(delta):
 		animtree.set("parameters/Attack/blend_position", vec)
 		animtree.set("parameters/MoveToIdle/blend_position", vec)
 		animtree.set("parameters/Walk/blend_position", vec)
-		animtree.set("parameters/Hurt/blend_position", vec)
 		animstate.travel("Walk")
 		move_and_slide(vec * speed)
+	
+	if hurt:
+		animtree.set("parameters/Hurt/blend_position", vec)
+		animstate.travel("Hurt")
+		hurt = false
 
 func move():
 	vec = Vector2()
-	if Input.is_action_pressed("Down"):
-		vec.y = 10
-	if Input.is_action_pressed("Up"):
-		vec.y = -10
-	if Input.is_action_pressed("Left"):
-		vec.x = -10
-	if Input.is_action_pressed("Right"):
-		vec.x = 10
+	
+	vec.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	vec.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+	vec = vec * 10
 
 func touch_move():
 	if pos.x > 0.5:
@@ -75,8 +73,16 @@ func _jump():
 	speed = 10
 	jump = false
 
+func _heal(value):
+	$HUD/C/Health._heal(value)
+
+func _damaged(damage):
+	$HUD/C/Health._damaged(damage)
+
 func _dead():
+	modulate.a = 0.5
 	set_collision_mask_bit(0, false)
+	set_collision_mask_bit(7, false)
 
 func _partic():
 	var particle = partic.instance()
