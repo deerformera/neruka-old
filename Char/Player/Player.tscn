@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://Char/Player/Cat.png" type="Texture" id=1]
 [ext_resource path="res://Char/Player/Player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Char/Player/Joystick.gd" type="Script" id=5]
 [ext_resource path="res://Joystick/Joystick.png" type="Texture" id=6]
 [ext_resource path="res://UI/Hearth-full.png" type="Texture" id=7]
+[ext_resource path="res://UI/RedCross.png" type="Texture" id=8]
+[ext_resource path="res://UI/ShieldPartic.png" type="Texture" id=9]
 [ext_resource path="res://Char/Player/HUD.gd" type="Script" id=10]
 [ext_resource path="res://Char/Player/Health.gd" type="Script" id=11]
 [ext_resource path="res://Joystick/JoystickCenter.png" type="Texture" id=12]
@@ -1577,31 +1579,29 @@ graph_offset = Vector2( -85, -126.546 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=105]
 
-[sub_resource type="StyleBoxFlat" id=156]
+[sub_resource type="StyleBoxFlat" id=198]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-border_width_bottom = 4
+bg_color = Color( 0.313726, 0.333333, 0.34902, 1 )
 border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
 corner_radius_top_left = 32
-corner_radius_top_right = 32
+corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="RectangleShape2D" id=158]
-extents = Vector2( 96, 64 )
+[sub_resource type="RectangleShape2D" id=195]
+extents = Vector2( 48, 48 )
 
-[sub_resource type="StyleBoxFlat" id=157]
+[sub_resource type="StyleBoxFlat" id=199]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-border_width_bottom = 4
+bg_color = Color( 0.313726, 0.333333, 0.34902, 1 )
 border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
 corner_radius_top_left = 4
 corner_radius_top_right = 4
@@ -1610,17 +1610,67 @@ corner_radius_bottom_left = 4
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="RectangleShape2D" id=124]
-extents = Vector2( 96, 64 )
+[sub_resource type="RectangleShape2D" id=196]
+extents = Vector2( 64, 48 )
+
+[sub_resource type="StyleBoxFlat" id=194]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.313726, 0.333333, 0.34902, 1 )
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="RectangleShape2D" id=197]
+extents = Vector2( 48, 64 )
+
+[sub_resource type="StyleBoxFlat" id=200]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.313726, 0.333333, 0.34902, 1 )
+border_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 4
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="RectangleShape2D" id=193]
+extents = Vector2( 64, 64 )
 
 [sub_resource type="StreamTexture" id=183]
-load_path = "res://.import/Shielded-heart.png-3c067664f76f7b554078a1a1391d852b.stex"
 
 [sub_resource type="CircleShape2D" id=136]
 radius = 160.0
 
 [sub_resource type="RectangleShape2D" id=138]
 extents = Vector2( 20, 16 )
+
+[sub_resource type="ParticlesMaterial" id=191]
+emission_shape = 1
+emission_sphere_radius = 48.0
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 1.0
+orbit_velocity_random = 0.5
+
+[sub_resource type="ParticlesMaterial" id=192]
+emission_shape = 1
+emission_sphere_radius = 32.0
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 pause_mode = 1
@@ -1713,35 +1763,63 @@ __meta__ = {
 }
 
 [node name="VB" type="VBoxContainer" parent="HUD/C/Action"]
-modulate = Color( 1, 1, 1, 0.392157 )
-margin_left = 992.0
-margin_top = 364.0
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 956.0
+margin_top = 396.0
 margin_right = 1184.0
 margin_bottom = 624.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="JumpButton" type="PanelContainer" parent="HUD/C/Action/VB"]
-margin_right = 192.0
+[node name="Top" type="HBoxContainer" parent="HUD/C/Action/VB"]
+margin_right = 228.0
+margin_bottom = 96.0
+
+[node name="Hat" type="Panel" parent="HUD/C/Action/VB/Top"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+custom_styles/panel = SubResource( 198 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD/C/Action/VB/Top/Hat"]
+shape = SubResource( 195 )
+
+[node name="Armor" type="Panel" parent="HUD/C/Action/VB/Top"]
+margin_left = 100.0
+margin_right = 228.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 128, 96 )
+custom_styles/panel = SubResource( 199 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD/C/Action/VB/Top/Armor"]
+shape = SubResource( 196 )
+action = "Shield"
+
+[node name="Bot" type="HBoxContainer" parent="HUD/C/Action/VB"]
+margin_top = 100.0
+margin_right = 228.0
+margin_bottom = 228.0
+
+[node name="Boots" type="Panel" parent="HUD/C/Action/VB/Bot"]
+margin_right = 96.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 96, 128 )
+custom_styles/panel = SubResource( 194 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD/C/Action/VB/Bot/Boots"]
+shape = SubResource( 197 )
+action = "Jump"
+
+[node name="Interact" type="Panel" parent="HUD/C/Action/VB/Bot"]
+margin_left = 100.0
+margin_right = 228.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
-mouse_filter = 2
-custom_styles/panel = SubResource( 156 )
+custom_styles/panel = SubResource( 200 )
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD/C/Action/VB/JumpButton"]
-shape = SubResource( 158 )
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD/C/Action/VB/Bot/Interact"]
+shape = SubResource( 193 )
 action = "Interact"
-
-[node name="AttackButton" type="PanelContainer" parent="HUD/C/Action/VB"]
-margin_top = 132.0
-margin_right = 192.0
-margin_bottom = 260.0
-rect_min_size = Vector2( 192, 128 )
-custom_styles/panel = SubResource( 157 )
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD/C/Action/VB/AttackButton"]
-shape = SubResource( 124 )
-action = "Attack"
 
 [node name="Health" type="VBoxContainer" parent="HUD/C"]
 anchor_right = 1.0
@@ -1961,3 +2039,20 @@ shape = SubResource( 138 )
 
 [node name="EqManager" type="Node2D" parent="."]
 script = ExtResource( 13 )
+
+[node name="ShieldPartic" type="Particles2D" parent="."]
+pause_mode = 2
+scale = Vector2( 0.5, 0.5 )
+emitting = false
+lifetime = 2.0
+process_material = SubResource( 191 )
+texture = ExtResource( 9 )
+
+[node name="HealPartic" type="Particles2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+process_material = SubResource( 192 )
+texture = ExtResource( 8 )

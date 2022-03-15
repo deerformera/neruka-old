@@ -13,11 +13,13 @@ func _entered(body):
 	if entered == true:
 		return
 	
+	get_parent().interacting = true
 	entered = true
 	object = body
 
 func _exited(body):
 	entered = false
+	get_parent().interacting = false
 
 func _physics_process(delta):
 	rotation = get_parent().animtree.get("parameters/Idle/blend_position").angle()

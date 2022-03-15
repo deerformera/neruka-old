@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://World/1 - Home/Sign.gd" type="Script" id=7]
 [ext_resource path="res://UI/popup.png" type="Texture" id=8]
 [ext_resource path="res://Char/Player/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/1 - Home/World.gd" type="Script" id=11]
 [ext_resource path="res://UI/X32.png" type="Texture" id=12]
 [ext_resource path="res://UI/Panel.tres" type="StyleBox" id=13]
 [ext_resource path="res://Object/Chest/Chest.tscn" type="PackedScene" id=14]
@@ -154,13 +153,12 @@ glow_intensity = 1.0
 glow_blend_mode = 1
 
 [node name="World" type="YSort"]
-script = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 
 [node name="Sign" type="StaticBody2D" parent="."]
 pause_mode = 1
-position = Vector2( 96, -160 )
+position = Vector2( -24, -48 )
 collision_layer = 8
 collision_mask = 6
 script = ExtResource( 7 )
@@ -221,17 +219,19 @@ placeholder_alpha = 0.5
 
 [node name="HouseTile" type="TileMap" parent="."]
 tile_set = SubResource( 16 )
-cell_tile_origin = 1
+cell_tile_origin = 2
 cell_y_sort = true
 show_collision = true
 collision_mask = 7
 format = 1
-tile_data = PoolIntArray( -262145, 536870913, 0, -327680, 536870914, 0, -327679, 1, 0, -196612, 536870913, 0, -196611, 2, 0, -196610, 2, 0, -196609, 536870915, 0, -262144, 5, 0, -262143, 3, 0, -262142, 2, 0, -262141, 2, 0, -262140, 1, 0, -131076, 536870913, 0, -131075, 536870916, 0, -131074, 536870916, 0, -131073, 536870916, 0, -196608, 536870916, 0, -196607, 536870916, 0, -196606, 536870916, 0, -196605, 536870916, 0, -196604, 1, 0, -65540, 536870913, 0, -65539, 536870916, 0, -65538, 536870916, 0, -65537, 536870916, 0, -131072, 536870916, 0, -131071, 536870916, 0, -131070, 536870916, 0, -131069, 536870916, 0, -131068, 1, 0, -4, 536870913, 0, -3, 536870916, 0, -2, 536870916, 0, -1, 536870916, 0, -65536, 536870916, 0, -65535, 536870916, 0, -65534, 536870916, 0, -65533, 536870916, 0, -65532, 1, 0, 65532, 536870913, 0, 65533, 536870916, 0, 65534, 536870916, 0, 65535, 536870916, 0, 0, 536870916, 0, 1, 536870916, 0, 2, 536870916, 0, 3, 536870916, 0, 4, 1, 0, 131068, 536870913, 0, 131069, 536870916, 0, 131070, 536870916, 0, 131071, 536870916, 0, 65536, 536870916, 0, 65537, 536870916, 0, 65538, 536870916, 0, 65539, 536870916, 0, 65540, 1, 0, 196604, 536870913, 0, 196605, 536870916, 0, 196606, 536870916, 0, 196607, 536870916, 0, 131072, 536870916, 0, 131073, 536870916, 0, 131074, 536870916, 0, 131075, 536870916, 0, 131076, 1, 0, 262140, 536870912, 0, 262141, 2, 0, 262142, 2, 0, 262143, 2, 0, 196608, 2, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 0, 0 )
+tile_data = PoolIntArray( -65540, 536870913, 0, -65539, 536870914, 0, -65538, 536870914, 0, -65537, 536870914, 0, -131072, 536870914, 0, -131071, 536870914, 0, -131070, 536870914, 0, -131069, 536870914, 0, -131068, 1, 0, -4, 536870913, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 1, 0, 65532, 536870913, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 1, 0, 131068, 536870913, 0, 131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 536870914, 0, 65539, 4, 0, 65540, 1, 0, 196604, 536870913, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 1, 0, 262140, 536870913, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 1, 0, 327676, 536870912, 0, 327677, 2, 0, 327678, 2, 0, 327679, 2, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 0, 0 )
 
 [node name="Door" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 288 )
+z_index = 1
 
 [node name="Chest" parent="." instance=ExtResource( 14 )]
-position = Vector2( 216, -163 )
+position = Vector2( -120, -48 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 23 )

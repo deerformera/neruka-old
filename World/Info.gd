@@ -28,18 +28,18 @@ var stat = {
 		"eq":{
 			
 			"armor":{
-				"equipped":1,
-				"inv":[1, 2]
+				"equipped":3,
+				"inv":[1, 2, 3]
 			},
 			
 			"boots":{
-				"equipped":2,
-				"inv":[2,3]
+				"equipped":0,
+				"inv":[]
 			},
 			
 			"claw":{
 				"equipped":0,
-				"inv":[1, 2, 3, 4]
+				"inv":[]
 			},
 			
 			"hat":{

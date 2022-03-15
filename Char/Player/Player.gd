@@ -7,6 +7,7 @@ var openmenu
 var jump = false
 var hurt = false
 var speed
+var interacting = false
 var vec = Vector2()
 var pos = Vector2()
 
@@ -74,15 +75,23 @@ func _jump():
 	jump = false
 
 func _heal(value):
+	$HealPartic.emitting = true
 	$HUD/C/Health._heal(value)
 
 func _damaged(damage):
 	$HUD/C/Health._damaged(damage)
 
 func _dead():
-	modulate.a = 0.5
+	modulate.a = 0.4
 	set_collision_mask_bit(0, false)
+	set_collision_mask_bit(3, false)
 	set_collision_mask_bit(7, false)
+
+func _undead():
+	modulate.a = 1
+	set_collision_mask_bit(0, true)
+	set_collision_mask_bit(3, true)
+	set_collision_mask_bit(7, true)
 
 func _partic():
 	var particle = partic.instance()

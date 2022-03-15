@@ -16,7 +16,7 @@ func _physics_process(delta):
 	if is_colliding():
 		var dect = get_collider()
 		if dect.name == "JumpCliff":
-			if Input.is_action_just_pressed("Interact") and jumpable == true:
+			if Input.is_action_just_pressed("Jump") and jumpable == true:
 				emit_signal("jump")
 				jumpable = false
 				yield(get_tree().create_timer(0.7), "timeout")

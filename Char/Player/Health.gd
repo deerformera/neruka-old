@@ -39,6 +39,8 @@ func _damaged(damage):
 	Info.stat["player"]["health"] = health
 	Info.armor = armor
 	
+	find_parent("Player").get_node("ShieldPartic").emitting = false
+	
 	_refresh()
 	_regen_count()
 
@@ -66,6 +68,8 @@ func _regen_start():
 	t.autostart = true
 	t.connect("timeout", self, "_regen")
 	add_child(t)
+	
+	find_parent("Player").get_node("ShieldPartic").emitting = true
 
 func _regen():
 	Info.armor += 1
@@ -75,6 +79,7 @@ func _checker(type):
 	if type == "s":
 		armor = Info.armor
 		if armor >= max_armor:
+			find_parent("Player").get_node("ShieldPartic").emitting = false
 			armor = max_armor
 			for x in get_children():
 				if x.get_class() == "Timer":

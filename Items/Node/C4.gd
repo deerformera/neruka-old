@@ -9,7 +9,7 @@ var launch = false
 func _physics_process(delta):
 	rotation = player.get_node("AnimTree").get("parameters/Walk/blend_position").angle()
 	
-	if Input.is_action_just_pressed("Attack") and attacking == false:
+	if Input.is_action_just_pressed("Interact") and attacking == false:
 		_attack()
 
 func _attack():

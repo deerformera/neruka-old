@@ -7,7 +7,9 @@ var damage
 var armor
 
 var armor_scene = {
-	"1":"res://Items/Node/A1.tscn"
+	"1":"res://Items/Node/A1.tscn",
+	"2":"res://Items/Node/A2.tscn",
+	"3":"res://Items/Node/A3.tscn"
 }
 
 var claw_scene = {
@@ -46,7 +48,11 @@ func _refresh_armor():
 	
 	if get_node("Armor") != null:
 		get_node("Armor").queue_free()
-		remove_child(get_node("Claw"))
+		remove_child(get_node("Armor"))
+	
+	var armor_ins = load(armor_scene[str(equipped)]).instance()
+	armor_ins.name = "Armor"
+	add_child(armor_ins)
 	
 	find_parent("Player").get_node("HUD/C/Health").max_armor = armor
 	find_parent("Player").get_node("HUD/C/Health")._refresh()
