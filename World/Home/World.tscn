@@ -1,0 +1,244 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Object/Door/Door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Home/Sign.gd" type="Script" id=2]
+[ext_resource path="res://UI/X32.png" type="Texture" id=3]
+[ext_resource path="res://World/Home/HouseTile.png" type="Texture" id=4]
+[ext_resource path="res://World/Home/SignUnWrited.png" type="Texture" id=5]
+[ext_resource path="res://World/Home/SignWrited.png" type="Texture" id=6]
+[ext_resource path="res://UI/Default_Theme.tres" type="Theme" id=7]
+[ext_resource path="res://UI/Font_Large.tres" type="DynamicFont" id=8]
+[ext_resource path="res://UI/popup.png" type="Texture" id=9]
+[ext_resource path="res://UI/Panel.tres" type="StyleBox" id=10]
+[ext_resource path="res://Char/Player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Object/Chest/Chest.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Items/PickableItem/PickableItem.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 12, 4.5 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+points = PoolVector2Array( 16, 64, 0, 64, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+points = PoolVector2Array( 16, 64, 0, 64, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 48, 64, 48 )
+
+[sub_resource type="ConvexPolygonShape2D" id=20]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 48, 64, 48, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=16]
+0/name = "HouseTile.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 17 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 17 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 1
+1/name = "HouseTile.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 64, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 18 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 18 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 1
+2/name = "HouseTile.png 2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 64, 0, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 19 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 19 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "HouseTile.png 3"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 64, 64, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 20 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 20 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "HouseTile.png 4"
+4/texture = ExtResource( 4 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 128, 0, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = -1
+5/name = "HouseTile.png 5"
+5/texture = ExtResource( 4 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 128, 64, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = -1
+
+[sub_resource type="Environment" id=23]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+
+[node name="World" type="YSort"]
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+
+[node name="Sign" type="StaticBody2D" parent="."]
+pause_mode = 1
+position = Vector2( -24, -48 )
+collision_layer = 8
+collision_mask = 6
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+Writed = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Sign"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign"]
+position = Vector2( 0, 8.5 )
+shape = SubResource( 14 )
+
+[node name="Popup" type="Sprite" parent="Sign"]
+position = Vector2( -24, -16 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="Canv" type="CanvasLayer" parent="Sign"]
+pause_mode = 2
+
+[node name="P" type="Popup" parent="Sign/Canv"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="CenterContainer" parent="Sign/Canv/P"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line" type="LineEdit" parent="Sign/Canv/P/C"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 320.0
+margin_top = 296.0
+margin_right = 960.0
+margin_bottom = 424.0
+rect_min_size = Vector2( 640, 128 )
+custom_fonts/font = ExtResource( 8 )
+custom_icons/clear = ExtResource( 3 )
+custom_styles/normal = ExtResource( 10 )
+align = 1
+max_length = 10
+clear_button_enabled = true
+placeholder_text = "Your Name"
+placeholder_alpha = 0.5
+
+[node name="HouseTile" type="TileMap" parent="."]
+tile_set = SubResource( 16 )
+cell_tile_origin = 2
+cell_y_sort = true
+show_collision = true
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( -65540, 536870913, 0, -65539, 536870914, 0, -65538, 536870914, 0, -65537, 536870914, 0, -131072, 536870914, 0, -131071, 536870914, 0, -131070, 536870914, 0, -131069, 536870914, 0, -131068, 1, 0, -4, 536870913, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 1, 0, 65532, 536870913, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 1, 0, 131068, 536870913, 0, 131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 536870914, 0, 65539, 4, 0, 65540, 1, 0, 196604, 536870913, 0, 196605, 4, 0, 196606, 4, 0, 196607, 4, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 1, 0, 262140, 536870913, 0, 262141, 4, 0, 262142, 4, 0, 262143, 4, 0, 196608, 4, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 1, 0, 327676, 536870912, 0, 327677, 2, 0, 327678, 2, 0, 327679, 2, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 0, 0 )
+
+[node name="Door" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 288 )
+z_index = 1
+
+[node name="Chest" parent="." instance=ExtResource( 12 )]
+position = Vector2( -120, -48 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 23 )
+
+[node name="PickableItem" parent="." instance=ExtResource( 13 )]
+position = Vector2( 187, -106 )
+id = 6
+amount = 1
+
+[connection signal="text_entered" from="Sign/Canv/P/C/Line" to="Sign" method="_on_Line_text_entered"]

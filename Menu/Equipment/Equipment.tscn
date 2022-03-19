@@ -344,7 +344,7 @@ scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="M2/BG/M/VB/M/claw"]
 margin_right = 96.0
-margin_bottom = 576.0
+margin_bottom = 480.0
 size_flags_horizontal = 4
 size_flags_vertical = 6
 custom_constants/separation = 0
@@ -432,7 +432,7 @@ scroll_horizontal_enabled = false
 
 [node name="Box" type="VBoxContainer" parent="M2/BG/M/VB/M/armor"]
 margin_right = 96.0
-margin_bottom = 576.0
+margin_bottom = 480.0
 size_flags_horizontal = 4
 size_flags_vertical = 6
 custom_constants/separation = 0
@@ -525,7 +525,7 @@ size_flags_vertical = 8
 scroll_vertical_enabled = false
 
 [node name="Box" type="HBoxContainer" parent="M2/BG/M/VB/M/boots"]
-margin_right = 480.0
+margin_right = 384.0
 margin_bottom = 96.0
 size_flags_horizontal = 6
 size_flags_vertical = 0
@@ -630,7 +630,7 @@ size_flags_vertical = 0
 scroll_vertical_enabled = false
 
 [node name="Box" type="HBoxContainer" parent="M2/BG/M/VB/M/hat"]
-margin_right = 480.0
+margin_right = 384.0
 margin_bottom = 96.0
 size_flags_horizontal = 6
 size_flags_vertical = 0

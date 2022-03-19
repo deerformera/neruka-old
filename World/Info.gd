@@ -115,6 +115,3 @@ func _load():
 	file.open("user://saves/player.tres", File.READ)
 	stat = to_json(file.get_var())
 	file.close()
-
-func _item_refresh():
-	get_tree().root.get_node("World/Player/EqManager")._refresh()

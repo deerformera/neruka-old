@@ -6,8 +6,8 @@ onready var animstate = $AnimTree.get("parameters/playback")
 var openmenu
 var jump = false
 var hurt = false
-var speed
 var interacting = false
+var speed
 var vec = Vector2()
 var pos = Vector2()
 
@@ -33,9 +33,7 @@ func _physics_process(delta):
 		move_and_slide(vec * speed)
 	
 	if hurt:
-		animtree.set("parameters/Hurt/blend_position", vec)
 		animstate.travel("Hurt")
-		hurt = false
 
 func move():
 	vec = Vector2()
@@ -78,8 +76,17 @@ func _heal(value):
 	$HealPartic.emitting = true
 	$HUD/C/Health._heal(value)
 
-func _damaged(damage):
+func _damaged(damage, knockback_direction):
+	animtree.set("parameters/Hurt/blend_position", vec)
 	$HUD/C/Health._damaged(damage)
+	hurt = true
+	jump = true
+	vec = knockback_direction
+	yield(get_tree().create_timer(0.2), "timeout")
+	vec = Vector2()
+	yield(get_tree().create_timer(0.2), "timeout")
+	jump = false
+	hurt = false
 
 func _dead():
 	modulate.a = 0.4

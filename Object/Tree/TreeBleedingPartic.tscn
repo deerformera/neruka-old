@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Object/Tree/LeafPartic.png" type="Texture" id=1]
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 30.0
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 30.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 80.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="BleedingPartic" type="Particles2D"]
+position = Vector2( 0, -85 )
+emitting = false
+amount = 32
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.5
+process_material = SubResource( 6 )
+texture = ExtResource( 1 )

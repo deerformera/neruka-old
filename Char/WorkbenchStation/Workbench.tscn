@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://World/1 - Home/SignUnWrited.png" type="Texture" id=1]
+[ext_resource path="res://World/Home/SignUnWrited.png" type="Texture" id=1]
 [ext_resource path="res://UI/popup.png" type="Texture" id=2]
 [ext_resource path="res://Char/WorkbenchStation/Workbench.gd" type="Script" id=3]
 

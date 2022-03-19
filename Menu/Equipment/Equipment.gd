@@ -25,6 +25,6 @@ func _tweented():
 
 func _on_CloseButton_pressed():
 	get_tree().paused = false
-	Info._item_refresh()
+	get_tree().get_nodes_in_group("Player")[0].get_node("EqManager")._refresh()
 	queue_free()
 

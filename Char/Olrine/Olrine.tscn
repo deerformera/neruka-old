@@ -1,15 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Char/Olrine/Olrine.png" type="Texture" id=1]
 [ext_resource path="res://Char/Olrine/Olrine.gd" type="Script" id=2]
+[ext_resource path="res://UI/RedArea.png" type="Texture" id=3]
+[ext_resource path="res://Char/Olrine/Olrine_DeadPartic.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 8 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Damaged"
-length = 0.4
-loop = true
+[sub_resource type="Animation" id=15]
+resource_name = "Attack"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -17,10 +17,26 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 4, 3 ]
+"values": [ 0, 3, 4, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Damaged"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -55,6 +71,9 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Attack"
+
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Damaged"
 
@@ -63,32 +82,52 @@ animation = "Normal"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
 [sub_resource type="AnimationNodeStateMachine" id=5]
+states/Attack/node = SubResource( 16 )
+states/Attack/position = Vector2( 387, 5 )
 states/Damaged/node = SubResource( 8 )
 states/Damaged/position = Vector2( 632, 110 )
 states/Normal/node = SubResource( 7 )
 states/Normal/position = Vector2( 387, 110 )
-transitions = [ "Normal", "Damaged", SubResource( 9 ), "Damaged", "Normal", SubResource( 10 ) ]
+transitions = [ "Normal", "Damaged", SubResource( 9 ), "Normal", "Attack", SubResource( 17 ), "Attack", "Normal", SubResource( 18 ), "Damaged", "Normal", SubResource( 19 ) ]
 start_node = "Normal"
+end_node = "Attack"
+graph_offset = Vector2( -6, -40 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
-[sub_resource type="CanvasItemMaterial" id=12]
-blend_mode = 1
+[sub_resource type="CircleShape2D" id=13]
+radius = 64.0
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="CanvasItemMaterial" id=22]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=21]
+emission_shape = 1
+emission_sphere_radius = 7.27
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
+spread = 90.0
 gravity = Vector3( 0, 98, 0 )
 initial_velocity = 80.0
 initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color = Color( 1, 0.756863, 0, 1 )
+anim_speed = 2.0
 
 [node name="Olrine" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -103,6 +142,7 @@ vframes = 2
 shape = SubResource( 1 )
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 15 )
 anims/Damaged = SubResource( 4 )
 anims/Normal = SubResource( 2 )
 anims/RESET = SubResource( 3 )
@@ -113,13 +153,43 @@ anim_player = NodePath("../AnimPlayer")
 active = true
 parameters/playback = SubResource( 6 )
 
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Coll" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 13 )
+
+[node name="Ray" type="RayCast2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="Coll" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2( 16, 0 )
+shape = SubResource( 20 )
+
+[node name="Sprite" type="Sprite" parent="AttackArea"]
+visible = false
+position = Vector2( 16, 0 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
 [node name="Particles2D" type="Particles2D" parent="."]
-pause_mode = 2
-material = SubResource( 12 )
+material = SubResource( 22 )
 emitting = false
-amount = 128
+amount = 64
 lifetime = 3.0
 one_shot = true
-speed_scale = 1.2
 explosiveness = 1.0
-process_material = SubResource( 11 )
+process_material = SubResource( 21 )
+texture = ExtResource( 4 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

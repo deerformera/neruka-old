@@ -2,19 +2,14 @@ extends StaticBody2D
 
 export (int) var health
 onready var item_scene = preload("res://Items/PickableItem/PickableItem.tscn")
+onready var BleedingPartic = preload("res://Object/Tree/TreeBleedingPartic.tscn")
 var already_dead = false
 
 func _attacked(damage):
 	
 	health -= damage
 	
-	
-	if health >= 6:
-		$BleedingPartic.speed_scale = 1
-	elif health >= 4:
-		$BleedingPartic.speed_scale = 1.2
-	elif health >= 2:
-		$BleedingPartic.speed_scale = 1.5
+	$BleedingPartic.restart()
 	
 	if health <= 0 and already_dead == false:
 		already_dead = true

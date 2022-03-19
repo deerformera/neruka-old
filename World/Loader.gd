@@ -2,38 +2,38 @@ extends CanvasLayer
 
 var world = {
 	"0":{
-		"res":"res://World/0 - Start/World.tscn",
+		"res":"res://World/Start/World.tscn",
 		"name":"Start Menu"
 	},
 	
 	"1":{
-		"res":"res://World/1 - Home/World.tscn",
+		"res":"res://World/Home/World.tscn",
 		"name":"Home"
 	},
 	
 	"2":{
-		"res":"res://World/2 - Sola Town/World.tscn",
-		"name":"Sola Town"
+		"res":"res://World/Town/World.tscn",
+		"name":"Town"
 	},
 	
 	"3":{
-		"res":"res://World/3 - Sola Beach/World.tscn",
+		"res":"res://World/Sola Beach/World.tscn",
 		"name":"Sola Beach"
 	},
 	
 	"4":{
-		"res":"res://World/4 - Side Forest/World.tscn",
+		"res":"res://World/Side Forest/World.tscn",
 		"name":"Side Forest"
 	},
 	
 	"6":{
-		"res":"res://World/6 - Grora/World.tscn",
+		"res":"res://World/Grora - 1/World.tscn",
 		"name":"Grora"
 	}
 	
 }
 
-func fade(to_go: int):
+func fade_to(to_go: int):
 	$ColorRect.visible = true
 	get_tree().paused = false
 	$Anim.play("Fade")
@@ -45,3 +45,14 @@ func fade(to_go: int):
 	$ColorRect.visible = false
 	get_tree().paused = false
 
+func fade(mode: bool):
+	if mode == false:
+		$ColorRect.visible = true
+		get_tree().paused = false
+		$Anim.play("Fade")
+		yield($Anim, "animation_finished")
+	else:
+		$Anim.play_backwards("Fade")
+		yield($Anim, "animation_finished")
+		$ColorRect.visible = false
+		get_tree().paused = false

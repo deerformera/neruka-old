@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://Char/Player/Cat.png" type="Texture" id=1]
 [ext_resource path="res://Char/Player/Player.gd" type="Script" id=2]
@@ -1575,7 +1575,7 @@ states/Walk/node = SubResource( 89 )
 states/Walk/position = Vector2( 617, 16 )
 transitions = [ "Walk", "Jump", SubResource( 117 ), "Jump", "Walk", SubResource( 118 ), "Walk", "Hurt", SubResource( 134 ), "Hurt", "Walk", SubResource( 135 ), "Walk", "Attack", SubResource( 151 ), "Attack", "Walk", SubResource( 152 ), "Walk", "MoveToIdle", SubResource( 175 ), "Idle", "Walk", SubResource( 177 ), "MoveToIdle", "Idle", SubResource( 178 ), "MoveToIdle", "Walk", SubResource( 179 ), "Idle", "Attack", SubResource( 180 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -85, -126.546 )
+graph_offset = Vector2( 24, -95.546 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=105]
 
@@ -1655,24 +1655,32 @@ radius = 160.0
 [sub_resource type="RectangleShape2D" id=138]
 extents = Vector2( 20, 16 )
 
-[sub_resource type="ParticlesMaterial" id=191]
-emission_shape = 1
-emission_sphere_radius = 48.0
-flag_disable_z = true
-direction = Vector3( -1, 0, 0 )
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 1.0
-orbit_velocity_random = 0.5
-
 [sub_resource type="ParticlesMaterial" id=192]
 emission_shape = 1
-emission_sphere_radius = 32.0
+emission_sphere_radius = 16.0
 flag_disable_z = true
 gravity = Vector3( 0, -98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale = 0.5
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="CanvasItemMaterial" id=201]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=202]
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_disable_z = true
+gravity = Vector3( 0, 15, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+scale = 0.4
+anim_speed = 1.0
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 pause_mode = 1
 collision_layer = 2
 collision_mask = 15
@@ -2040,19 +2048,20 @@ shape = SubResource( 138 )
 [node name="EqManager" type="Node2D" parent="."]
 script = ExtResource( 13 )
 
-[node name="ShieldPartic" type="Particles2D" parent="."]
-pause_mode = 2
-scale = Vector2( 0.5, 0.5 )
-emitting = false
-lifetime = 2.0
-process_material = SubResource( 191 )
-texture = ExtResource( 9 )
-
 [node name="HealPartic" type="Particles2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
 emitting = false
 amount = 16
 lifetime = 0.5
-one_shot = true
+local_coords = false
 process_material = SubResource( 192 )
 texture = ExtResource( 8 )
+
+[node name="ShieldPartic" type="Particles2D" parent="."]
+show_behind_parent = true
+material = SubResource( 201 )
+emitting = false
+amount = 16
+lifetime = 0.8
+local_coords = false
+process_material = SubResource( 202 )
+texture = ExtResource( 9 )
