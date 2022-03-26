@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var partic = preload("res://Char/Player/Learn.tscn")
+onready var HitAnim = preload("res://Char/Player/HitAnim.tscn")
 onready var animtree = $AnimTree
 onready var animstate = $AnimTree.get("parameters/playback")
 var openmenu
@@ -8,9 +9,17 @@ var jump = false
 var hurt = false
 var interacting = false
 var speed
+var object_texture = {}
 var vec = Vector2()
 var pos = Vector2()
 
+func _ready():
+	var f = File.new()
+	f.open("res://Object/PickableObject/object.tres", File.READ)
+	object_texture = parse_json(f.get_as_text())
+	f.close()
+	
+	_refresh_carry()
 
 func _physics_process(delta):
 	pos = $HUD/C/Joystick.pos
@@ -94,14 +103,31 @@ func _dead():
 	set_collision_mask_bit(3, false)
 	set_collision_mask_bit(7, false)
 
-func _undead():
-	modulate.a = 1
-	set_collision_mask_bit(0, true)
-	set_collision_mask_bit(3, true)
-	set_collision_mask_bit(7, true)
 
 func _partic():
 	var particle = partic.instance()
 	particle.global_position = global_position
 	particle.emitting = true
 	get_tree().root.add_child(particle)
+
+func _set_hit(enemy):
+	var hitanim = HitAnim.instance()
+	hitanim.play()
+	hitanim.global_position = enemy.global_position - (enemy.global_position - global_position)/2
+	owner.add_child(hitanim)
+	$Camera2D.smoothing_enabled = false
+	yield(hitanim, "animation_finished")
+	$Camera2D.smoothing_enabled = true
+	hitanim.queue_free()
+
+func _refresh_carry():
+	var id = Info.carried_object
+	if id != 0:
+		if get_node("Object") != null:
+			get_node("Object").queue_free()
+			remove_child(get_node("Object"))
+		else:
+			var s = Sprite.new()
+			s.name = "Object"
+			s.texture = load(object_texture[str(id)]["res"])
+			add_child(s)

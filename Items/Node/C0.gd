@@ -1,6 +1,6 @@
 extends Node2D
 
-var slash = preload("res://Items/Node/C0 - Slash.tscn")
+onready var slash = preload("res://Items/Node/C0 - Slash.tscn")
 var attacking = false
 
 func _ready():
@@ -29,4 +29,5 @@ func _attack():
 	attacking = false
 
 func _attacking(body):
+	find_parent("Player")._set_hit(body)
 	body._attacked(get_parent().damage)

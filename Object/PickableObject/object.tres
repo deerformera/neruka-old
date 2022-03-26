@@ -1,0 +1,7 @@
+{
+  "1":{
+    "name":"Wolf",
+    "res":"res://Object/PickableObject/Texture/Wolf.png",
+    "material":[[1,2]]
+  }
+}

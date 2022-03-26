@@ -2057,6 +2057,7 @@ process_material = SubResource( 192 )
 texture = ExtResource( 8 )
 
 [node name="ShieldPartic" type="Particles2D" parent="."]
+pause_mode = 2
 show_behind_parent = true
 material = SubResource( 201 )
 emitting = false

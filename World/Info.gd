@@ -26,7 +26,6 @@ var stat = {
 		],
 		
 		"eq":{
-			
 			"armor":{
 				"equipped":3,
 				"inv":[1, 2, 3]
@@ -51,17 +50,16 @@ var stat = {
 		"contact":[],
 		
 		"knowledge":[4]
-	
 	},
 	
 	"shopstock":{
 		"RotShop":[["item",1,1,3], ["item",2,5,3], ["item",3,5,1], ["item",4,5,10], ["item",5,5,1]]
-	}
+	},
 }
 
+var carried_object = 0
 var armor = 0
 var mousemode = false
-
 
 func _ready():
 	$Version.text = ProjectSettings.get_setting("application/verlist/Version")

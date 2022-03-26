@@ -9,7 +9,7 @@ func _ready():
 	tex = parse_json(f.get_as_text())
 	
 	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.stat["player"]["name"]
-	$M2/BG/M/VB/HB/LVB/Healthbar.value = Info.stat["player"]["health"]
+	$M2/BG/M/VB/HB/LVB/Healthbar.text = str(Info.stat["player"]["health"])
 	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Info.stat["player"]["place"]
 	
 	if Info.stat["player"]["eq"]["claw"]["equipped"] != 0:

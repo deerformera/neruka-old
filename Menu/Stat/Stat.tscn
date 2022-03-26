@@ -169,13 +169,15 @@ rect_min_size = Vector2( 0, 48 )
 text = "Health"
 valign = 1
 
-[node name="Healthbar" type="ProgressBar" parent="M2/BG/M/VB/HB/LVB"]
+[node name="Healthbar" type="Label" parent="M2/BG/M/VB/HB/LVB"]
 modulate = Color( 1, 1, 1, 0.686275 )
 margin_top = 168.0
 margin_right = 411.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 48 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+align = 1
+valign = 1
 
 [node name="S" type="ScrollContainer" parent="M2/BG/M/VB/HB"]
 margin_left = 589.0
