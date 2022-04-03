@@ -10,6 +10,7 @@ extents = Vector2( 14, 8 )
 
 [sub_resource type="Animation" id=15]
 resource_name = "Attack"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -17,7 +18,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.9, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 3, 4, 1, 0 ]
@@ -92,7 +93,7 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=5]
 states/Attack/node = SubResource( 16 )
-states/Attack/position = Vector2( 387, 5 )
+states/Attack/position = Vector2( 387, 6 )
 states/Damaged/node = SubResource( 8 )
 states/Damaged/position = Vector2( 632, 110 )
 states/Normal/node = SubResource( 7 )
@@ -161,6 +162,7 @@ collision_mask = 2
 shape = SubResource( 13 )
 
 [node name="Ray" type="RayCast2D" parent="."]
+enabled = true
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -187,9 +189,3 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 21 )
 texture = ExtResource( 4 )
-
-[connection signal="body_entered" from="Area" to="." method="_on_body_entered"]
-[connection signal="body_exited" from="Area" to="." method="_on_body_exited"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
-[connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

@@ -5,7 +5,7 @@ onready var item_scene = preload("res://Items/PickableItem/PickableItem.tscn")
 onready var BleedingPartic = preload("res://Object/Tree/TreeBleedingPartic.tscn")
 var already_dead = false
 
-func _attacked(damage):
+func _damaged(damage):
 	
 	health -= damage
 	

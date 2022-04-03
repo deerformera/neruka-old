@@ -30,4 +30,4 @@ func _attack():
 
 func _attacking(body):
 	find_parent("Player")._set_hit(body)
-	body._attacked(get_parent().damage)
+	body._damaged(get_parent().damage)

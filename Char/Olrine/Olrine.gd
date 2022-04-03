@@ -1,77 +1,97 @@
 extends KinematicBody2D
 
-export (int) var health = 10
+onready var nav: Navigation2D = owner.get_node("Nav")
 onready var animstate = $AnimTree.get("parameters/playback")
-
-var combat = false
-var attack = false
-var in_area = false
+var entered = false
+var attack_entered = false
+var health = 10
 var vec = Vector2()
+var tovec = Vector2()
 var player: KinematicBody2D
 var path = []
 
-func _attacked(damage):
+enum mstate {
+	idle,
+	combat,
+	attack,
+	hurt
+}
+
+var cstate = mstate.idle
+
+func _ready():
+	$AttackTimer.connect("timeout", self, "_on_attack")
+	$Area.connect("body_entered", self, "_on_area_entered")
+	$Area.connect("body_exited", self, "_on_area_exited")
+	$AttackArea.connect("body_entered", self, "_on_attack_area_entered")
+	$AttackArea.connect("body_exited", self, "_on_attack_area_exited")
+
+func _physics_process(delta):
+	match cstate:
+		mstate.idle:
+			vec = Vector2()
+#			print("idle")
+		mstate.combat:
+			_combat_state(delta)
+#			print("combat")
+		mstate.attack:
+			_attack_state(delta)
+#			print("attack")
+		mstate.hurt:
+			pass
+
+func _combat_state(delta):
+#	animstate.travel("Attack")
+	path = nav.get_simple_path(global_position, player.global_position, true)
+	vec = global_position.direction_to(path[1])
+	move_and_slide(vec * 100)
+	tovec = player.global_position - global_position
+	$Ray.cast_to = tovec
+	if tovec.length() <= 30:
+		cstate = mstate.attack
+
+func _attack_state(delta):
+	vec = Vector2()
+	if $AttackTimer.is_stopped():
+		$AttackTimer.start()
+		$AttackArea/Sprite.show()
+		$AttackArea.look_at(player.global_position)
+		animstate.travel("Attack")
+
+func _damaged(damage):
 	health -= damage
+	cstate = mstate.hurt
 	animstate.travel("Damaged")
 	$AttackTimer.stop()
 	$AttackArea/Sprite.hide()
 	yield(get_tree().create_timer(0.3), "timeout")
-	attack = false
 	if health <= 0:
-		for x in get_children():
-			if x.get_class() != "Particles2D":
-				x.queue_free()
-		
-		vec = Vector2()
-		$Particles2D.emitting = true
-		yield(get_tree().create_timer(3), "timeout")
 		queue_free()
-		
 	animstate.travel("Normal")
+	cstate = mstate.combat
 
-func _physics_process(delta):
-	if combat:
-		path = owner.get_node("Nav").get_simple_path(global_position, (player.global_position), false)
-		$Ray.cast_to = player.global_position - global_position
-		if attack:
-			vec = Vector2()
-		else:
-			vec = global_position.direction_to(path[1])
-			if $Ray.cast_to.length() <= 30:
-				attack = true
-				animstate.travel("Attack")
-				$AttackArea.look_at(player.global_position)
-				$AttackArea/Sprite.show()
-				$AttackTimer.start()
-	else:
-		vec = Vector2()
-		
-	move_and_slide(vec * 100)
-
-func _on_body_entered(body):
+func _on_area_entered(body):
+	cstate = mstate.combat
 	player = body
-	combat = true
-	$Ray.enabled = true
-	$Area/Coll.shape.radius = 128
+	entered = true
 
-func _on_body_exited(body):
-	player = null
-	combat = false
-	$Ray.enabled = false
-	$Area/Coll.shape.radius = 64
+func _on_area_exited(body):
+	cstate = mstate.idle
+	entered = false
 
+func _on_attack_area_entered(body):
+	attack_entered = true
 
+func _on_attack_area_exited(body):
+	attack_entered = false
 
-func _on_AttackArea_body_entered(body):
-	in_area = true
-
-func _on_AttackArea_body_exited(body):
-	in_area = false
-
-
-func _on_AttackTimer_timeout():
-	if in_area:
+func _on_attack():
+	if entered:
+		cstate = mstate.combat
+	else:
+		cstate = mstate.idle
+	
+	if attack_entered:
 		player._damaged(5, Vector2())
 	
 	$AttackArea/Sprite.hide()
-	attack = false
