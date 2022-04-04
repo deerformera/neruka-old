@@ -15,15 +15,14 @@ func _physics_process(delta):
 func _attack():
 	attacking = true
 	$Area/Coll.disabled = false
+	find_parent("Player").cstate = find_parent("Player").mstate.attack
 	find_parent("Player").animstate.travel("Attack")
-	find_parent("Player").vec = Vector2()
-	find_parent("Player").jump = true
 	var s = slash.instance()
 	s.position = Vector2(20, 0)
 	s.playing = true
 	add_child(s)
 	yield(s, "animation_finished")
-	find_parent("Player").jump = false
+	find_parent("Player").cstate = find_parent("Player").mstate.walk
 	s.queue_free()
 	$Area/Coll.disabled = true
 	attacking = false

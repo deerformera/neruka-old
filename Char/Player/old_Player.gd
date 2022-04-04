@@ -30,7 +30,6 @@ func _physics_process(delta):
 	
 	if vec == Vector2():
 		animstate.travel("Idle")
-	
 	else:
 		$Camera2D.position = vec * 2
 		animtree.set("parameters/Idle/blend_position", vec)

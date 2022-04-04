@@ -5,10 +5,6 @@ var jumpable = true
 var vec = Vector2()
 var vec_config = {Vector2(0, -10):10, Vector2(0, 10):40, Vector2(-10, 0):20, Vector2(10, 0):20}
 
-
-func _ready():
-	connect("jump", find_parent("Player"), "_jump")
-
 func _physics_process(delta):
 	ray_enable()
 	rotation = vec.angle()
@@ -17,7 +13,7 @@ func _physics_process(delta):
 		var dect = get_collider()
 		if dect.name == "JumpCliff":
 			if Input.is_action_just_pressed("Jump") and jumpable == true:
-				emit_signal("jump")
+				find_parent("Player")._jump()
 				jumpable = false
 				yield(get_tree().create_timer(0.7), "timeout")
 				jumpable = true

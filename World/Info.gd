@@ -32,8 +32,8 @@ var stat = {
 			},
 			
 			"boots":{
-				"equipped":0,
-				"inv":[]
+				"equipped":3,
+				"inv":[3]
 			},
 			
 			"claw":{

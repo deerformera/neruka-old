@@ -65,9 +65,17 @@ func _damaged(damage):
 	$AttackTimer.stop()
 	$AttackArea/Sprite.hide()
 	yield(get_tree().create_timer(0.3), "timeout")
-	if health <= 0:
-		queue_free()
 	animstate.travel("Normal")
+	if health <= 0:
+		for x in get_children():
+			if not x.get_class() == "Particles2D":
+				x.queue_free()
+			else:
+				x.emitting = true
+				yield(get_tree().create_timer(3), "timeout")
+				queue_free()
+				return
+		
 	cstate = mstate.combat
 
 func _on_area_entered(body):
