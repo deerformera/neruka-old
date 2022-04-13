@@ -4,6 +4,8 @@ export (int, 1, 2) var id = 1
 onready var ObjTex = "res://Object/PickableObject/object.tres"
 
 var tex = {}
+var picked = false
+var player
 
 func _ready():
 	var f = File.new()
@@ -13,10 +15,12 @@ func _ready():
 
 func _pop(body):
 	$Pop.show()
-	if Input.is_action_just_pressed("Interact"):
-		Info.carried_object = id
-		get_tree().get_nodes_in_group("Player")[0]._refresh_carry()
-		
+	player = body
 
 func _unpop():
 	$Pop.hide()
+
+func _on_interacted():
+	Info.carried_object = id
+	player._refresh_carry()
+	queue_free()

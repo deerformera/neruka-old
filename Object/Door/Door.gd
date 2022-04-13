@@ -1,8 +1,10 @@
 extends StaticBody2D
 
-
 func _pop(player):
-	if Input.is_action_just_pressed("Interact") and $"../Sign".writed == true:
+	pass
+
+func _on_interacted():
+	if $"../Sign".writed:
 		Info._save()
 		Loader.fade_to(3)
 

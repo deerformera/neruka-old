@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-onready var partic = preload("res://Char/Player/Learn.tscn")
 onready var HitAnim = preload("res://Char/Player/HitAnim.tscn")
 onready var animtree = $AnimTree
 onready var animstate = $AnimTree.get("parameters/playback")
@@ -105,6 +104,7 @@ func _dead():
 
 
 func _partic():
+	var partic = preload("res://Char/Player/Learn.tscn")
 	var particle = partic.instance()
 	particle.global_position = global_position
 	particle.emitting = true

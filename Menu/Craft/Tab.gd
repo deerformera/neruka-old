@@ -20,7 +20,7 @@ func _ready():
 	
 	$Panel/CraftButton.connect("pressed", self, "_craft")
 	
-	for x in Info.stat["player"]["knowledge"]:
+	for x in Info.dat["player"]["knowledge"]:
 		get_node("List/Primer").get_child(int(tex[str(x)]["category"])).show()
 		var slot_ins = slot.instance()
 		slot_ins.icon = load(tex[str(x)]["tex"])
@@ -38,7 +38,7 @@ func _primer(bol, x_name):
 			if x.pressed and x.name != x_name:
 				x.pressed = false
 		
-		for x in Info.stat["player"]["knowledge"]:
+		for x in Info.dat["player"]["knowledge"]:
 			if tex[str(x)]["category"] == x_name:
 				$List/Sekunder.get_node(str(x)).show()
 			else:
@@ -106,7 +106,7 @@ func _refresh():
 	
 	for x in tex[temp_x]["material"].size():
 		var mat = tex[temp_x]["material"][x]
-		for y in Info.stat["player"]["inv"]:
+		for y in Info.dat["player"]["inv"]:
 			if y[0] == mat[0] and y[1] >= mat[1]:
 				craftable_arr.append(y[0])
 				break
@@ -121,7 +121,7 @@ func _refresh():
 
 func _craft():
 	for x in tex[temp_x]["material"]:
-		for y in Info.stat["player"]["inv"]:
+		for y in Info.dat["player"]["inv"]:
 			if y[0] == x[0]:
 				y[1] -= x[1]
 	Info._give_item(int(temp_x), 1)

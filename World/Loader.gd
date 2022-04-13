@@ -39,7 +39,7 @@ func fade_to(to_go: int):
 	$Anim.play("Fade")
 	yield($Anim, "animation_finished")
 	get_tree().change_scene(world[str(to_go)]["res"])
-	Info.stat["place"] = world[str(to_go)]["name"]
+	Info.dat["place"] = world[str(to_go)]["name"]
 	$Anim.play_backwards("Fade")
 	yield($Anim, "animation_finished")
 	$ColorRect.visible = false

@@ -41,10 +41,10 @@ func _next_conv():
 		conv = text[speaker.name][conv]["next"]
 	
 	elif text[speaker.name][conv]["type"] == "last" and ended:
-		if Info.stat["player"]["contact"].empty():
-			Info.stat["player"]["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
+		if Info.dat["player"]["contact"].empty():
+			Info.dat["player"]["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
 		else:
-			for x in Info.stat["player"]["contact"]:
+			for x in Info.dat["player"]["contact"]:
 				if x[0] == speaker.name:
 					x[1] = text[speaker.name][conv]["next"]
 		
@@ -58,8 +58,8 @@ func _identification(Speaker):
 	
 	Name.text = speaker.name
 	
-	if not Info.stat["player"]["contact"].empty():
-		for x in Info.stat["player"]["contact"]:
+	if not Info.dat["player"]["contact"].empty():
+		for x in Info.dat["player"]["contact"]:
 			if x[0] == speaker.name:
 				conv = x[1]
 	
@@ -67,7 +67,7 @@ func _identification(Speaker):
 	_refresh()
 
 func _refresh():
-	richtextlabel.text = text[speaker.name][conv]["text"].format({"NAME":Info.stat["player"]["name"]})
+	richtextlabel.text = text[speaker.name][conv]["text"].format({"NAME":Info.dat["player"]["name"]})
 	
 	if text[speaker.name][conv]["type"] == "question":
 		$M2/BG/M/VB/Desc/Button.show()
@@ -91,7 +91,7 @@ func _refresh():
 		var tradeable = false
 		
 		if taken["type"] == "item":
-			for x in Info.stat["player"]["inv"]:
+			for x in Info.dat["player"]["inv"]:
 				if x[0] == taken["value"][0] and x[1] - taken["value"][1] >= 0:
 					x[1] -= taken["value"][1]
 					tradeable = true
@@ -103,7 +103,7 @@ func _refresh():
 				_refresh()
 		
 		elif taken["type"] == "eq":
-			if Info.stat["player"]["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
+			if Info.dat["player"]["eq"][taken["value"][0]]["inv"].has(taken["value"][1]):
 				tradeable = true
 				conv = next[0]
 				_refresh()
@@ -122,10 +122,10 @@ func _refresh():
 		$M2/BG/M/VB/Title/NextButton.show()
 		
 		if text[speaker.name][conv]["text"] == "":
-			if Info.stat["player"]["contact"].empty():
-				Info.stat["player"]["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
+			if Info.dat["player"]["contact"].empty():
+				Info.dat["player"]["contact"].append_array([[speaker.name, text[speaker.name][conv]["next"]]])
 			else:
-				for x in Info.stat["player"]["contact"]:
+				for x in Info.dat["player"]["contact"]:
 					if x[0] == speaker.name:
 						x[1] = text[speaker.name][conv]["next"]
 			
@@ -142,8 +142,8 @@ func _refresh():
 		if text[speaker.name][conv].has("taken"):
 			print("bayar :((")
 		else:
-			speaker.player._partic()
-			Info.stat["player"]["knowledge"].append(int(text[speaker.name][conv]["given"]))
+			speaker.player._learn()
+			Info.dat["player"]["knowledge"].append(int(text[speaker.name][conv]["given"]))
 			
 		
 		conv = text[speaker.name][conv]["next"]

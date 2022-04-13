@@ -6,16 +6,16 @@ func _ready():
 	$PopUp.hide()
 
 func _pop(player):
-	
-	if opened == false:
+	if not opened:
 		$PopUp.show()
-		
-		if Input.is_action_just_pressed("Interact"):
-			opened = true
-			Info._give_eq("boots", 3)
-			$Particles2D.emitting = true
-			$Sprite.frame = 1
 
+func _on_interacted():
+	if not opened:
+		$PopUp.hide()
+		opened = true
+		Info._give_eq("boots", 3)
+		$Particles2D.emitting = true
+		$Sprite.frame = 1
 
 func _unpop():
 	$PopUp.hide()

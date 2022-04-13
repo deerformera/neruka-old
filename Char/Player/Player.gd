@@ -1,37 +1,55 @@
 extends KinematicBody2D
 
-onready var animstate = $AnimTree.get("parameters/playback")
-onready var HitAnim = preload("res://Char/Player/HitAnim.tscn")
 onready var animtree = $AnimTree
-onready var health = Info.stat["player"]["health"]
-
-var interacting = false
+onready var animstate = $AnimTree.get("parameters/playback")
+onready var PickableObject = preload("res://Object/PickableObject/PickableObject.tscn")
+onready var HitAnim = preload("res://Char/Player/HitAnim.tscn")
+onready var health = Info.dat["player"]["health"]
 var speed
 var vec = Vector2()
+var tex = {}
 
 enum mstate {
 	walk,
 	jump,
 	attack,
-	hurt
+	hurt,
 }
 
-var cstate = mstate.walk
+enum istate {
+	normal,
+	interact,
+	carry
+}
+
+var cistate = istate.normal
+var cmstate = mstate.walk
+
+func _ready():
+	var f = File.new()
+	f.open("res://Object/PickableObject/object.tres", File.READ)
+	tex = parse_json(f.get_as_text())
+	f.close()
+	
+	_refresh_carry()
+
+func _input(event):
+	if Input.is_action_just_pressed("Interact"):
+		if cistate == istate.carry and not $Ray.entered:
+			_uncarry(animtree.get("parameters/Walk/blend_position") * 2)
 
 func _physics_process(delta):
-	match cstate:
+	match cmstate:
 		mstate.walk:
 			_move_state(delta)
 		mstate.jump:
-			_jump_state(delta)
+			_jump_state()
 		mstate.attack:
-			_attack_state(delta)
+			_attack_state()
 		mstate.hurt:
-			_hurt_state(delta)
+			_hurt_state() 
 
 func _move_state(delta):
-	vec = Vector2()
-	
 	vec.x = (Input.get_action_strength("Right") - Input.get_action_strength("Left")) * 10
 	vec.y = (Input.get_action_strength("Down") - Input.get_action_strength("Up")) * 10
 	
@@ -50,11 +68,12 @@ func _move_state(delta):
 	
 	move_and_slide(vec * speed)
 
-func _jump_state(delta):
+func _jump_state():
 	move_and_slide(vec * 16)
 
+
 func _jump():
-	cstate = mstate.jump
+	cmstate = mstate.jump
 	animstate.travel("Jump")
 	var zoom = Vector2(0.3, 0.3)
 	var t = Tween.new()
@@ -68,10 +87,14 @@ func _jump():
 	t.start()
 	set_collision_mask_bit(0, true)
 	set_collision_mask_bit(7, true)
-	cstate = mstate.walk
+	cmstate = mstate.walk
 
-func _attack_state(delta):
+func _attack_state():
 	move_and_slide(Vector2())
+
+func _hurt_state():
+	animstate.travel("Hurt")
+	move_and_slide(vec * 10)
 
 func _set_hit(enemy):
 	var hitanim = HitAnim.instance()
@@ -83,19 +106,65 @@ func _set_hit(enemy):
 	$Camera2D.smoothing_enabled = true
 	hitanim.queue_free()
 
-func _hurt_state(delta):
-	animstate.travel("Hurt")
-	move_and_slide(vec * 10)
-
 func _damaged(damage, knockback_direction):
-	cstate = mstate.hurt
+	if cistate == istate.carry:
+		_uncarry(knockback_direction * 4)
+	cmstate = mstate.hurt
 	$HUD/C/Health._damaged(damage)
 	vec = knockback_direction
 	yield(get_tree().create_timer(0.2), "timeout")
 	vec = Vector2()
 	yield(get_tree().create_timer(0.2), "timeout")
-	cstate = mstate.walk
+	cmstate = mstate.walk
 
 func _heal(value):
 	$HUD/C/Health._heal(value)
 	$HealPartic.emitting = true
+
+func _learn():
+	var partic = load("res://Char/Player/Learn.tscn").instance()
+	partic.emitting = true
+	partic.global_position = self.global_position
+	owner.add_child(partic)
+
+func _refresh_carry():
+	var id = Info.carried_object
+	
+	if id == 0:
+		if get_node("Object") != null:
+			get_node("Object").queue_free()
+			
+			var t = Timer.new()
+			t.wait_time = 0.01
+			t.autostart = true
+			t.one_shot = true
+			t.connect("timeout", self, "_carry", [false])
+			add_child(t)
+		
+	else:
+		if get_node("Object") == null:
+			var sprite = Sprite.new()
+			sprite.texture = load(tex[str(id)]["res"])
+			sprite.name = "Object"
+			add_child(sprite)
+			
+			var t = Timer.new()
+			t.wait_time = 0.01
+			t.autostart = true
+			t.one_shot = true
+			t.connect("timeout", self, "_carry", [true])
+			add_child(t)
+
+func _uncarry(drop_position):
+	var object = PickableObject.instance()
+	object.global_position = global_position + drop_position
+	object.id = Info.carried_object
+	owner.add_child(object)
+	Info.carried_object = 0
+	_refresh_carry()
+
+func _carry(bol):
+	if bol == true:
+		cistate = istate.carry
+	else:
+		cistate = istate.normal

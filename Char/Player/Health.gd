@@ -6,7 +6,7 @@ onready var h_half = preload("res://UI/Hearth-half.png")
 onready var s_full = preload("res://UI/Shield-full.png")
 onready var s_half = preload("res://UI/Shield-half.png")
 onready var s_empty = preload("res://UI/Shield-empty.png")
-onready var health = Info.stat["player"]["health"]
+onready var health = Info.dat["player"]["health"]
 onready var armor = Info.armor
 
 var max_armor = 0 setget _armor_changed
@@ -21,7 +21,7 @@ func _armor_changed(value):
 	_checker("s")
 
 func _heal(value):
-	Info.stat["player"]["health"] += value
+	Info.dat["player"]["health"] += value
 	_checker("h")
 
 func _damaged(damage):
@@ -34,9 +34,9 @@ func _damaged(damage):
 		health -= damage
 	
 	if health <= 0:
-		find_parent("Player")._dead()
+		print("dead")
 	
-	Info.stat["player"]["health"] = health
+	Info.dat["player"]["health"] = health
 	Info.armor = armor
 	
 	find_parent("Player").get_node("ShieldPartic").emitting = false
@@ -87,7 +87,7 @@ func _checker(type):
 					remove_child(x)
 	
 	elif type == "h":
-		health = Info.stat["player"]["health"]
+		health = Info.dat["player"]["health"]
 		if health >= max_health:
 			health = max_health
 	

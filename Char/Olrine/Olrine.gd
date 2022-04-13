@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var nav: Navigation2D = owner.get_node("Nav")
 onready var animstate = $AnimTree.get("parameters/playback")
+onready var Drop = preload("res://Object/PickableObject/PickableObject.tscn")
 var entered = false
 var attack_entered = false
 var health = 10
@@ -42,8 +43,8 @@ func _physics_process(delta):
 
 func _combat_state(delta):
 #	animstate.travel("Attack")
-	path = nav.get_simple_path(global_position, player.global_position, true)
-	vec = global_position.direction_to(path[1])
+#	path = nav.get_simple_path(global_position, player.global_position, true)
+#	vec = global_position.direction_to(path[1])
 	move_and_slide(vec * 100)
 	tovec = player.global_position - global_position
 	$Ray.cast_to = tovec
@@ -67,6 +68,9 @@ func _damaged(damage):
 	yield(get_tree().create_timer(0.3), "timeout")
 	animstate.travel("Normal")
 	if health <= 0:
+		var drop = Drop.instance()
+		drop.global_position = self.global_position
+		owner.add_child(drop)
 		for x in get_children():
 			if not x.get_class() == "Particles2D":
 				x.queue_free()
@@ -103,3 +107,4 @@ func _on_attack():
 		player._damaged(5, Vector2())
 	
 	$AttackArea/Sprite.hide()
+

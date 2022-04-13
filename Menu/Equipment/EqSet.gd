@@ -32,7 +32,7 @@ func _ready():
 		for y in get_children():
 			if y.name == movin[keys]["name"]:
 				for z in y.get_node("Box").get_children():
-					if not int(z.name) in Info.stat["player"]["eq"][y.name]["inv"]:
+					if not int(z.name) in Info.dat["player"]["eq"][y.name]["inv"]:
 						z.hide()
 					else:
 						z.connect("toggled", self, "_slot_selected", [y.name, z.name])
@@ -60,10 +60,10 @@ func _select(bol, x_name):
 		_nuller(current_panel)
 		
 		for x in get_node(category).get_node("Box").get_children():
-			if Info.stat["player"]["eq"][category]["equipped"] != 0:
-				var selected = str(Info.stat["player"]["eq"][category]["equipped"])
+			if Info.dat["player"]["eq"][category]["equipped"] != 0:
+				var selected = str(Info.dat["player"]["eq"][category]["equipped"])
 				
-				current_selected = [category, Info.stat["player"]["eq"][category]["equipped"]]
+				current_selected = [category, Info.dat["player"]["eq"][category]["equipped"]]
 				
 				current_panel.get_node("EqButton").disabled = false
 				current_panel.get_node("EqButton").pressed = true
@@ -102,7 +102,7 @@ func _slot_selected(bol, category, slot_name):
 			if x.pressed and x.name != slot_name:
 				x.pressed = false
 		
-		if int(slot_name) == Info.stat["player"]["eq"][category]["equipped"]:
+		if int(slot_name) == Info.dat["player"]["eq"][category]["equipped"]:
 			current_panel.get_node("EqButton").pressed = true
 		else:
 			current_panel.get_node("EqButton").pressed = false
@@ -123,12 +123,12 @@ func _equipped(bol, panel_selected):
 	if bol == true:
 		for x in get_node(current_selected[0]).get_node("Box").get_children():
 			if x.pressed and x.name == str(current_selected[1]):
-				Info.stat["player"]["eq"][current_selected[0]]["equipped"] = current_selected[1]
+				Info.dat["player"]["eq"][current_selected[0]]["equipped"] = current_selected[1]
 		
 	else:
 		for x in get_node(current_selected[0]).get_node("Box").get_children():
 			if x.pressed and x.name == str(current_selected[1]):
-				Info.stat["player"]["eq"][current_selected[0]]["equipped"] = 0
+				Info.dat["player"]["eq"][current_selected[0]]["equipped"] = 0
 
 func _panelling(name_text, gains_text, desc_text):
 	current_panel.get_node("nameLabel").text = name_text

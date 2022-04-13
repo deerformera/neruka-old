@@ -14,14 +14,14 @@ func _ready():
 	tex = parse_json(f.get_as_text())
 	f.close()
 	
-	for x in Info.stat["player"]["inv"].size():
+	for x in Info.dat["player"]["inv"].size():
 		var sloti = slot.instance()
 		sloti.name = str(x)
 		add_child(sloti)
 	
 	for x in get_children():
 		x.connect("toggled", self, "_switch", [x.name])
-		if Info.stat["player"]["inv"][int(x.name)][0] != 0:
+		if Info.dat["player"]["inv"][int(x.name)][0] != 0:
 			x.add_child(item.instance())
 	
 	_refresh()
@@ -30,7 +30,7 @@ func _switch(bol, xname):
 	if bol == true:
 		selected.append(int(xname))
 		
-		if Info.stat["player"]["inv"][selected[0]][0] == 0:
+		if Info.dat["player"]["inv"][selected[0]][0] == 0:
 			for x in get_children():
 				x.pressed = false
 			
@@ -38,12 +38,12 @@ func _switch(bol, xname):
 			return
 		
 		if selected.size() >= 2:
-			var first_selected = Info.stat["player"]["inv"][selected[0]]
-			var second_selected = Info.stat["player"]["inv"][selected[1]]
+			var first_selected = Info.dat["player"]["inv"][selected[0]]
+			var second_selected = Info.dat["player"]["inv"][selected[1]]
 		
 			if second_selected[0] == 0:
-				Info.stat["player"]["inv"][selected[1]] = first_selected
-				Info.stat["player"]["inv"][selected[0]] = [0, 0]
+				Info.dat["player"]["inv"][selected[1]] = first_selected
+				Info.dat["player"]["inv"][selected[0]] = [0, 0]
 				tw.interpolate_property(get_child(selected[0]).get_child(0), "global_position", null, get_child(selected[1]).rect_global_position, 0.05, Tween.TRANS_EXPO, Tween.EASE_OUT)
 				tw.start()
 				
@@ -52,17 +52,17 @@ func _switch(bol, xname):
 					selected.resize(1)
 					return
 					
-				Info.stat["player"]["inv"][selected[1]][1] += first_selected[1]
-				Info.stat["player"]["inv"][selected[0]] = [0, 0]
+				Info.dat["player"]["inv"][selected[1]][1] += first_selected[1]
+				Info.dat["player"]["inv"][selected[0]] = [0, 0]
 				tw.interpolate_property(get_child(selected[0]).get_child(0), "global_position", null, get_child(selected[1]).rect_global_position, 0.05, Tween.TRANS_EXPO, Tween.EASE_OUT)
 				tw.start()
 				
 			elif second_selected[0] != 0:
-				for x in range(Info.stat["player"]["inv"].size()):
+				for x in range(Info.dat["player"]["inv"].size()):
 					if x == selected[0]:
-						Info.stat["player"]["inv"][x] = second_selected
+						Info.dat["player"]["inv"][x] = second_selected
 					if x == selected[1]:
-						Info.stat["player"]["inv"][x] = first_selected
+						Info.dat["player"]["inv"][x] = first_selected
 				
 				tw.interpolate_property(get_child(selected[0]).get_child(0), "global_position", null, get_child(selected[1]).rect_global_position, 0.05, Tween.TRANS_EXPO, Tween.EASE_OUT)
 				tw.interpolate_property(get_child(selected[1]).get_child(0), "global_position", null, get_child(selected[0]).rect_global_position, 0.05, Tween.TRANS_EXPO, Tween.EASE_OUT)
@@ -77,7 +77,7 @@ func _switch(bol, xname):
 
 func _refresh():
 	for x in get_children():
-		var itin = Info.stat["player"]["inv"][int(x.name)]
+		var itin = Info.dat["player"]["inv"][int(x.name)]
 		
 		if x.get_child_count() != 0:
 			x.get_child(0).queue_free()

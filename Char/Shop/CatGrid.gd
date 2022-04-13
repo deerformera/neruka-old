@@ -18,7 +18,7 @@ func _start(ShopKeeper):
 	
 	panel.get_node("Buy").connect("pressed", self, "_purchased")
 	
-	for x in Info.stat["shopstock"][shopkeeper].size():
+	for x in Info.dat["shopstock"][shopkeeper].size():
 		var cat = Catalog.instance()
 		cat.name = str(x)
 		add_child(cat)
@@ -42,9 +42,9 @@ func _select(bol, nama):
 	if bol == true:
 		current_item = [dex, 1]
 		
-		var id = Info.stat["shopstock"][shopkeeper][dex][1]
-		var stock = Info.stat["shopstock"][shopkeeper][dex][2]
-		var price = Info.stat["shopstock"][shopkeeper][dex][3]
+		var id = Info.dat["shopstock"][shopkeeper][dex][1]
+		var stock = Info.dat["shopstock"][shopkeeper][dex][2]
+		var price = Info.dat["shopstock"][shopkeeper][dex][3]
 		
 		
 		panel.get_node("Buy").disabled = false
@@ -86,22 +86,22 @@ func _amo_change(value):
 	
 	current_item[1] = value
 	
-	var total = Info.stat["shopstock"][shopkeeper][current_item[0]][3] * value
+	var total = Info.dat["shopstock"][shopkeeper][current_item[0]][3] * value
 	
 	panel.get_node("Total").text = "Total Price : " + str(total) + " Rost"
 
 
 func _purchased():
-	var id = Info.stat["shopstock"][shopkeeper][current_item[0]][1]
+	var id = Info.dat["shopstock"][shopkeeper][current_item[0]][1]
 	var amount = current_item[1]
-	var total = Info.stat["shopstock"][shopkeeper][current_item[0]][3] * amount
+	var total = Info.dat["shopstock"][shopkeeper][current_item[0]][3] * amount
 	
 	var tradeable = false
 	
-	for x in Info.stat["player"]["inv"]:
+	for x in Info.dat["player"]["inv"]:
 		if x[0] == 5 and x[1] - total >= 0:
 			x[1] -= total
-			Info.stat["shopstock"][shopkeeper][current_item[0]][2] -= amount
+			Info.dat["shopstock"][shopkeeper][current_item[0]][2] -= amount
 			_refresh()
 			tradeable = true
 			
@@ -116,9 +116,9 @@ func _purchased():
 
 func _refresh():
 	for x in get_children():
-		var id = Info.stat["shopstock"][shopkeeper][int(x.name)][1]
-		var stock = Info.stat["shopstock"][shopkeeper][int(x.name)][2]
-		var price = Info.stat["shopstock"][shopkeeper][int(x.name)][3]
+		var id = Info.dat["shopstock"][shopkeeper][int(x.name)][1]
+		var stock = Info.dat["shopstock"][shopkeeper][int(x.name)][2]
+		var price = Info.dat["shopstock"][shopkeeper][int(x.name)][3]
 		
 		if stock <= 0:
 			x.get_node("VB/Stock").text = "Out Of Stock!"

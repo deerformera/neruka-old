@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var stat = {
+var dat = {
 	"player":{
 		"name":"cat",
 		"debug":false,
@@ -32,8 +32,8 @@ var stat = {
 			},
 			
 			"boots":{
-				"equipped":3,
-				"inv":[3]
+				"equipped":0,
+				"inv":[0]
 			},
 			
 			"claw":{
@@ -55,6 +55,10 @@ var stat = {
 	"shopstock":{
 		"RotShop":[["item",1,1,3], ["item",2,5,3], ["item",3,5,1], ["item",4,5,10], ["item",5,5,1]]
 	},
+	
+	"pos":{
+		4:[]
+	}
 }
 
 var carried_object = 0
@@ -65,24 +69,24 @@ func _ready():
 	$Version.text = ProjectSettings.get_setting("application/verlist/Version")
 
 func _give_item(id, amount):
-	for x in stat["player"]["inv"]:
+	for x in dat["player"]["inv"]:
 		if x[0] == id:
 			x[1] += amount
 			return
 			
-	for x in stat["player"]["inv"]:
+	for x in dat["player"]["inv"]:
 		if x[0] == 0:
 			x[0] = id
 			x[1] += amount
 			return
 
 func _give_eq(type, id):
-	if Info.stat["player"]["eq"][type]["inv"].has(id):
+	if Info.dat["player"]["eq"][type]["inv"].has(id):
 		return
-	Info.stat["player"]["eq"][type]["inv"].append(id)
+	Info.dat["player"]["eq"][type]["inv"].append(id)
 
 func _null_checker():
-	for x in stat["player"]["inv"]:
+	for x in dat["player"]["inv"]:
 		if x[1] == 0:
 			x[0] = 0
 
@@ -105,11 +109,11 @@ func _save():
 	
 	var file = File.new()
 	file.open("user://saves/player.tres", File.WRITE)
-	file.store_var(stat)
+	file.store_var(dat)
 	file.close()
 
 func _load():
 	var file = File.new()
 	file.open("user://saves/player.tres", File.READ)
-	stat = to_json(file.get_var())
+	dat = to_json(file.get_var())
 	file.close()

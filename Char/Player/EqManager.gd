@@ -40,7 +40,7 @@ func _refresh():
 	_refresh_claw()
 
 func _refresh_armor():
-	var equipped = Info.stat["player"]["eq"]["armor"]["equipped"]
+	var equipped = Info.dat["player"]["eq"]["armor"]["equipped"]
 	if equipped == 0:
 		armor = 0
 	else:
@@ -58,7 +58,7 @@ func _refresh_armor():
 	find_parent("Player").get_node("HUD/C/Health")._refresh()
 
 func _refresh_claw():
-	var equipped = Info.stat["player"]["eq"]["claw"]["equipped"]
+	var equipped = Info.dat["player"]["eq"]["claw"]["equipped"]
 	if equipped == 0:
 		damage = 2
 	else:
@@ -73,7 +73,7 @@ func _refresh_claw():
 	add_child(claw_ins)
 
 func _refresh_boots():
-	var equipped = Info.stat["player"]["eq"]["boots"]["equipped"]
+	var equipped = Info.dat["player"]["eq"]["boots"]["equipped"]
 	if equipped == 0:
 		speed = 10
 		if get_node("Boots") != null:

@@ -8,15 +8,15 @@ func _ready():
 	f.open(Tex, File.READ)
 	tex = parse_json(f.get_as_text())
 	
-	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.stat["player"]["name"]
-	$M2/BG/M/VB/HB/LVB/Healthbar.text = str(Info.stat["player"]["health"])
-	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Info.stat["player"]["place"]
+	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.dat["player"]["name"]
+	$M2/BG/M/VB/HB/LVB/Healthbar.text = str(Info.dat["player"]["health"])
+	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Info.dat["player"]["place"]
 	
-	if Info.stat["player"]["eq"]["claw"]["equipped"] != 0:
-		$M2/BG/M/VB/HB/S/RVB/ClawEqbar.text = tex["claw"][str(Info.stat["player"]["eq"]["claw"]["equipped"])]["name"]
+	if Info.dat["player"]["eq"]["claw"]["equipped"] != 0:
+		$M2/BG/M/VB/HB/S/RVB/ClawEqbar.text = tex["claw"][str(Info.dat["player"]["eq"]["claw"]["equipped"])]["name"]
 	
-	if Info.stat["player"]["eq"]["boots"]["equipped"] != 0:
-		$M2/BG/M/VB/HB/S/RVB/BootsEqbar.text = tex["boots"][str(Info.stat["player"]["eq"]["boots"]["equipped"])]["name"]
+	if Info.dat["player"]["eq"]["boots"]["equipped"] != 0:
+		$M2/BG/M/VB/HB/S/RVB/BootsEqbar.text = tex["boots"][str(Info.dat["player"]["eq"]["boots"]["equipped"])]["name"]
 	
 	
 	_tweented()

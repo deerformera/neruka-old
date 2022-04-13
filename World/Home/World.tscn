@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Object/Door/Door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Home/Sign.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Char/Player/Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Object/Chest/Chest.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Items/PickableItem/PickableItem.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Object/PickableObject/PickableObject.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 12, 4.5 )
@@ -176,6 +177,7 @@ position = Vector2( 0, 8.5 )
 shape = SubResource( 14 )
 
 [node name="Popup" type="Sprite" parent="Sign"]
+visible = false
 position = Vector2( -24, -16 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 9 )
@@ -240,5 +242,8 @@ environment = SubResource( 23 )
 position = Vector2( 187, -106 )
 id = 6
 amount = 1
+
+[node name="PickableObject" parent="." instance=ExtResource( 14 )]
+position = Vector2( 168, 11 )
 
 [connection signal="text_entered" from="Sign/Canv/P/C/Line" to="Sign" method="_on_Line_text_entered"]
