@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Char/Rat/Rat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Sola Beach/SandTile.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Char/Rot/Rot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Char/Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Sola Beach/Teleporter.gd" type="Script" id=7]
+[ext_resource path="res://World/Sola Beach/World.gd" type="Script" id=8]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -42,6 +43,7 @@ glow_blend_mode = 1
 extents = Vector2( 10, 100 )
 
 [node name="World" type="YSort"]
+script = ExtResource( 8 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

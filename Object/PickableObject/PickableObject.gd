@@ -12,6 +12,7 @@ func _ready():
 	f.open(ObjTex, File.READ)
 	tex = parse_json(f.get_as_text())
 	$Sprite.texture = load(tex[str(id)]["res"])
+	f.close()
 
 func _pop(body):
 	$Pop.show()
@@ -24,3 +25,5 @@ func _on_interacted():
 	Info.carried_object = id
 	player._refresh_carry()
 	queue_free()
+	remove_from_group("Object")
+	Info._scan_object()

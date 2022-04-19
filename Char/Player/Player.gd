@@ -37,6 +37,7 @@ func _input(event):
 	if Input.is_action_just_pressed("Interact"):
 		if cistate == istate.carry and not $Ray.entered:
 			_uncarry(animtree.get("parameters/Walk/blend_position") * 2)
+			Info._scan_object()
 
 func _physics_process(delta):
 	match cmstate:
@@ -135,10 +136,10 @@ func _refresh_carry():
 			get_node("Object").queue_free()
 			
 			var t = Timer.new()
-			t.wait_time = 0.01
+			t.wait_time = 0.02
 			t.autostart = true
 			t.one_shot = true
-			t.connect("timeout", self, "_carry", [false])
+			t.connect("timeout", self, "_set_carry", [false])
 			add_child(t)
 		
 	else:
@@ -149,10 +150,10 @@ func _refresh_carry():
 			add_child(sprite)
 			
 			var t = Timer.new()
-			t.wait_time = 0.01
+			t.wait_time = 0.02
 			t.autostart = true
 			t.one_shot = true
-			t.connect("timeout", self, "_carry", [true])
+			t.connect("timeout", self, "_set_carry", [true])
 			add_child(t)
 
 func _uncarry(drop_position):
@@ -163,7 +164,7 @@ func _uncarry(drop_position):
 	Info.carried_object = 0
 	_refresh_carry()
 
-func _carry(bol):
+func _set_carry(bol):
 	if bol == true:
 		cistate = istate.carry
 	else:

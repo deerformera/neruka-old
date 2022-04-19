@@ -1,15 +1,13 @@
 extends CanvasLayer
 
+onready var PObject = preload("res://Object/PickableObject/PickableObject.tscn")
+
 var dat = {
+	"debug":false,
+	"place":0,
+	
 	"player":{
 		"name":"cat",
-		"debug":false,
-		"place":"",
-		
-		"position":{
-			"y":0,
-			"x":0
-		},
 		
 		"exp":0,
 		"health":18,
@@ -57,7 +55,11 @@ var dat = {
 	},
 	
 	"pos":{
-		4:[]
+		1:[],
+		2:[],
+		3:[],
+		4:[],
+		5:[]
 	}
 }
 
@@ -67,6 +69,7 @@ var mousemode = false
 
 func _ready():
 	$Version.text = ProjectSettings.get_setting("application/verlist/Version")
+
 
 func _give_item(id, amount):
 	for x in dat["player"]["inv"]:
@@ -81,9 +84,9 @@ func _give_item(id, amount):
 			return
 
 func _give_eq(type, id):
-	if Info.dat["player"]["eq"][type]["inv"].has(id):
+	if dat["player"]["eq"][type]["inv"].has(id):
 		return
-	Info.dat["player"]["eq"][type]["inv"].append(id)
+	dat["player"]["eq"][type]["inv"].append(id)
 
 func _null_checker():
 	for x in dat["player"]["inv"]:
@@ -117,3 +120,22 @@ func _load():
 	file.open("user://saves/player.tres", File.READ)
 	dat = to_json(file.get_var())
 	file.close()
+
+func _scan_object():
+	var object_arr = []
+	
+	for i in get_tree().get_nodes_in_group("Object"):
+		object_arr.append(i.global_position)
+	
+	var place = dat["place"]
+	dat["pos"][place] = object_arr
+
+func _refresh_object():
+	
+	var place_id = dat["place"]
+	if not dat["pos"][place_id].empty():
+		for x in dat["pos"][place_id]:
+			print(Info.dat['pos'])
+			var pobject = PObject.instance()
+			pobject.global_position = x
+			get_tree().root.get_node("World").add_child(pobject)

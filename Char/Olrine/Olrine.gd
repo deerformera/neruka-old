@@ -42,9 +42,9 @@ func _physics_process(delta):
 			pass
 
 func _combat_state(delta):
-#	animstate.travel("Attack")
-#	path = nav.get_simple_path(global_position, player.global_position, true)
-#	vec = global_position.direction_to(path[1])
+	animstate.travel("Attack")
+	path = nav.get_simple_path(global_position, player.global_position, true)
+	vec = global_position.direction_to(path[1])
 	move_and_slide(vec * 100)
 	tovec = player.global_position - global_position
 	$Ray.cast_to = tovec
@@ -71,6 +71,7 @@ func _damaged(damage):
 		var drop = Drop.instance()
 		drop.global_position = self.global_position
 		owner.add_child(drop)
+		Info._scan_object()
 		for x in get_children():
 			if not x.get_class() == "Particles2D":
 				x.queue_free()

@@ -10,7 +10,7 @@ func _ready():
 	
 	$M2/BG/M/VB/HB/LVB/Namebar.text = Info.dat["player"]["name"]
 	$M2/BG/M/VB/HB/LVB/Healthbar.text = str(Info.dat["player"]["health"])
-	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Info.dat["player"]["place"]
+	$M2/BG/M/VB/HB/S/RVB/Worldbar.text = Loader._get_name()
 	
 	if Info.dat["player"]["eq"]["claw"]["equipped"] != 0:
 		$M2/BG/M/VB/HB/S/RVB/ClawEqbar.text = tex["claw"][str(Info.dat["player"]["eq"]["claw"]["equipped"])]["name"]
